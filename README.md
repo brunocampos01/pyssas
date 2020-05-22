@@ -6,13 +6,13 @@
 SQL Server Analysis Services (SSAS) features extensions.
 
 ## Features
-- FEATURE: MetaData Exporter
+- MetaData Exporter
   - [x] Export queries from data source on  file `.sql`
   - [x] Export measures on file `.dax`
   - [x] Export calculated columns on file `.dax`
-- FEATURE: Builder cube
+- Builder cube
    - [x] Values in every tables, columns, calculated columns and measures
-- FEATURE: Data Lineage Generator
+- Data Lineage Generator
   - [ ] Create data lineage (data warehouse -> analysis services)
   - [ ] Create data lineage (stage -> data warehouse)
   - [ ] Create data lineage (data source -> stage)
