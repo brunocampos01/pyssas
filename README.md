@@ -7,9 +7,9 @@
 
 ## Features
 - FEATURE: MetaData Exporter
-  - [x] :+1: Export queries from data source on  file `.sql`
-  - [x] :+1: Export measures on file `.dax`
-  - [x] :+1: Export calculated columns on file `.dax`
+  - :+1: Export queries from data source on  file `.sql`
+  - :+1: Export measures on file `.dax`
+  - :+1: Export calculated columns on file `.dax`
 - FEATURE: Builder cube
    - [x] Values in every tables, columns, calculated columns and measures
 - FEATURE: Data Lineage Generator
