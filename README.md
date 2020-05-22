@@ -3,7 +3,7 @@
 ![License](https://img.shields.io/badge/Code%20License-MIT-blue.svg)
 [![Python 3.7](https://img.shields.io/badge/python-3.7-yellow.svg)](https://www.python.org/downloads/release/python-371/)
 
-**SSAS as a code**
+SQL Server Analysis Services (SSAS) features extensions.
 
 ## Features
 - FEATURE: MetaData Exporter
