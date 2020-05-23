@@ -2,8 +2,7 @@
 -- Partition: dCategory
 SELECT
 IDCATEGORIA,
- CDCATEGORIA ,
- AS 'Código Categoria',
+ CDCATEGORIA AS 'Código Categoria',
  DENOME ,
 AS 'Categoria',
  DEDOMINIO,

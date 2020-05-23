@@ -25,6 +25,25 @@ def get_path_projects(path_olap: str):
     return list_path_proj
 
 
+def get_proj_name(path_olap: str):
+    """
+    :return:
+        bi-project_name-olap, bi-two-olap
+    """
+    list_olap_name = []
+    list_files = os.listdir(path_olap)
+
+    print(f'\nSSAS project found:')
+    for file in list_files:
+        file = file.lower()
+
+        if file.endswith('olap') or file.startswith('bi') or file.startswith('ssas') or file.endswith('ssas'):
+            list_olap_name.append(file)
+            print(file)
+
+    return list_olap_name
+
+
 def get_path_bim(list_path_proj: list):
     """
     :return:
@@ -46,24 +65,6 @@ def get_path_bim(list_path_proj: list):
     return list_path_bim
 
 
-def get_proj_name(path: str):
-    """
-    :return:
-        ssas_data_base_name, ...
-    """
-    list_olap_name = []
-    list_files = os.listdir(path)
-
-    print(f'\nSSAS project found:')
-    for file in list_files:
-
-        if file.endswith('OLAP') or file.startswith('BI'):
-            list_olap_name.append(file)
-            print(file)
-
-    return list_olap_name
-
-
 def create_directory(list_path_proj: list, dir_name: str):
     """
     :return:
@@ -83,12 +84,6 @@ def create_directory(list_path_proj: list, dir_name: str):
     return list_path_proj_with_dir
 
 
-def open_bim_file_json(path_bim: str):
-    with open(path_bim, mode='r', encoding='UTF8') as file:
-        data = file.read()
-        return json.loads(data)
-
-
 def open_dict_map(path_dict: str):
     with open(path_dict, mode='rb') as file:
         return pickle.load(file)
@@ -103,6 +98,49 @@ def open_bim_file_json(path_bim: str):
 def write_bim_file_json(bim_file: dict, path_bim: str):
     with open(path_bim, 'w', encoding='UTF8') as file:
         return json.dump(bim_file, file, ensure_ascii=False, indent=2)
+
+
+def open_bim_file(path_bim: str):
+    with open(path_bim, mode='r', encoding='UTF8') as file:
+        return file.read()
+
+
+def write_changes_bim(bim_stream: str, path_bim: str):
+    data = re.sub(pattern='"true"', repl=r'true', string=str(bim_stream))
+    data = re.sub(pattern='"false"', repl=r'false', string=str(data))
+
+    with open(path_bim, mode='w+', encoding='UTF8') as file_w:
+        file_w.write(data)
+
+
+def get_path_pickle(path: str, name_project: str):
+    """
+    :return:
+        ['C:/Users/bruno.moura/projects/bi-indicadores/src/set_ssas/../tmp/BI-UNJ.pickle',
+        'C:/Users/bruno.moura/projects/bi-indicadores/src/set_ssas/../tmp/cols_BI-UNJ.pickle']
+    """
+
+    list_path_dict = []
+    list_files = os.listdir(path)
+    dict_table = name_project + '.pickle'
+    dict_col = 'cols_' + name_project + '.pickle'
+
+    print(f'\nDictionary of data lineage found:')
+    for file in list_files:
+
+        if file == dict_table or file == dict_col:
+            dict_path = os.path.join(path + file)
+            list_path_dict.append(dict_path)
+            print(file)
+
+    return list_path_dict
+
+
+
+
+def open_dict_map(path_dict: str):
+    with open(path_dict, mode='rb') as file:
+        return pickle.load(file)
 
 
 def create_dax_file(list_elements: list, list_name_elements: list,

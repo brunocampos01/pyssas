@@ -13,3 +13,23 @@ PATHS = {
     'stored_procedures': 'stored_procedures/',
     'tmp': '/tmp/'
 }
+
+CUBE_GENERAL_CONFIG = {
+    'folder_columns': 'Colunas',
+    'folder_measures': 'Medidas',
+    'folder_calculated_columns': 'Medidas',
+    'summarize': 'none'
+}
+
+EXCEPTIONS_PK_CONFIG = {
+    'list_cols_exceptions': {"IDHR,"
+                             " IDUSUARIOHIST,"
+                             " IDDTAPURACAO Manipulado,"
+                             " IDDTAPURACAO"},
+    'list_tables_exceptions': {'f',
+                               'fact',
+                               'dTempo',
+                               'dimTempo',
+                               'dTime',
+                               'dEquipe'}
+}

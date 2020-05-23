@@ -11,12 +11,19 @@ SQL Server Analysis Services (SSAS) features extensions.
   - [x] Export measures on file `.dax`
   - [x] Export calculated columns on file `.dax`
 - Builder cube
-   - [x] Values in every tables, columns, calculated columns and measures
+   - [x] General parameters in tables, columns, calculated columns and measures
+   - [x] Configure PK parameter in columns start `ID` and handler exceptions 
 - Data Lineage Generator
-  - [ ] Create data lineage (data warehouse -> analysis services)
-  - [ ] Create data lineage (stage -> data warehouse)
-  - [ ] Create data lineage (data source -> stage)
-  - [ ] Create data lineage (data source -> stage -> data warehouse -> analysis services)
+  - By Table
+    - [ ] Create data lineage (data warehouse -> analysis services)
+    - [ ] Create data lineage (stage -> data warehouse)
+    - [ ] Create data lineage (data source -> stage)
+    - [ ] Create data lineage (data source -> stage -> data warehouse -> analysis services)
+  - By Column
+    - [ ] Create data lineage (data warehouse -> analysis services)
+    - [ ] Create data lineage (stage -> data warehouse)
+    - [ ] Create data lineage (data source -> stage)
+    - [ ] Create data lineage (data source -> stage -> data warehouse -> analysis services)
 
 
 
@@ -51,12 +58,12 @@ sudo apt-get install git
 
 
 ### FEATURE: MetaData Exporter
-- Para criar uma documentação dinâmica sobre o projeto de Business Inteligence decidi extrair as informações de:
+- To create dynamic documentation about the Business Intelligence project I decided to extract the information from:
   - measures
   - calculated columns
   - queries from data source
 
-Com esta feature é possível inserir um job em um sistema de ETL que execute o `metadata_exporter.py` e assim atualizar a documentação toda vez que o processo de ETL é executado.
+With this feature you can enter a job in an ETL system that runs the `metadata_exporter.py` and thus update the documentation every time the ETL process is executed.
 
 #### Doc
 ```bash
@@ -76,23 +83,19 @@ optional arguments:
 ```
 python .\metadata_exporter.py --path_olap $Env:home\projects\analysis-services-features\examples
 ```
-Como saída será criado 3 diretórios (queries, measures and calculated_cols) dentro do *path_olap* informado.
+As output 3 directories (queries, measures and calculated_cols) will be created within the *path_olap*.
 
 
-## Quickstart
-- Generate data leneage
-```
-python map_olap_to_dw.py
+### FEATURE: Cube Builder
+
+#### Doc
+```bash
+
 ```
 
-- Configure cube
+#### Quickstart
 ```
-python set.py --olap_project_name "BI"
-```
-
-- Get queries, measures, calculated columns
-```
-python get.py
+python .\cube_builder.py --path_olap $Env:home\\projects\\analysis-services-features\\examples
 ```
 
 
@@ -133,9 +136,6 @@ In these cases above is shows that a common configuration is made to all but whe
 ### FEATURE: Data Lineage Generator
 ...
 
-### FEATURE: Cube Builder
-...
-
 
 ## Running
 1. Clone this repository
@@ -146,12 +146,6 @@ cd challenge-keyrus
 
 ##### NOTES
 This scripts capture informations of file `.bim`
-
-
-## TODO
-- [ ] implement design fluent
-- [ ] implement creator relationalship
-- [ ] implement default builder
 
 
 ---
