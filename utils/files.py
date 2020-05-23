@@ -25,13 +25,13 @@ def get_path_projects(path_olap: str):
     return list_path_proj
 
 
-def get_proj_name(path_olap: str):
+def get_proj_name(path: str):
     """
     :return:
         bi-project_name-olap, bi-two-olap
     """
     list_olap_name = []
-    list_files = os.listdir(path_olap)
+    list_files = os.listdir(path)
 
     print(f'\nSSAS project found:')
     for file in list_files:
@@ -136,8 +136,6 @@ def get_path_pickle(path: str, name_project: str):
     return list_path_dict
 
 
-
-
 def open_dict_map(path_dict: str):
     with open(path_dict, mode='rb') as file:
         return pickle.load(file)
@@ -232,13 +230,16 @@ def create_queries_file(list_queries: list, list_name_queries: list,
                             .replace('\']', '') \
                             .replace('"', '') \
                             .replace('\\t', ', ') \
-                            .replace(',,', ',')
                             .replace(', \'', '') \
                             .replace('"', '') \
                             .replace(',\',', ',') \
+                            .replace(',  AS', ' AS') \
+                            .replace(',  AS', ' AS') \
+                            .replace(',  AS', ' AS') \
+                            .replace(',,AS', ' AS') \
+                            .replace(', AS', ' AS') \
                             .replace(', , ', ',') \
-                            .replace(',', ',\n') \
-                            .replace('"', ''))
+                            .replace('"', '')) # tree comma
 
                 # apply regex
                 str_file = re.sub(r"\t  '", "",
@@ -269,6 +270,9 @@ def create_queries_file(list_queries: list, list_name_queries: list,
                                   str_file,
                                   flags=re.MULTILINE)
                 str_file = re.sub(r"\n,", "",
+                                  str_file,
+                                  flags=re.MULTILINE)
+                str_file = re.sub(r",, ", ", ",
                                   str_file,
                                   flags=re.MULTILINE)
                 file_w.write('-' * 79)

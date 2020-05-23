@@ -15,7 +15,7 @@ SQL Server Analysis Services (SSAS) features extensions.
    - [x] Configure PK parameter in columns start `ID` and handler exceptions 
 - Data Lineage Generator
   - By Table
-    - [ ] Create data lineage (data warehouse -> analysis services)
+    - [x] Create data lineage (data warehouse -> analysis services)
     - [ ] Create data lineage (stage -> data warehouse)
     - [ ] Create data lineage (data source -> stage)
     - [ ] Create data lineage (data source -> stage -> data warehouse -> analysis services)
