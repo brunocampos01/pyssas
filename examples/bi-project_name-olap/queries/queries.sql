@@ -1,6117 +1,1790 @@
-dCategory Partition:
-	SELECT
-	 
-	        IDCATEGORIA,
-	
-	        CDCATEGORIA AS Código Categoria
-	,
-	        DENOME AS Categoria
-	,
-	        DEDOMINIOAS  Domínio
-	,
-	        DECATEGORIADEFEITO   AS Categoria Defeito,
-	 
-FROM dwh.dbo.dCategory;
+-------------------------------------------------------------------------------
+-- Partition: dCategory
+SELECT
+IDCATEGORIA,
+ CDCATEGORIA ,
+ AS 'Código Categoria',
+ DENOME ,
+AS 'Categoria',
+ DEDOMINIO,
+AS'Domínio',
+ DECATEGORIADEFEITOAS 'Categoria Defeito'
+FROM  dwh.dbo.dCategory;
 
+-------------------------------------------------------------------------------
+-- Partition: dCausaRaiz
+SELECT
+IDCAUSARAIZ,
+CDCAUSARAIZ ,
+AS 'Código Causa Raíz',
+DENOME ,
+AS 'Causa Raíz'
+FROM  dwh.dbo.dcausaraiz;
 
-dCausaRaiz Partition:
-	SELECT
-	 
-	       IDCAUSARAIZ,
-	
-	       CDCAUSARAIZ AS Código Causa Raíz
-	,
-	       DENOME AS Causa Raíz,
-	 
-FROM dwh.dbo.dcausaraiz;
+-------------------------------------------------------------------------------
+-- Partition: dFaseCiclo
+SELECT
+IDFASECICLO,
+CDFASECICLO,
+AS 'Código Fase Ciclo',
+DENOME,
+ AS 'Fase Ciclo',
+DEAMBIENTE,
+AS 'Atividade Fase Ciclo'
+FROM  dwh.dbo.dfaseciclo;
 
+-------------------------------------------------------------------------------
+-- Partition: dPlanejadoPara
+SELECT
+IDITERACAO,
+CDITERACAO,
+AS 'Código Planejado para',
+DENOME,
+ AS 'Planejado para'
+FROM  dwh.dbo.diteracao;
 
-dFaseCiclo Partition:
-	SELECT
-	 
-	 IDFASECICLO,
-	
-	 CDFASECICLOAS Código Fase Ciclo
-		 DENOMEAS Fase Ciclo
-		 DEAMBIENTEAS Atividade Fase Ciclo,
-	 
-FROM dwh.dbo.dfaseciclo;
+-------------------------------------------------------------------------------
+-- Partition: dModuloFuncional
+SELECT
+IDMODULOFUNCIONAL,
+CDMODULOFUNCIONAL,
+ AS 'Código Módulo Funcional',
+DENOME,
+ AS 'Módulo Funcional'
+FROM  dwh.dbo.dmodulofuncional;
 
+-------------------------------------------------------------------------------
+-- Partition: dPrioridade
+SELECT
+IDPRIORIDADE,
+CDPRIORIDADE,
+AS 'Código Prioridade',
+DENOME,
+AS 'Prioridade'
+FROM  dwh.dbo.dprioridade;
 
-dPlanejadoPara Partition:
-	SELECT
-	 
-	 IDITERACAO,
-	
-	 CDITERACAOAS Código Planejado para
-	,
-	 DENOMEAS Planejado para,
-	 
-FROM dwh.dbo.diteracao;
+-------------------------------------------------------------------------------
+-- Partition: dPrioridadeNegociada
+SELECT
+IDPRIORIDADENEGOCIADA,
+CDPRIORIDADENEGOCIADA,
+ AS 'Código Prioridade Negociada',
+DENOME,
+ AS 'Prioridade Negociada'
+FROM  dwh.dbo.dprioridadenegociada;
 
+-------------------------------------------------------------------------------
+-- Partition: dProjeto
+SELECT
+IDPROJETO,
+CDPROJETO,
+AS 'Código Projeto',
+DENOME,
+ AS 'Projeto'
+FROM  dwh.dbo.dprojeto;
 
-dModuloFuncional Partition:
-	SELECT
-	 
-	 IDMODULOFUNCIONAL,
-	 
-	 CDMODULOFUNCIONALAS Código Módulo Funcional
-	,
-	 DENOMEAS Módulo Funcional,
-	 
-FROM dwh.dbo.dmodulofuncional;
+-------------------------------------------------------------------------------
+-- Partition: dSimuladoBaseInterna
+SELECT
+IDSIMULADOBASEINTERNA,
+CDSIMULADOBASEINTERNA,
+AS 'Código Simulado Base Interna',
+DENOME,
+AS 'Simulado Base Interna - origem'
+FROM  dwh.dbo.dsimuladobaseinterna;
 
+-------------------------------------------------------------------------------
+-- Partition: dTester
+SELECT
+IDTESTER,
+CDTESTER,
+ AS 'Código Tester',
+DENOME,
+AS 'Tester'
+FROM  dwh.dbo.dtester;
 
-dPrioridade Partition:
-	SELECT
-	 
-	 IDPRIORIDADE,
-	
-	 CDPRIORIDADE                AS Código Prioridade
-	,
-	 DENOMEAS Prioridade,
-	 
-FROM dwh.dbo.dprioridade;
+-------------------------------------------------------------------------------
+-- Partition: dTipoChamado
+SELECT
+IDTIPOCHAMADO,
+CDTIPOCHAMADO,
+ AS 'Código Tipo Chamado',
+DENOME,
+AS 'Tipo Chamado'
+FROM  dwh.dbo.dtipochamado;
 
-
-dPrioridadeNegociada Partition:
-	SELECT
-	 
-	 IDPRIORIDADENEGOCIADA,
-	 
-	 CDPRIORIDADENEGOCIADAAS Código Prioridade Negociada
-	,
-	 DENOMEAS Prioridade Negociada,
-	 
-FROM dwh.dbo.dprioridadenegociada;
-
-
-dProjeto Partition:
-	SELECT
-	 
-	 IDPROJETO,
-	
-	 CDPROJETOAS Código Projeto
-	,
-	 DENOMEAS Projeto,
-	 
-FROM dwh.dbo.dprojeto;
-
-
-dSimuladoBaseInterna Partition:
-	SELECT
-	 
-	 IDSIMULADOBASEINTERNA,
-	
-	 CDSIMULADOBASEINTERNAAS Código Simulado Base Interna
-	,
-	 DENOMEAS Simulado Base Interna - origem,
-	 
-FROM dwh.dbo.dsimuladobaseinterna;
-
-
-dTester Partition:
-	SELECT
-	 
-	 IDTESTER,
-	 
-	 CDTESTERAS Código Tester
-	,
-	 DENOMEAS Tester,
-	 
-FROM dwh.dbo.dtester;
-
-
-dTipoChamado Partition:
-	SELECT
-	 
-	 IDTIPOCHAMADO,
-	
-	 CDTIPOCHAMADOAS Código Tipo Chamado
-	,
-	 DENOMEAS Tipo Chamado,
-	 
-FROM dwh.dbo.dtipochamado;
-
-
-dUsuario Partition:
-	SELECT
-	 
-	 IDUSUARIO,
-	
-	 CDUSUARIOAS Código Usuário
-	,
-	 DENOMEAS Usuário
-	,
-	 DENOMEABVAS Login,
-	 
-FROM dwh.dbo.dusuario;
-
-
-Medidas Partition:
-	SELECT
-	 1 AS Medidas;
-
-
-dAtividade Partition:
-	SELECT
-	 
-	    IDATIVIDADE,
-	
-	    CDATIVIDADEAS  Código Atividade
-	,
-	    DENOME AS  Atividade,
-	 
-FROM dwh.dbo.datividade;
-
-
-dTarefa Partition:
-	SELECT
-	 
-	 IDTAREFA,
-	
-	 CDTAREFAAS Código Tarefa
-	,
-	 DENOMEAS Tarefa
-	,
-	 DEURLAS URL,
-	 
-FROM dwh.dbo.dtarefa;
-
-
-dChamado Partition:
-	SELECT
-	 IDCHAMADO,
-	
-	       CDCHAMADOAS Código Chamado
-	,
-	       NUCHAMADOAS Número Chamado
-	,
-	       NUSCCDAS Numero SCCD
-	,
-	       DETITULOAS Título
-	,
-	       DENOMEAS Chamado
-	,
-	       DETAGAS Tag
-	,
-	       DESTATUSAS Status
-	,
-	       NUSALTAS Número Salt
-	,
-	       DECAUSAAS Causa
-	,
-	       DEURLAS URL
-	,
-	       FLBLOQUEADO                AS Binário Flag Bloqueado
-	,
-	       FLPERFORMANCEAS Flag Performace - origem
-	,
-	       FLPERFORMANCEENCAMINHADA  AS Flag Performace Encaminhada - origem
-	,
-	       DEVERSAOORIGEMAS Versão Origem
-	,
-	       FLINTERNACIONALAS Flag Internacional
-	,
-	       demotivoreproducaoAS Motivo Reprodução,
-	 
-FROM dwh.dbo.dchamado;
-
-
-dCliente Partition:
-	SELECT
-	 
-	       IDCLIENTE,
-	
-	       CDCLIENTE AS Código Cliente
-	,
-	       DENOMEAS Cliente
-	,
-	       DESIGLAAS Sigla,
-	 
-FROM dwh.dbo.dcliente;
-
-
-dTempo Partition:
-	SELECT
-	 
-	 IDDATA                     AS IDDATA,
-	
-	 [DATA] AS Data
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANAAS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMESAS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANOAS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTREAS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTREAS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTREAS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                    AS Data Início Semana
-	,
-	 DTFIMSEMANA                                            AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo
-	 
-WHERE CDANO >= 2015 AND CDANO <= YEAR(GETDATE()) + 1
-
-
-fChamadoApontamento Partition:
-	SELECT
-	 
-	       IDCATEGORIA,
-	
-	       IDCHAMADO,
-	
-	       IDATIVIDADE,
-	
-	       IDUSUARIO,
-	
-	       IDEQUIPECHAMADO,
-	
-	       IDITERACAO,
-	
-	       IDTAREFA,
-	
-	       IDPROJETO,
-	
-	       IDTIPOCHAMADO,
-	
-	       IDSTATUSCHAMADO,
-	
-	       IDDATA,
-	
-	       MINUTOS,
-	
-	       HORAS,
-	
-	       IDTIPOAPONTAMENTO,
-	
-	       IDSISTEMA,
-	
-	       IDSISTEMAORIGEM,
-	
-	       IDEQUIPEUSUARIO,
-	
-	       IDCCUSTOUSUARIO,
-	
-	       IDTAREFASERP,
-	
-	       IDPROJETOSERP,
-	
-	       IDEQUIPEUSUARIOHIST,
-	
-	       IDUSUARIOUX,
-	
-	       IDUSUARIOPO,
-	
-	       IDUSUARIOPM,
-	
-	       IDVERTICALCHAMADO,
-	
-	       IDUNIDADECHAMADO,
-	
-	       IDTIPOENTREGA,
-	
-	       IDTIPOCONFIGURACAO,
-	
-	       IDINCIDENTECLIENTE,
-	
-	 SUM ( ( minutos / 60.00 ) / 8.00 ) over ( partition by fchamadoapontamento.idusuario,
-	 fchamadoapontamento.iddata ) AS IHT,
-	 replace ( SUM ( ( minutos / 60.00 ) / 8.00 ) over ( partition by fchamadoapontamento.idusuario,
-	 fchamadoapontamento.iddata ),
-	 .
-	 
-	 ) AS IHT_calc,
-	,
-	       DTCARGA
-	 
-FROM dwh.dbo.fchamadoapontamento;
-
-
-fChamadoArtefatoEvolucao Partition:
-	SELECT
-	 * 
-FROM fChamadoArtefatoEvolucao;
-
-
-fChamadoBacklog Partition:
-	SELECT
-	 
-	 IDCHAMADO,
-	
-	 IDTESTER,
-	
-	 IDTIPOCHAMADO,
-	
-	 IDSTATUSCHAMADO,
-	
-	 IDEQUIPECHAMADO,
-	 
-	 IDPRIORIDADE,
-	 
-	 IDUSUARIOCRIACAO,
-	 
-	 IDUSUARIOSOLUCAO,
-	 
-	 IDUSUARIOPROPRIETARIO,
-	 
-	 IDMODULOFUNCIONAL,
-	 
-	 IDCAUSARAIZ,
-	 
-	 IDPROJETO,
-	 
-	 IDFASECICLO,
-	 
-	 IDCLIENTE,
-	 
-	 IDPRIORIDADENEGOCIADA,
-	 
-	 IDSIMULADOBASEINTERNA,
-	 
-	 IDCATEGORIA,
-	 
-	 IDITERACAO,
-	 
-	 IDMODULO,
-	
-	 IDDTCRIACAO,
-	 
-	 IDHRCRIACAO,
-	 
-	 IDDTRESOLUCAO,
-	 
-	 IDHRRESOLUCAO,
-	 
-	 IDDTPRAZOSLA,
-	 
-	 IDHRPRAZOSLA,
-	 
-	 IDDTCRIACAOSAC,
-	 
-	 IDHRCRIACAOSAC,
-	 
-	 IDDTPREVISTA,
-	 
-	 IDHRPREVISTA,
-	 
-	 IDDTAPURACAO,
-	 
-	 IDPERFORMANCE,
-	 
-	 IDPERFORMANCEENCAMINHADA,
-	 
-	 IDORIUNDOREJEITE,
-	 
-	 IDSISTEMAORIGEM,
-	 
-	 IDSISTEMA,
-	 
-	 IDUSUARIOUX,
-	 
-	 IDUSUARIOPO,
-	 
-	 IDUSUARIOPM,
-	 
-	 IDVERTICALCHAMADO,
-	 
-	 IDUNIDADECHAMADO,
-	 
-	 IDEQUIPEUSUARIOEXCEL,
-	 
-	 IDCOMPLEXIDADE,
-	 
-	 IDSEVERIDADE,
-	 
-	 IDEQUIPEESPECIALISTA,
-	 
-	 QTBACKLOG,
-	
-	 DTCARGA
-	 
-FROM dwh.dbo.fChamadoBacklog;
-
-
-fChamadoEntrada Partition:
-	SELECT
-	 
-	 IDCHAMADO,
-	
-	 IDTESTER,
-	 
-	 IDTIPOCHAMADO,
-	 
-	 IDSTATUSCHAMADO,
-	 
-	 IDEQUIPECHAMADO,
-	 
-	 IDPRIORIDADE,
-	 
-	 IDUSUARIOCRIACAO,
-	 
-	 IDUSUARIOSOLUCAO,
-	 
-	 IDUSUARIOPROPRIETARIO,
-	 
-	 IDMODULOFUNCIONAL,
-	 
-	 IDCAUSARAIZ,
-	 
-	 IDPROJETO,
-	 
-	 IDFASECICLO,
-	 
-	 IDCLIENTE,
-	 
-	 IDPRIORIDADENEGOCIADA,
-	 
-	 IDSIMULADOBASEINTERNA,
-	 
-	 IDCATEGORIA,
-	 
-	 IDITERACAO,
-	 
-	 IDMODULO,
-	 
-	 IDDTCRIACAO,
-	 
-	 IDHRCRIACAO,
-	 
-	 IDDTRESOLUCAO,
-	 
-	 IDHRRESOLUCAO,
-	 
-	 IDDTPRAZOSLA,
-	 
-	 IDHRPRAZOSLA,
-	 
-	 IDDTCRIACAOSAC,
-	 
-	 IDHRCRIACAOSAC,
-	 
-	 IDDTPREVISTA,
-	 
-	 IDHRPREVISTA,
-	 
-	 IDDTAPURACAO,
-	 
-	 IDPERFORMANCE,
-	 
-	 IDPERFORMANCEENCAMINHADA,
-	 
-	 IDORIUNDOREJEITE,
-	 
-	 IDSISTEMAORIGEM,
-	 
-	 IDSISTEMA,
-	 
-	 IDUSUARIOUX,
-	 
-	 IDUSUARIOPO,
-	 
-	 IDUSUARIOPM,
-	 
-	 IDVERTICALCHAMADO,
-	 
-	 IDUNIDADECHAMADO,
-	 
-	 IDEQUIPEUSUARIOEXCEL,
-	 
-	 IDCOMPLEXIDADE,
-	 
-	 IDSEVERIDADE,
-	 
-	 IDEQUIPEESPECIALISTA,
-	 
-	 QTENTRADA,
-	 
-	 DTCARGA
-	 
-FROM dwh.dbo.fChamadoEntrada;
-
-
-fChamadoNegociado Partition:
-	SELECT
-	 * 
-FROM fChamadoNegociado;
-
-
-fChamadoSaida Partition:
-	SELECT
-	 
-	 IDCHAMADO,
-	
-	 IDTESTER,
-	 
-	 IDTIPOCHAMADO,
-	 
-	 IDSTATUSCHAMADO,
-	 
-	 IDEQUIPECHAMADO,
-	 
-	 IDPRIORIDADE,
-	 
-	 IDUSUARIOCRIACAO,
-	 
-	 IDUSUARIOSOLUCAO,
-	 
-	 IDUSUARIOPROPRIETARIO,
-	 
-	 IDMODULOFUNCIONAL,
-	 
-	 IDCAUSARAIZ,
-	 
-	 IDPROJETO,
-	 
-	 IDFASECICLO,
-	 
-	 IDCLIENTE,
-	 
-	 IDPRIORIDADENEGOCIADA,
-	 
-	 IDSIMULADOBASEINTERNA,
-	 
-	 IDCATEGORIA,
-	 
-	 IDITERACAO,
-	 
-	 IDMODULO,
-	 
-	 IDDTCRIACAO,
-	 
-	 IDHRCRIACAO,
-	 
-	 IDDTRESOLUCAO,
-	 
-	 IDHRRESOLUCAO,
-	 
-	 IDDTPRAZOSLA,
-	 
-	 IDHRPRAZOSLA,
-	 
-	 IDDTCRIACAOSAC,
-	 
-	 IDHRCRIACAOSAC,
-	 
-	 IDDTPREVISTA,
-	 
-	 IDHRPREVISTA,
-	 
-	 IDDTAPURACAO,
-	 
-	 IDPERFORMANCE,
-	 
-	 IDPERFORMANCEENCAMINHADA,
-	 
-	 IDORIUNDOREJEITE,
-	 
-	 IDSISTEMAORIGEM,
-	 
-	 IDSISTEMA,
-	 
-	 IDUSUARIOUX,
-	 
-	 IDUSUARIOPO,
-	 
-	 IDUSUARIOPM,
-	 
-	 IDVERTICALCHAMADO,
-	 
-	 IDUNIDADECHAMADO,
-	 
-	 IDEQUIPEUSUARIOEXCEL,
-	 
-	 IDCOMPLEXIDADE,
-	 
-	 IDSEVERIDADE,
-	 
-	 IDEQUIPEESPECIALISTA,
-	 
-	 QTSAIDA,
-	 
-	 DTCARGA
-	 
-FROM dwh.dbo.fChamadoSaida;
-
-
-fChamadoTempoMedio Partition:
-	SELECT
-	 
-	 IDCHAMADO,
-	
-	 IDSTATUSCHAMADOANTERIOR,
-	 
-	 IDSTATUSCHAMADOFUTURO,
-	 
-	 IDTIPOCHAMADO,
-	 
-	 IDEQUIPECHAMADO,
-	 
-	 IDCATEGORIA,
-	 
-	 IDCLIENTE,
-	 
-	 IDDTINICIOSTATUS,
-	 
-	 IDHRINICIOSTATUS,
-	 
-	 IDDTFINALSTATUS,
-	 
-	 IDHRFINALSTATUS,
-	 
-	 IDDTCRIACAO,
-	 
-	 IDHRCRIACAO,
-	 
-	 IDDTRESOLUCAO,
-	 
-	 IDHRRESOLUCAO,
-	 
-	 IDSISTEMAORIGEM,
-	 
-	 IDSISTEMA,
-	 
-	 IDVERTICALCHAMADO,
-	 
-	 IDUNIDADECHAMADO,
-	 
-	 IDPROJETO,
-	 
-	 QTTEMPOMEDIO,
-	 
-	 DTCARGA,
-	 
-	 IDDESENVOLVEDOR
-	 
-FROM dwh.dbo.fChamadoTempoMedio;
-
-
-dStatusChamado Partition:
-	SELECT
-	 
-	 IDSTATUSCHAMADO,
-	
-	 CDSTATUSCHAMADOAS Código Status Chamado
-	,
-	 DENOMEAS Status Chamado,
-	 
-FROM dwh.dbo.dstatuschamado;
-
-
-fChamadoBacklogZero Partition:
-	SELECT
-	 * 
-FROM fChamadoBacklogZero;
-
-
-dDesenvolvedor Partition:
-	SELECT
-	 
-	 IDUSUARIOAS IDDESENVOLVEDOR,
-	
-	 CDUSUARIOAS Código Desenvolvedor
-	,
-	 DENOMEAS Desenvolvedor
-	,
-	 DENOMEABVAS Desenvolvedor Abrev,
-	 
+-------------------------------------------------------------------------------
+-- Partition: dUsuario
+SELECT
+IDUSUARIO,
+CDUSUARIO,
+ AS 'Código Usuário',
+DENOME,
+AS 'Usuário',
+DENOMEABV,
+ AS 'Login'
 FROM  dwh.dbo.dusuario;
 
+-------------------------------------------------------------------------------
+-- Partition: Medidas
+SELECT
+	1AS Medidas;
 
-dTempoApuracao Partition:
-	SELECT
-	 
-	 IDDATA                     AS IDDTAPURACAO,
-	
-	 [DATA] AS Data Apuração
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANAAS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMESAS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANOAS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTREAS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTREAS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTREAS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                    AS Data Início Semana
-	,
-	 DTFIMSEMANA                                            AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
+-------------------------------------------------------------------------------
+-- Partition: dAtividade
+SELECT
+ IDATIVIDADE,
+CDATIVIDADE,
+AS'Código Atividade',
+DENOME ,
+AS'Atividade'
+FROM  dwh.dbo.datividade;
 
+-------------------------------------------------------------------------------
+-- Partition: dTarefa
+SELECT
+IDTAREFA,
+CDTAREFA,
+AS 'Código Tarefa',
+DENOME,
+ AS 'Tarefa',
+DEURL,
+ AS 'URL'
+FROM  dwh.dbo.dtarefa;
 
-dTempoCriacao Partition:
-	SELECT
-	 
-	 IDDATA                     AS IDDTCRIACAO,
-	
-	 [DATA] AS Data Criação
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANAAS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMESAS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANOAS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTREAS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTREAS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTREAS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                    AS Data Início Semana
-	,
-	 DTFIMSEMANA                                            AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
+-------------------------------------------------------------------------------
+-- Partition: dChamado
+SELECT
+	IDCHAMADO,
+CDCHAMADO,
+ AS 'Código Chamado',
+NUCHAMADO,
+ AS 'Número Chamado',
+NUSCCD,
+ AS 'Numero SCCD',
+DETITULO,
+ AS 'Título',
+DENOME,
+ AS 'Chamado',
+DETAG,
+ AS 'Tag',
+DESTATUS,
+ AS 'Status',
+NUSALT,
+ AS 'Número Salt',
+DECAUSA,
+ AS 'Causa',
+DEURL,
+ AS 'URL',
+FLBLOQUEADO,
+AS 'Binário Flag Bloqueado',
+FLPERFORMANCE,
+AS 'Flag Performace - origem',
+FLPERFORMANCEENCAMINHADA,
+ AS 'Flag Performace Encaminhada - origem',
+DEVERSAOORIGEM,
+AS 'Versão Origem',
+FLINTERNACIONAL,
+AS 'Flag Internacional',
+demotivoreproducao,
+AS 'Motivo Reprodução'
+FROM  dwh.dbo.dchamado;
 
+-------------------------------------------------------------------------------
+-- Partition: dCliente
+SELECT
+IDCLIENTE,
+CDCLIENTE ,
+ AS 'Código Cliente',
+DENOME,
+ AS 'Cliente',
+DESIGLA,
+ AS 'Sigla'
+FROM  dwh.dbo.dcliente;
 
-dTempoCriacaoSAC Partition:
-	SELECT
-	 
-	 IDDATA                     AS IDDTCRIACAOSAC,
-	
-	 [DATA] AS Data Criação SAC
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANAAS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMESAS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANOAS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTREAS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTREAS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTREAS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                    AS Data Início Semana
-	,
-	 DTFIMSEMANA                                            AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
+-------------------------------------------------------------------------------
+-- Partition: dTempo
+SELECT
+IDDATA ,
+ AS IDDATA,
+[DATA] ,
+ AS 'Data',
+CDDIA,
+ AS 'Código Dia',
+CDANO,
+ AS 'Código Ano',
+CDMES,
+ AS 'Código Mês',
+DEMES,
+ AS 'Mês',
+DEMESABV,
+AS 'Mês Abrev',
+CDPERIODO,
+AS 'Código Período',
+DEPERIODO,
+AS 'Período',
+CDDIASEMANA,
+AS 'Código Dia Semana',
+DEDIASEMANA,
+AS 'Dia Semana',
+DEDIASEMANAABV,
+AS 'Dia Semana Abrev',
+NUSEMANAMES,
+AS 'Número Semana Mês',
+DESEMANAMES,
+AS 'Descrição Semana Mês',
+NUSEMANAANO,
+AS 'Número Semana Ano',
+FLFIMSEMANA,
+AS 'Flag Fim de Semana',
+FLDIASEMANA,
+AS 'Flag Dia de Semana',
+FLFERIADO,
+AS 'Flag Feriado',
+CDBIMESTRE,
+AS 'Código Bimestre',
+DEBIMESTRE,
+AS 'Bimestre',
+CDTRIMESTRE,
+AS 'Código Trimestre',
+DETRIMESTRE,
+AS 'Trimestre',
+CDQUADRIMESTRE,
+AS 'Código Quadrimestre',
+DEQUADRIMESTRE,
+AS 'Quadrimestre',
+CDSEMESTRE,
+AS 'Código Semestre',
+DESEMESTRE,
+AS 'Semestre',
+DTINICIOSEMANA,
+ AS 'Data Início Semana',
+DTFIMSEMANA,
+ AS 'Data Fim Semana',
+DEPERIODOSEMANA,
+ AS 'Período Semana'
+FROM  dwh.dbo.dtempo
+WHERE  CDANO >= 2015 AND CDANO <= YEAR(GETDATE()) + 1]
 
+-------------------------------------------------------------------------------
+-- Partition: fChamadoApontamento
+SELECT
+IDCATEGORIA,
+IDCHAMADO,
+IDATIVIDADE,
+IDUSUARIO,
+IDEQUIPECHAMADO,
+IDITERACAO,
+IDTAREFA,
+IDPROJETO,
+IDTIPOCHAMADO,
+IDSTATUSCHAMADO,
+IDDATA,
+MINUTOS,
+HORAS,
+IDTIPOAPONTAMENTO,
+IDSISTEMA,
+IDSISTEMAORIGEM,
+IDEQUIPEUSUARIO,
+IDCCUSTOUSUARIO,
+IDTAREFASERP,
+IDPROJETOSERP,
+IDEQUIPEUSUARIOHIST,
+IDUSUARIOUX,
+IDUSUARIOPO,
+IDUSUARIOPM,
+IDVERTICALCHAMADO,
+IDUNIDADECHAMADO,
+IDTIPOENTREGA,
+IDTIPOCONFIGURACAO,
+IDINCIDENTECLIENTE,
+SUM ( ( minutos / 60.00 ) / 8.00 ) over ( partition by fchamadoapontamento.idusuario,
+fchamadoapontamento.iddata )AS IHT,
+replace ( SUM ( ( minutos / 60.00 ) / 8.00 ) over ( partition by fchamadoapontamento.idusuario,
+fchamadoapontamento.iddata ).',
+)AS IHT_calcDTCARGA'
+FROM  dwh.dbo.fchamadoapontamento;
 
-dTempoFinalStatus Partition:
-	SELECT
-	 
-	 IDDATA                     AS IDDTFINALSTATUS,
-	
-	 [DATA] AS Data Final Status
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANAAS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMESAS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANOAS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTREAS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTREAS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTREAS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                    AS Data Início Semana
-	,
-	 DTFIMSEMANA                                            AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
+-------------------------------------------------------------------------------
+-- Partition: fChamadoArtefatoEvolucao
+SELECT
+	* 
+FROM  fChamadoArtefatoEvolucao;
 
+-------------------------------------------------------------------------------
+-- Partition: fChamadoBacklog
+SELECT
+IDCHAMADO,
+IDTESTER,
+IDTIPOCHAMADO,
+IDSTATUSCHAMADO,
+IDEQUIPECHAMADO,
+IDPRIORIDADE,
+IDUSUARIOCRIACAO,
+IDUSUARIOSOLUCAO,
+IDUSUARIOPROPRIETARIO,
+IDMODULOFUNCIONAL,
+IDCAUSARAIZ,
+IDPROJETO,
+IDFASECICLO,
+IDCLIENTE,
+IDPRIORIDADENEGOCIADA,
+IDSIMULADOBASEINTERNA,
+IDCATEGORIA,
+IDITERACAO,
+IDMODULO,
+IDDTCRIACAO,
+IDHRCRIACAO,
+IDDTRESOLUCAO,
+IDHRRESOLUCAO,
+IDDTPRAZOSLA,
+IDHRPRAZOSLA,
+IDDTCRIACAOSAC,
+IDHRCRIACAOSAC,
+IDDTPREVISTA,
+IDHRPREVISTA,
+IDDTAPURACAO,
+IDPERFORMANCE,
+IDPERFORMANCEENCAMINHADA,
+IDORIUNDOREJEITE,
+IDSISTEMAORIGEM,
+IDSISTEMA,
+IDUSUARIOUX,
+IDUSUARIOPO,
+IDUSUARIOPM,
+IDVERTICALCHAMADO,
+IDUNIDADECHAMADO,
+IDEQUIPEUSUARIOEXCEL,
+IDCOMPLEXIDADE,
+IDSEVERIDADE,
+IDEQUIPEESPECIALISTA,
+QTBACKLOG,
+DTCARGA'
+FROM  dwh.dbo.fChamadoBacklog;
 
-dTempoInicioStatus Partition:
-	SELECT
-	 
-	 IDDATA                     AS IDDTINICIOSTATUS,
-	
-	 [DATA] AS Data Início Status
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANAAS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMESAS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANOAS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTREAS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTREAS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTREAS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                    AS Data Início Semana
-	,
-	 DTFIMSEMANA                                            AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
+-------------------------------------------------------------------------------
+-- Partition: fChamadoEntrada
+SELECT
+IDCHAMADO,
+IDTESTER,
+IDTIPOCHAMADO,
+IDSTATUSCHAMADO,
+IDEQUIPECHAMADO,
+IDPRIORIDADE,
+IDUSUARIOCRIACAO,
+IDUSUARIOSOLUCAO,
+IDUSUARIOPROPRIETARIO,
+IDMODULOFUNCIONAL,
+IDCAUSARAIZ,
+IDPROJETO,
+IDFASECICLO,
+IDCLIENTE,
+IDPRIORIDADENEGOCIADA,
+IDSIMULADOBASEINTERNA,
+IDCATEGORIA,
+IDITERACAO,
+IDMODULO,
+IDDTCRIACAO,
+IDHRCRIACAO,
+IDDTRESOLUCAO,
+IDHRRESOLUCAO,
+IDDTPRAZOSLA,
+IDHRPRAZOSLA,
+IDDTCRIACAOSAC,
+IDHRCRIACAOSAC,
+IDDTPREVISTA,
+IDHRPREVISTA,
+IDDTAPURACAO,
+IDPERFORMANCE,
+IDPERFORMANCEENCAMINHADA,
+IDORIUNDOREJEITE,
+IDSISTEMAORIGEM,
+IDSISTEMA,
+IDUSUARIOUX,
+IDUSUARIOPO,
+IDUSUARIOPM,
+IDVERTICALCHAMADO,
+IDUNIDADECHAMADO,
+IDEQUIPEUSUARIOEXCEL,
+IDCOMPLEXIDADE,
+IDSEVERIDADE,
+IDEQUIPEESPECIALISTA,
+QTENTRADA,
+DTCARGA'
+FROM  dwh.dbo.fChamadoEntrada;
 
+-------------------------------------------------------------------------------
+-- Partition: fChamadoNegociado
+SELECT
+	* 
+FROM  fChamadoNegociado;
 
-dTempoPrazoSLA Partition:
-	SELECT
-	 
-	 IDDATA                     AS IDDTPRAZOSLA,
-	
-	 [DATA] AS Data Prazo SLA
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANAAS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMESAS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANOAS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTREAS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTREAS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTREAS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                    AS Data Início Semana
-	,
-	 DTFIMSEMANA                                            AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
+-------------------------------------------------------------------------------
+-- Partition: fChamadoSaida
+SELECT
+IDCHAMADO,
+IDTESTER,
+IDTIPOCHAMADO,
+IDSTATUSCHAMADO,
+IDEQUIPECHAMADO,
+IDPRIORIDADE,
+IDUSUARIOCRIACAO,
+IDUSUARIOSOLUCAO,
+IDUSUARIOPROPRIETARIO,
+IDMODULOFUNCIONAL,
+IDCAUSARAIZ,
+IDPROJETO,
+IDFASECICLO,
+IDCLIENTE,
+IDPRIORIDADENEGOCIADA,
+IDSIMULADOBASEINTERNA,
+IDCATEGORIA,
+IDITERACAO,
+IDMODULO,
+IDDTCRIACAO,
+IDHRCRIACAO,
+IDDTRESOLUCAO,
+IDHRRESOLUCAO,
+IDDTPRAZOSLA,
+IDHRPRAZOSLA,
+IDDTCRIACAOSAC,
+IDHRCRIACAOSAC,
+IDDTPREVISTA,
+IDHRPREVISTA,
+IDDTAPURACAO,
+IDPERFORMANCE,
+IDPERFORMANCEENCAMINHADA,
+IDORIUNDOREJEITE,
+IDSISTEMAORIGEM,
+IDSISTEMA,
+IDUSUARIOUX,
+IDUSUARIOPO,
+IDUSUARIOPM,
+IDVERTICALCHAMADO,
+IDUNIDADECHAMADO,
+IDEQUIPEUSUARIOEXCEL,
+IDCOMPLEXIDADE,
+IDSEVERIDADE,
+IDEQUIPEESPECIALISTA,
+QTSAIDA,
+DTCARGA'
+FROM  dwh.dbo.fChamadoSaida;
 
+-------------------------------------------------------------------------------
+-- Partition: fChamadoTempoMedio
+SELECT
+IDCHAMADO,
+IDSTATUSCHAMADOANTERIOR,
+IDSTATUSCHAMADOFUTURO,
+IDTIPOCHAMADO,
+IDEQUIPECHAMADO,
+IDCATEGORIA,
+IDCLIENTE,
+IDDTINICIOSTATUS,
+IDHRINICIOSTATUS,
+IDDTFINALSTATUS,
+IDHRFINALSTATUS,
+IDDTCRIACAO,
+IDHRCRIACAO,
+IDDTRESOLUCAO,
+IDHRRESOLUCAO,
+IDSISTEMAORIGEM,
+IDSISTEMA,
+IDVERTICALCHAMADO,
+IDUNIDADECHAMADO,
+IDPROJETO,
+QTTEMPOMEDIO,
+DTCARGA,
+IDDESENVOLVEDOR'
+FROM  dwh.dbo.fChamadoTempoMedio;
 
-dTempoPrevista Partition:
-	SELECT
-	
-	 IDDATAAS IDDTPREVISTA,
-	
-	 [DATA]                                       AS Data Prevista
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANAAS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMES AS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANOAS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTREAS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTREAS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTREAS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                               AS Data Início Semana
-	,
-	 DTFIMSEMANA                                        AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROMdwh.dbo.dtempo;
+-------------------------------------------------------------------------------
+-- Partition: dStatusChamado
+SELECT
+IDSTATUSCHAMADO,
+CDSTATUSCHAMADO,
+AS 'Código Status Chamado',
+DENOME,
+AS 'Status Chamado'
+FROM  dwh.dbo.dstatuschamado;
 
+-------------------------------------------------------------------------------
+-- Partition: fChamadoBacklogZero
+SELECT
+	* 
+FROM  fChamadoBacklogZero;
 
-dTempoResolucao Partition:
-	SELECT
-	 
-	 IDDATA                     AS IDDTRESOLUCAO,
-	
-	 [DATA] AS Data Resolução
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANAAS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMESAS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANOAS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTREAS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTREAS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTREAS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                    AS Data Início Semana
-	,
-	 DTFIMSEMANA                                            AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
-
-
-dTempoSolucao Partition:
-	SELECT
-	 
-	 IDDATA                     AS IDDTSOLUCAO,
-	
-	 [DATA] AS Data Solução
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANAAS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMESAS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANOAS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTREAS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTREAS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTREAS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                    AS Data Início Semana
-	,
-	 DTFIMSEMANA                                            AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
-
-
-dTempoPriorizado Partition:
-	SELECT
-	 
-	 IDDATA                     AS IDDTPRIORIZADO,
-	
-	 [DATA] AS Data Priorizado
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANAAS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMESAS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANOAS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTREAS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTREAS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTREAS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                    AS Data Início Semana
-	,
-	 DTFIMSEMANA                                            AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
-
-
-dTipoApontamento Partition:
-	SELECT
-	 
-	 IDTIPOAPONTAMENTO,
-	 
-	 CDTIPOAPONTAMENTOAS Código Tipo Apontamento
-	,
-	 DENOMEAS Tipo Apontamento,
-	 
-FROM dwh.dbo.dtipoapontamento;
-
-
-dSistema Partition:
-	SELECT
-	 
-	 IDSISTEMA,
-	
-	 CDSISTEMAAS Código Sistema
-	,
-	 DENOMEAS Sistema,
-	 
-FROM dwh.dbo.dsistema;
-
-
-dTempoApontamento Partition:
-	SELECT
-	
-	 IDDATA                               AS IDDATA,
-	
-	 [DATA]                                      AS Data Apontamento
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANA          AS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMES                                AS Número Semana Mês
-	,
-	 DESEMANAMESAS Semana por Extenso
-	,
-	 NUSEMANAANO                  AS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTRE                     AS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTRE                 AS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTRE                  AS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                     AS Data Início Semana
-	,
-	 DTFIMSEMANA                          AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROMdwh.dbo.dtempo
-	 
-WHERE   EXISTS
-	 (
-	 SELECT
-	 
-	 TOP 1 1
-	 
-FROM dwh.dbo.fchamadoapontamento
-	 
-WHERELEFT( dwh.dbo.fchamadoapontamento.iddata,
-	 4 ) = LEFT( dwh.dbo.dtempo.iddata,
-	 4 )
-	 )
-
-
-fChamadoApontamentoPerfilSeguranca Partition:
-	SELECT
-	 * 
-FROM fChamadoApontamento;
-
-
-dModulo Partition:
-	SELECT
-	 
-	 IDMODULO,
-	
-	 DENOMEAS Módulo,
-	 
-FROM dwh.dbo.dmodulo;
-
-
-dPerformance Partition:
-	SELECT
-	 
-	 IDPERFORMANCE,
-	
-	 CDPERFORMANCE                AS Código Performance
-	,
-	 DENOMEAS Performance,
-	 
-FROM dwh.dbo.dperformance;
-
-
-dPerformanceEncaminhada Partition:
-	SELECT
-	 
-	 IDPERFORMANCEENCAMINHADA,
-	
-	 CDPERFORMANCEENCAMINHADA                                AS Código Performance Encaminhada
-	,
-	 DENOMEAS Performance Encaminhada,
-	 
-FROM dwh.dbo.dperformanceencaminhada;
-
-
-dOriundoRejeite Partition:
-	SELECT
-	 
-	 IDORIUNDOREJEITE,
-	
-	 CDORIUNDOREJEITE                AS Código Oriundo Rejeite
-		 DENOMEAS Oriundo Rejeite,
-	 
-FROM dwh.dbo.doriundorejeite;
-
-
-dEquipeUsuario Partition:
-	SELECT
-	 
-	 IDEQUIPEUSUARIO,
-	
-	 IDEQUIPEAS Código Equipe Usuário
-		 DEEQUIPEAS Equipe Usuário,
-	 
-FROM dwh.dbo.dequipeusuario;
-
-
-dCCustoUsuario Partition:
-	SELECT
-	 
-	 IDCCUSTOUSUARIO,
-	
-	 CDCCUSTOUSUARIOAS  Código Centro de Custo Usuário
-	,
-	 DECCUSTOUSUARIOAS  Centro de Custo Usuário,
-	 
-FROMdwh.dbo.dccustousuario;
-
-
-dTarefaSerp Partition:
-	SELECT
-	 
-	 IDTAREFASERP,
-	
-	 CDTAREFASERPAS Código Tarefa Serp
-	,
-	 DENOMEAS Tarefa Serp,
-	 
-FROM dwh.dbo.dtarefaserp;
-
-
-dProjetoSerp Partition:
-	SELECT
-	
-	 IDPROJETOSERP,
-	
-	 CDPROJETOSERP    AS Código Projeto Serp
-	,
-	 DENOME AS Nome Projeto Serp,
-	 
-FROM dwh.dbo.dprojetoserp;
-
-
-dSistemaOrigem Partition:
-	SELECT
-	 
-	 IDSISTEMAORIGEM,
-	
-	 DENOMEAS Sistema Origem,
-	 
-FROM dwh.dbo.dsistemaorigem;
-
-
-dIteracao Partition:
-	SELECT
-	 
-	 IDITERACAO,
-	
-	 CDITERACAOAS Código Iteração
-	,
-	 DENOMEAS Iteração,
-	 
-FROM dwh.dbo.diteracao;
-
-
-dEquipeUsuarioHist Partition:
-	SELECT
-	 
-	 IDEQUIPEUSUARIOHIST,
-	
-	 IDUSUARIOHIST                                      AS IDUSUARIOHIST,
-	 
-	 IDEQUIPEHIST                AS Código Equipe Usuário
-		 DEEQUIPEHISTAS Equipe Usuário
-		 dtinicioperiodo                AS Início Período
-	 	 dtfimperiodo AS Fim Período
-	 	 FLREGISTROATUALAS Flag Registro Atual,
-	 
-FROM dwh.dbo.dequipeusuariohist;
-
-
-fChamadoApontamentoIHT Partition:
-	SELECT
-	
-	 fchamadoapontamento.idusuario,
-	
-	 fchamadoapontamento.iddata,
-	
-	 fchamadoapontamento.idequipeusuariohist,
-	
-	 fchamadoapontamento.idequipeusuario,
-	
-	 fchamadoapontamento.IDTIPOENTREGA,
-	
-	 SUM( minutos / 60.00 ) / 8.00 AS IHT,
-	 
-FROM fchamadoapontamento
-	 GROUP BY
-	 fchamadoapontamento.idusuario,
-	
-	 fchamadoapontamento.iddata,
-	
-	 fchamadoapontamento.idequipeusuariohist,
-	
-	 fchamadoapontamento.idequipeusuario,
-	
-	                fchamadoapontamento.IDTIPOENTREGA;
-
-
-dEquipeChamado Partition:
-	SELECT
-	 
-	       IDEQUIPECHAMADO,
-	
-	       CDEQUIPEAS Código Equipe
-		       DENOMEAS Equipe
-	 -- stg.rivw_vw_team.team,
-	       DESIGLAAS Sigla Equipe
-	,
-	       URLIMAGEM1AS Imagem Quadrada
-	,
-	       URLIMAGEM2AS Imagem Redonda,
-	 
-FROM dwh.dbo.dequipechamado;
-
-
-dUsuarioCriacao Partition:
-	SELECT
-	
-	  IDUSUARIO AS IDUSUARIOCRIACAO
-	,
-	  CDUSUARIO AS Código Usuário
-	,
-	  DENOME AS Usuário Criação
-	,
-	  DENOMEABV AS Login	 
+-------------------------------------------------------------------------------
+-- Partition: dDesenvolvedor
+SELECT
+IDUSUARIO,
+ AS IDDESENVOLVEDOR,
+CDUSUARIO,
+ AS 'Código Desenvolvedor',
+DENOME,
+AS 'Desenvolvedor',
+DENOMEABV,
+ AS 'Desenvolvedor Abrev'
 FROM dwh.dbo.dusuario;
 
-
-dUsuarioPriorizado Partition:
-	SELECT
-	
-	  IDUSUARIO AS IDUSUARIOPRIORIZADO
-	,
-	  CDUSUARIO AS Código Usuário
-	,
-	  DENOME AS Usuário Priorizado
-	,
-	  DENOMEABV AS Login	 
-FROM dwh.dbo.dusuario;
-
-
-dUsuarioProprietario Partition:
-	SELECT
-	
-	  IDUSUARIO AS  IDUSUARIOPROPRIETARIO
-	,
-	  CDUSUARIO AS Código Usuário
-	,
-	  DENOME AS Usuário Proprietário
-	,
-	  DENOMEABV AS Login	 
-FROM dwh.dbo.dusuario;
-
-
-dUsuarioSolucao Partition:
-	SELECT
-	
-	  IDUSUARIO AS IDUSUARIOSOLUCAO
-	,
-	  CDUSUARIO AS Código Usuário
-	,
-	  DENOME AS Usuário Solução
-	,
-	  DENOMEABV AS Login	 
-FROM dwh.dbo.dusuario;
-
-
-dTempoPrazoPPF Partition:
-	SELECT
-	 
-	 IDDATA                                       AS IDDTPRAZOPPF,
-	
-	 [DATA]AS Data Prazo PPF
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANA             AS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMES                      AS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANO        AS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTRE            AS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTRE                   AS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTRE                AS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANAAS Data Início Semana
-	,
-	 DTFIMSEMANA AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
-
-
-dTempoPrazoAnalise Partition:
-	SELECT
-	 
-	 IDDATA                                       AS IDDTPRAZOANALISE,
-	
-	 [DATA] AS Data Prazo Análise
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANA             AS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMES                      AS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANO        AS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTRE            AS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTRE                   AS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTRE                AS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANAAS Data Início Semana
-	,
-	 DTFIMSEMANAAS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
-
-
-dTempoPrazoEspecificacao Partition:
-	SELECT
-	 
-	 IDDATA                                       AS IDDTPRAZOESPECIFICACAO,
-	
-	 [DATA]AS Data Prazo Especificação
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANA             AS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMES                      AS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANO        AS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTRE            AS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTRE                   AS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTRE                AS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANAAS Data Início Semana
-	,
-	 DTFIMSEMANAAS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
-
-
-dUsuarioPO Partition:
-	SELECT
-	 
-	 IDUSUARIOAS IDUSUARIOPO
-	,
-	 CDUSUARIOAS Código Usuário
-	,
-	 DENOMEAS Usuário PO
-	,
-	 DENOMEABVAS Login,
-	 
-FROM dwh.dbo.dusuario;
-
-
-dUsuarioPM Partition:
-	SELECT
-	 
-	 IDUSUARIOAS IDUSUARIOPM
-	,
-	 CDUSUARIOAS Código Usuário
-	,
-	 DENOMEAS Usuário PM
-	,
-	 DENOMEABVAS Login,
-	 
-FROM dwh.dbo.dusuario;
-
-
-dUsuarioUX Partition:
-	SELECT
-	 
-	 IDUSUARIOAS IDUSUARIOUX
-	,
-	 CDUSUARIOAS Código Usuário
-	,
-	 DENOMEAS Usuário UX
-	,
-	 DENOMEABVAS Login,
-	 
-FROM dwh.dbo.dusuario;
-
-
-dUnidade Partition:
-	SELECT
-	 
-	 IDUNIDADE AS IDUNIDADECHAMADO
-	,
-	 CDUNIDADEAS Código Unidade
-	,
-	 DENOMEAS Unidade
-	,
-	 DESIGLAAS Sigla Unidade,
-	 
-FROM dwh.dbo.dunidade;
-
-
-dVertical Partition:
-	SELECT
-	 
-	 IDVERTICALAS IDVERTICALCHAMADO
-	,
-	 CDVERTICALAS Código Vertical
-	,
-	 DENOMEAS Vertical
-	,
-	 DESIGLAAS Sigla Vertical,
-	 
-FROM dwh.dbo.dvertical;
-
-
-dEquipeUsuarioExcel Partition:
-	SELECT
-	 
-	 IDEQUIPEUSUARIOEXCEL,
-	 
-	 IDDTAPURACAO,
-	 
-	 DENOMEUSUARIO                AS Usuário
-		 DENOMEEQUIPE                AS Equipe
-		 DESTATUSUSUARIOAS Status Usuário,
-	 
-FROM dwh.dbo.dequipeusuarioexcel;
-
-
-dTipoEntrega Partition:
-	SELECT
-	 
-	 IDTIPOENTREGA,
-	
-	 CDTIPOENTREGA                AS Código Tipo Entrega
-	,
-	 DENOMEAS Tipo Entrega,
-	 
-FROM dwh.dbo.dtipoentrega;
-
-
-dTipoConfiguracao Partition:
-	SELECT
-	 
-	 IDTIPOCONFIGURACAO,
-	
-	 CDTIPOCONFIGURACAO                AS Código Tipo Configuração
-	,
-	 DENOMEAS Tipo Configuração,
-	 
-FROM dwh.dbo.dtipoconfiguracao;
-
-
-dIncidenteCliente Partition:
-	SELECT
-	 
-	 IDINCIDENTECLIENTE,
-	 
-	 CDINCIDENTECLIENTE AS Código Incidente Cliente
-	,
-	 DENOME                 AS Incidente Cliente,
-	 
-FROM dwh.dbo.dincidentecliente;
-
-
-dComplexidade Partition:
-	SELECT
-	 
-	 IDCOMPLEXIDADE,
-	 
-	 CDCOMPLEXIDADE                AS Código Complexidade
-		 DENOMEAS Complexidade,
-	 
-FROM dwh.dbo.dComplexidade;
-
-
-dEquipeEspecialista Partition:
-	SELECT
-	 
-	 IDEQUIPEESPECIALISTA,
-	 
-	 CDEQUIPEESPECIALISTA             AS Código Equipe Especialista
-	,
-	 DENOME                                       AS Equipe Especialista,
-	 
-FROM dwh.dbo.dEquipeEspecialista;
-
-
-dSeveridade Partition:
-	SELECT
-	 
-	 IDSEVERIDADE,
-	
-	 CDSEVERIDADE                AS Código Severidade
-		 DENOMEAS Severidade,
-	 
-FROM dwh.dbo.dSeveridade;
-
-
-dCategory Partition:
-	SELECT
-	 
-	        IDCATEGORIA,
-	
-	        CDCATEGORIA AS Código Categoria
-	,
-	        DENOME AS Categoria
-	,
-	        DEDOMINIOAS  Domínio
-	,
-	        DECATEGORIADEFEITO   AS Categoria Defeito,
-	 
-FROM dwh.dbo.dCategory;
-
-
-dCausaRaiz Partition:
-	SELECT
-	 
-	       IDCAUSARAIZ,
-	
-	       CDCAUSARAIZ AS Código Causa Raíz
-	,
-	       DENOME AS Causa Raíz,
-	 
-FROM dwh.dbo.dcausaraiz;
-
-
-dFaseCiclo Partition:
-	SELECT
-	 
-	 IDFASECICLO,
-	
-	 CDFASECICLOAS Código Fase Ciclo
-		 DENOMEAS Fase Ciclo
-		 DEAMBIENTEAS Atividade Fase Ciclo,
-	 
-FROM dwh.dbo.dfaseciclo;
-
-
-dPlanejadoPara Partition:
-	SELECT
-	 
-	 IDITERACAO,
-	
-	 CDITERACAOAS Código Planejado para
-	,
-	 DENOMEAS Planejado para,
-	 
-FROM dwh.dbo.diteracao;
-
-
-dModuloFuncional Partition:
-	SELECT
-	 
-	 IDMODULOFUNCIONAL,
-	 
-	 CDMODULOFUNCIONALAS Código Módulo Funcional
-	,
-	 DENOMEAS Módulo Funcional,
-	 
-FROM dwh.dbo.dmodulofuncional;
-
-
-dPrioridade Partition:
-	SELECT
-	 
-	 IDPRIORIDADE,
-	
-	 CDPRIORIDADE                AS Código Prioridade
-	,
-	 DENOMEAS Prioridade,
-	 
-FROM dwh.dbo.dprioridade;
-
-
-dPrioridadeNegociada Partition:
-	SELECT
-	 
-	 IDPRIORIDADENEGOCIADA,
-	 
-	 CDPRIORIDADENEGOCIADAAS Código Prioridade Negociada
-	,
-	 DENOMEAS Prioridade Negociada,
-	 
-FROM dwh.dbo.dprioridadenegociada;
-
-
-dProjeto Partition:
-	SELECT
-	 
-	 IDPROJETO,
-	
-	 CDPROJETOAS Código Projeto
-	,
-	 DENOMEAS Projeto,
-	 
-FROM dwh.dbo.dprojeto;
-
-
-dSimuladoBaseInterna Partition:
-	SELECT
-	 
-	 IDSIMULADOBASEINTERNA,
-	
-	 CDSIMULADOBASEINTERNAAS Código Simulado Base Interna
-	,
-	 DENOMEAS Simulado Base Interna - origem,
-	 
-FROM dwh.dbo.dsimuladobaseinterna;
-
-
-dTester Partition:
-	SELECT
-	 
-	 IDTESTER,
-	 
-	 CDTESTERAS Código Tester
-	,
-	 DENOMEAS Tester,
-	 
-FROM dwh.dbo.dtester;
-
-
-dTipoChamado Partition:
-	SELECT
-	 
-	 IDTIPOCHAMADO,
-	
-	 CDTIPOCHAMADOAS Código Tipo Chamado
-	,
-	 DENOMEAS Tipo Chamado,
-	 
-FROM dwh.dbo.dtipochamado;
-
-
-dUsuario Partition:
-	SELECT
-	 
-	 IDUSUARIO,
-	
-	 CDUSUARIOAS Código Usuário
-	,
-	 DENOMEAS Usuário
-	,
-	 DENOMEABVAS Login,
-	 
-FROM dwh.dbo.dusuario;
-
-
-Medidas Partition:
-	SELECT
-	 1 AS Medidas;
-
-
-dAtividade Partition:
-	SELECT
-	 
-	    IDATIVIDADE,
-	
-	    CDATIVIDADEAS  Código Atividade
-	,
-	    DENOME AS  Atividade,
-	 
-FROM dwh.dbo.datividade;
-
-
-dTarefa Partition:
-	SELECT
-	 
-	 IDTAREFA,
-	
-	 CDTAREFAAS Código Tarefa
-	,
-	 DENOMEAS Tarefa
-	,
-	 DEURLAS URL,
-	 
-FROM dwh.dbo.dtarefa;
-
-
-dChamado Partition:
-	SELECT
-	 IDCHAMADO,
-	
-	       CDCHAMADOAS Código Chamado
-	,
-	       NUCHAMADOAS Número Chamado
-	,
-	       NUSCCDAS Numero SCCD
-	,
-	       DETITULOAS Título
-	,
-	       DENOMEAS Chamado
-	,
-	       DETAGAS Tag
-	,
-	       DESTATUSAS Status
-	,
-	       NUSALTAS Número Salt
-	,
-	       DECAUSAAS Causa
-	,
-	       DEURLAS URL
-	,
-	       FLBLOQUEADO                AS Binário Flag Bloqueado
-	,
-	       FLPERFORMANCEAS Flag Performace - origem
-	,
-	       FLPERFORMANCEENCAMINHADA  AS Flag Performace Encaminhada - origem
-	,
-	       DEVERSAOORIGEMAS Versão Origem
-	,
-	       FLINTERNACIONALAS Flag Internacional
-	,
-	       demotivoreproducaoAS Motivo Reprodução,
-	 
-FROM dwh.dbo.dchamado;
-
-
-dCliente Partition:
-	SELECT
-	 
-	       IDCLIENTE,
-	
-	       CDCLIENTE AS Código Cliente
-	,
-	       DENOMEAS Cliente
-	,
-	       DESIGLAAS Sigla,
-	 
-FROM dwh.dbo.dcliente;
-
-
-dTempo Partition:
-	SELECT
-	 
-	 IDDATA                     AS IDDATA,
-	
-	 [DATA] AS Data
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANAAS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMESAS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANOAS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTREAS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTREAS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTREAS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                    AS Data Início Semana
-	,
-	 DTFIMSEMANA                                            AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo
-	 
-WHERE CDANO >= 2015 AND CDANO <= YEAR(GETDATE()) + 1
-
-
-fChamadoApontamento Partition:
-	SELECT
-	 
-	       IDCATEGORIA,
-	
-	       IDCHAMADO,
-	
-	       IDATIVIDADE,
-	
-	       IDUSUARIO,
-	
-	       IDEQUIPECHAMADO,
-	
-	       IDITERACAO,
-	
-	       IDTAREFA,
-	
-	       IDPROJETO,
-	
-	       IDTIPOCHAMADO,
-	
-	       IDSTATUSCHAMADO,
-	
-	       IDDATA,
-	
-	       MINUTOS,
-	
-	       HORAS,
-	
-	       IDTIPOAPONTAMENTO,
-	
-	       IDSISTEMA,
-	
-	       IDSISTEMAORIGEM,
-	
-	       IDEQUIPEUSUARIO,
-	
-	       IDCCUSTOUSUARIO,
-	
-	       IDTAREFASERP,
-	
-	       IDPROJETOSERP,
-	
-	       IDEQUIPEUSUARIOHIST,
-	
-	       IDUSUARIOUX,
-	
-	       IDUSUARIOPO,
-	
-	       IDUSUARIOPM,
-	
-	       IDVERTICALCHAMADO,
-	
-	       IDUNIDADECHAMADO,
-	
-	       IDTIPOENTREGA,
-	
-	       IDTIPOCONFIGURACAO,
-	
-	       IDINCIDENTECLIENTE,
-	
-	 SUM ( ( minutos / 60.00 ) / 8.00 ) over ( partition by fchamadoapontamento.idusuario,
-	 fchamadoapontamento.iddata ) AS IHT,
-	 replace ( SUM ( ( minutos / 60.00 ) / 8.00 ) over ( partition by fchamadoapontamento.idusuario,
-	 fchamadoapontamento.iddata ),
-	 .
-	 
-	 ) AS IHT_calc,
-	,
-	       DTCARGA
-	 
-FROM dwh.dbo.fchamadoapontamento;
-
-
-fChamadoArtefatoEvolucao Partition:
-	SELECT
-	 * 
-FROM fChamadoArtefatoEvolucao;
-
-
-fChamadoBacklog Partition:
-	SELECT
-	 
-	 IDCHAMADO,
-	
-	 IDTESTER,
-	
-	 IDTIPOCHAMADO,
-	
-	 IDSTATUSCHAMADO,
-	
-	 IDEQUIPECHAMADO,
-	 
-	 IDPRIORIDADE,
-	 
-	 IDUSUARIOCRIACAO,
-	 
-	 IDUSUARIOSOLUCAO,
-	 
-	 IDUSUARIOPROPRIETARIO,
-	 
-	 IDMODULOFUNCIONAL,
-	 
-	 IDCAUSARAIZ,
-	 
-	 IDPROJETO,
-	 
-	 IDFASECICLO,
-	 
-	 IDCLIENTE,
-	 
-	 IDPRIORIDADENEGOCIADA,
-	 
-	 IDSIMULADOBASEINTERNA,
-	 
-	 IDCATEGORIA,
-	 
-	 IDITERACAO,
-	 
-	 IDMODULO,
-	
-	 IDDTCRIACAO,
-	 
-	 IDHRCRIACAO,
-	 
-	 IDDTRESOLUCAO,
-	 
-	 IDHRRESOLUCAO,
-	 
-	 IDDTPRAZOSLA,
-	 
-	 IDHRPRAZOSLA,
-	 
-	 IDDTCRIACAOSAC,
-	 
-	 IDHRCRIACAOSAC,
-	 
-	 IDDTPREVISTA,
-	 
-	 IDHRPREVISTA,
-	 
-	 IDDTAPURACAO,
-	 
-	 IDPERFORMANCE,
-	 
-	 IDPERFORMANCEENCAMINHADA,
-	 
-	 IDORIUNDOREJEITE,
-	 
-	 IDSISTEMAORIGEM,
-	 
-	 IDSISTEMA,
-	 
-	 IDUSUARIOUX,
-	 
-	 IDUSUARIOPO,
-	 
-	 IDUSUARIOPM,
-	 
-	 IDVERTICALCHAMADO,
-	 
-	 IDUNIDADECHAMADO,
-	 
-	 IDEQUIPEUSUARIOEXCEL,
-	 
-	 IDCOMPLEXIDADE,
-	 
-	 IDSEVERIDADE,
-	 
-	 IDEQUIPEESPECIALISTA,
-	 
-	 QTBACKLOG,
-	
-	 DTCARGA
-	 
-FROM dwh.dbo.fChamadoBacklog;
-
-
-fChamadoEntrada Partition:
-	SELECT
-	 
-	 IDCHAMADO,
-	
-	 IDTESTER,
-	 
-	 IDTIPOCHAMADO,
-	 
-	 IDSTATUSCHAMADO,
-	 
-	 IDEQUIPECHAMADO,
-	 
-	 IDPRIORIDADE,
-	 
-	 IDUSUARIOCRIACAO,
-	 
-	 IDUSUARIOSOLUCAO,
-	 
-	 IDUSUARIOPROPRIETARIO,
-	 
-	 IDMODULOFUNCIONAL,
-	 
-	 IDCAUSARAIZ,
-	 
-	 IDPROJETO,
-	 
-	 IDFASECICLO,
-	 
-	 IDCLIENTE,
-	 
-	 IDPRIORIDADENEGOCIADA,
-	 
-	 IDSIMULADOBASEINTERNA,
-	 
-	 IDCATEGORIA,
-	 
-	 IDITERACAO,
-	 
-	 IDMODULO,
-	 
-	 IDDTCRIACAO,
-	 
-	 IDHRCRIACAO,
-	 
-	 IDDTRESOLUCAO,
-	 
-	 IDHRRESOLUCAO,
-	 
-	 IDDTPRAZOSLA,
-	 
-	 IDHRPRAZOSLA,
-	 
-	 IDDTCRIACAOSAC,
-	 
-	 IDHRCRIACAOSAC,
-	 
-	 IDDTPREVISTA,
-	 
-	 IDHRPREVISTA,
-	 
-	 IDDTAPURACAO,
-	 
-	 IDPERFORMANCE,
-	 
-	 IDPERFORMANCEENCAMINHADA,
-	 
-	 IDORIUNDOREJEITE,
-	 
-	 IDSISTEMAORIGEM,
-	 
-	 IDSISTEMA,
-	 
-	 IDUSUARIOUX,
-	 
-	 IDUSUARIOPO,
-	 
-	 IDUSUARIOPM,
-	 
-	 IDVERTICALCHAMADO,
-	 
-	 IDUNIDADECHAMADO,
-	 
-	 IDEQUIPEUSUARIOEXCEL,
-	 
-	 IDCOMPLEXIDADE,
-	 
-	 IDSEVERIDADE,
-	 
-	 IDEQUIPEESPECIALISTA,
-	 
-	 QTENTRADA,
-	 
-	 DTCARGA
-	 
-FROM dwh.dbo.fChamadoEntrada;
-
-
-fChamadoNegociado Partition:
-	SELECT
-	 * 
-FROM fChamadoNegociado;
-
-
-fChamadoSaida Partition:
-	SELECT
-	 
-	 IDCHAMADO,
-	
-	 IDTESTER,
-	 
-	 IDTIPOCHAMADO,
-	 
-	 IDSTATUSCHAMADO,
-	 
-	 IDEQUIPECHAMADO,
-	 
-	 IDPRIORIDADE,
-	 
-	 IDUSUARIOCRIACAO,
-	 
-	 IDUSUARIOSOLUCAO,
-	 
-	 IDUSUARIOPROPRIETARIO,
-	 
-	 IDMODULOFUNCIONAL,
-	 
-	 IDCAUSARAIZ,
-	 
-	 IDPROJETO,
-	 
-	 IDFASECICLO,
-	 
-	 IDCLIENTE,
-	 
-	 IDPRIORIDADENEGOCIADA,
-	 
-	 IDSIMULADOBASEINTERNA,
-	 
-	 IDCATEGORIA,
-	 
-	 IDITERACAO,
-	 
-	 IDMODULO,
-	 
-	 IDDTCRIACAO,
-	 
-	 IDHRCRIACAO,
-	 
-	 IDDTRESOLUCAO,
-	 
-	 IDHRRESOLUCAO,
-	 
-	 IDDTPRAZOSLA,
-	 
-	 IDHRPRAZOSLA,
-	 
-	 IDDTCRIACAOSAC,
-	 
-	 IDHRCRIACAOSAC,
-	 
-	 IDDTPREVISTA,
-	 
-	 IDHRPREVISTA,
-	 
-	 IDDTAPURACAO,
-	 
-	 IDPERFORMANCE,
-	 
-	 IDPERFORMANCEENCAMINHADA,
-	 
-	 IDORIUNDOREJEITE,
-	 
-	 IDSISTEMAORIGEM,
-	 
-	 IDSISTEMA,
-	 
-	 IDUSUARIOUX,
-	 
-	 IDUSUARIOPO,
-	 
-	 IDUSUARIOPM,
-	 
-	 IDVERTICALCHAMADO,
-	 
-	 IDUNIDADECHAMADO,
-	 
-	 IDEQUIPEUSUARIOEXCEL,
-	 
-	 IDCOMPLEXIDADE,
-	 
-	 IDSEVERIDADE,
-	 
-	 IDEQUIPEESPECIALISTA,
-	 
-	 QTSAIDA,
-	 
-	 DTCARGA
-	 
-FROM dwh.dbo.fChamadoSaida;
-
-
-fChamadoTempoMedio Partition:
-	SELECT
-	 
-	 IDCHAMADO,
-	
-	 IDSTATUSCHAMADOANTERIOR,
-	 
-	 IDSTATUSCHAMADOFUTURO,
-	 
-	 IDTIPOCHAMADO,
-	 
-	 IDEQUIPECHAMADO,
-	 
-	 IDCATEGORIA,
-	 
-	 IDCLIENTE,
-	 
-	 IDDTINICIOSTATUS,
-	 
-	 IDHRINICIOSTATUS,
-	 
-	 IDDTFINALSTATUS,
-	 
-	 IDHRFINALSTATUS,
-	 
-	 IDDTCRIACAO,
-	 
-	 IDHRCRIACAO,
-	 
-	 IDDTRESOLUCAO,
-	 
-	 IDHRRESOLUCAO,
-	 
-	 IDSISTEMAORIGEM,
-	 
-	 IDSISTEMA,
-	 
-	 IDVERTICALCHAMADO,
-	 
-	 IDUNIDADECHAMADO,
-	 
-	 IDPROJETO,
-	 
-	 QTTEMPOMEDIO,
-	 
-	 DTCARGA,
-	 
-	 IDDESENVOLVEDOR
-	 
-FROM dwh.dbo.fChamadoTempoMedio;
-
-
-dStatusChamado Partition:
-	SELECT
-	 
-	 IDSTATUSCHAMADO,
-	
-	 CDSTATUSCHAMADOAS Código Status Chamado
-	,
-	 DENOMEAS Status Chamado,
-	 
-FROM dwh.dbo.dstatuschamado;
-
-
-fChamadoBacklogZero Partition:
-	SELECT
-	 * 
-FROM fChamadoBacklogZero;
-
-
-dDesenvolvedor Partition:
-	SELECT
-	 
-	 IDUSUARIOAS IDDESENVOLVEDOR,
-	
-	 CDUSUARIOAS Código Desenvolvedor
-	,
-	 DENOMEAS Desenvolvedor
-	,
-	 DENOMEABVAS Desenvolvedor Abrev,
-	 
+-------------------------------------------------------------------------------
+-- Partition: dTempoApuracao
+SELECT
+IDDATA ,
+ AS IDDTAPURACAO,
+[DATA] ,
+ AS 'Data Apuração',
+CDDIA,
+ AS 'Código Dia',
+CDANO,
+ AS 'Código Ano',
+CDMES,
+ AS 'Código Mês',
+DEMES,
+ AS 'Mês',
+DEMESABV,
+AS 'Mês Abrev',
+CDPERIODO,
+AS 'Código Período',
+DEPERIODO,
+AS 'Período',
+CDDIASEMANA,
+AS 'Código Dia Semana',
+DEDIASEMANA,
+AS 'Dia Semana',
+DEDIASEMANAABV,
+AS 'Dia Semana Abrev',
+NUSEMANAMES,
+AS 'Número Semana Mês',
+DESEMANAMES,
+AS 'Descrição Semana Mês',
+NUSEMANAANO,
+AS 'Número Semana Ano',
+FLFIMSEMANA,
+AS 'Flag Fim de Semana',
+FLDIASEMANA,
+AS 'Flag Dia de Semana',
+FLFERIADO,
+AS 'Flag Feriado',
+CDBIMESTRE,
+AS 'Código Bimestre',
+DEBIMESTRE,
+AS 'Bimestre',
+CDTRIMESTRE,
+AS 'Código Trimestre',
+DETRIMESTRE,
+AS 'Trimestre',
+CDQUADRIMESTRE,
+AS 'Código Quadrimestre',
+DEQUADRIMESTRE,
+AS 'Quadrimestre',
+CDSEMESTRE,
+AS 'Código Semestre',
+DESEMESTRE,
+AS 'Semestre',
+DTINICIOSEMANA,
+ AS 'Data Início Semana',
+DTFIMSEMANA,
+ AS 'Data Fim Semana',
+DEPERIODOSEMANA,
+ AS 'Período Semana'
+FROM  dwh.dbo.dtempo;
+
+-------------------------------------------------------------------------------
+-- Partition: dTempoCriacao
+SELECT
+IDDATA ,
+ AS IDDTCRIACAO,
+[DATA] ,
+ AS 'Data Criação',
+CDDIA,
+ AS 'Código Dia',
+CDANO,
+ AS 'Código Ano',
+CDMES,
+ AS 'Código Mês',
+DEMES,
+ AS 'Mês',
+DEMESABV,
+AS 'Mês Abrev',
+CDPERIODO,
+AS 'Código Período',
+DEPERIODO,
+AS 'Período',
+CDDIASEMANA,
+AS 'Código Dia Semana',
+DEDIASEMANA,
+AS 'Dia Semana',
+DEDIASEMANAABV,
+AS 'Dia Semana Abrev',
+NUSEMANAMES,
+AS 'Número Semana Mês',
+DESEMANAMES,
+AS 'Descrição Semana Mês',
+NUSEMANAANO,
+AS 'Número Semana Ano',
+FLFIMSEMANA,
+AS 'Flag Fim de Semana',
+FLDIASEMANA,
+AS 'Flag Dia de Semana',
+FLFERIADO,
+AS 'Flag Feriado',
+CDBIMESTRE,
+AS 'Código Bimestre',
+DEBIMESTRE,
+AS 'Bimestre',
+CDTRIMESTRE,
+AS 'Código Trimestre',
+DETRIMESTRE,
+AS 'Trimestre',
+CDQUADRIMESTRE,
+AS 'Código Quadrimestre',
+DEQUADRIMESTRE,
+AS 'Quadrimestre',
+CDSEMESTRE,
+AS 'Código Semestre',
+DESEMESTRE,
+AS 'Semestre',
+DTINICIOSEMANA,
+ AS 'Data Início Semana',
+DTFIMSEMANA,
+ AS 'Data Fim Semana',
+DEPERIODOSEMANA,
+ AS 'Período Semana'
+FROM  dwh.dbo.dtempo;
+
+-------------------------------------------------------------------------------
+-- Partition: dTempoCriacaoSAC
+SELECT
+IDDATA ,
+ AS IDDTCRIACAOSAC,
+[DATA] ,
+ AS 'Data Criação SAC',
+CDDIA,
+ AS 'Código Dia',
+CDANO,
+ AS 'Código Ano',
+CDMES,
+ AS 'Código Mês',
+DEMES,
+ AS 'Mês',
+DEMESABV,
+AS 'Mês Abrev',
+CDPERIODO,
+AS 'Código Período',
+DEPERIODO,
+AS 'Período',
+CDDIASEMANA,
+AS 'Código Dia Semana',
+DEDIASEMANA,
+AS 'Dia Semana',
+DEDIASEMANAABV,
+AS 'Dia Semana Abrev',
+NUSEMANAMES,
+AS 'Número Semana Mês',
+DESEMANAMES,
+AS 'Descrição Semana Mês',
+NUSEMANAANO,
+AS 'Número Semana Ano',
+FLFIMSEMANA,
+AS 'Flag Fim de Semana',
+FLDIASEMANA,
+AS 'Flag Dia de Semana',
+FLFERIADO,
+AS 'Flag Feriado',
+CDBIMESTRE,
+AS 'Código Bimestre',
+DEBIMESTRE,
+AS 'Bimestre',
+CDTRIMESTRE,
+AS 'Código Trimestre',
+DETRIMESTRE,
+AS 'Trimestre',
+CDQUADRIMESTRE,
+AS 'Código Quadrimestre',
+DEQUADRIMESTRE,
+AS 'Quadrimestre',
+CDSEMESTRE,
+AS 'Código Semestre',
+DESEMESTRE,
+AS 'Semestre',
+DTINICIOSEMANA,
+ AS 'Data Início Semana',
+DTFIMSEMANA,
+ AS 'Data Fim Semana',
+DEPERIODOSEMANA,
+ AS 'Período Semana'
+FROM  dwh.dbo.dtempo;
+
+-------------------------------------------------------------------------------
+-- Partition: dTempoFinalStatus
+SELECT
+IDDATA ,
+ AS IDDTFINALSTATUS,
+[DATA] ,
+ AS 'Data Final Status',
+CDDIA,
+ AS 'Código Dia',
+CDANO,
+ AS 'Código Ano',
+CDMES,
+ AS 'Código Mês',
+DEMES,
+ AS 'Mês',
+DEMESABV,
+AS 'Mês Abrev',
+CDPERIODO,
+AS 'Código Período',
+DEPERIODO,
+AS 'Período',
+CDDIASEMANA,
+AS 'Código Dia Semana',
+DEDIASEMANA,
+AS 'Dia Semana',
+DEDIASEMANAABV,
+AS 'Dia Semana Abrev',
+NUSEMANAMES,
+AS 'Número Semana Mês',
+DESEMANAMES,
+AS 'Descrição Semana Mês',
+NUSEMANAANO,
+AS 'Número Semana Ano',
+FLFIMSEMANA,
+AS 'Flag Fim de Semana',
+FLDIASEMANA,
+AS 'Flag Dia de Semana',
+FLFERIADO,
+AS 'Flag Feriado',
+CDBIMESTRE,
+AS 'Código Bimestre',
+DEBIMESTRE,
+AS 'Bimestre',
+CDTRIMESTRE,
+AS 'Código Trimestre',
+DETRIMESTRE,
+AS 'Trimestre',
+CDQUADRIMESTRE,
+AS 'Código Quadrimestre',
+DEQUADRIMESTRE,
+AS 'Quadrimestre',
+CDSEMESTRE,
+AS 'Código Semestre',
+DESEMESTRE,
+AS 'Semestre',
+DTINICIOSEMANA,
+ AS 'Data Início Semana',
+DTFIMSEMANA,
+ AS 'Data Fim Semana',
+DEPERIODOSEMANA,
+ AS 'Período Semana'
+FROM  dwh.dbo.dtempo;
+
+-------------------------------------------------------------------------------
+-- Partition: dTempoInicioStatus
+SELECT
+IDDATA ,
+ AS IDDTINICIOSTATUS,
+[DATA] ,
+ AS 'Data Início Status',
+CDDIA,
+ AS 'Código Dia',
+CDANO,
+ AS 'Código Ano',
+CDMES,
+ AS 'Código Mês',
+DEMES,
+ AS 'Mês',
+DEMESABV,
+AS 'Mês Abrev',
+CDPERIODO,
+AS 'Código Período',
+DEPERIODO,
+AS 'Período',
+CDDIASEMANA,
+AS 'Código Dia Semana',
+DEDIASEMANA,
+AS 'Dia Semana',
+DEDIASEMANAABV,
+AS 'Dia Semana Abrev',
+NUSEMANAMES,
+AS 'Número Semana Mês',
+DESEMANAMES,
+AS 'Descrição Semana Mês',
+NUSEMANAANO,
+AS 'Número Semana Ano',
+FLFIMSEMANA,
+AS 'Flag Fim de Semana',
+FLDIASEMANA,
+AS 'Flag Dia de Semana',
+FLFERIADO,
+AS 'Flag Feriado',
+CDBIMESTRE,
+AS 'Código Bimestre',
+DEBIMESTRE,
+AS 'Bimestre',
+CDTRIMESTRE,
+AS 'Código Trimestre',
+DETRIMESTRE,
+AS 'Trimestre',
+CDQUADRIMESTRE,
+AS 'Código Quadrimestre',
+DEQUADRIMESTRE,
+AS 'Quadrimestre',
+CDSEMESTRE,
+AS 'Código Semestre',
+DESEMESTRE,
+AS 'Semestre',
+DTINICIOSEMANA,
+ AS 'Data Início Semana',
+DTFIMSEMANA,
+ AS 'Data Fim Semana',
+DEPERIODOSEMANA,
+ AS 'Período Semana'
+FROM  dwh.dbo.dtempo;
+
+-------------------------------------------------------------------------------
+-- Partition: dTempoPrazoSLA
+SELECT
+IDDATA ,
+ AS IDDTPRAZOSLA,
+[DATA] ,
+ AS 'Data Prazo SLA',
+CDDIA,
+ AS 'Código Dia',
+CDANO,
+ AS 'Código Ano',
+CDMES,
+ AS 'Código Mês',
+DEMES,
+ AS 'Mês',
+DEMESABV,
+AS 'Mês Abrev',
+CDPERIODO,
+AS 'Código Período',
+DEPERIODO,
+AS 'Período',
+CDDIASEMANA,
+AS 'Código Dia Semana',
+DEDIASEMANA,
+AS 'Dia Semana',
+DEDIASEMANAABV,
+AS 'Dia Semana Abrev',
+NUSEMANAMES,
+AS 'Número Semana Mês',
+DESEMANAMES,
+AS 'Descrição Semana Mês',
+NUSEMANAANO,
+AS 'Número Semana Ano',
+FLFIMSEMANA,
+AS 'Flag Fim de Semana',
+FLDIASEMANA,
+AS 'Flag Dia de Semana',
+FLFERIADO,
+AS 'Flag Feriado',
+CDBIMESTRE,
+AS 'Código Bimestre',
+DEBIMESTRE,
+AS 'Bimestre',
+CDTRIMESTRE,
+AS 'Código Trimestre',
+DETRIMESTRE,
+AS 'Trimestre',
+CDQUADRIMESTRE,
+AS 'Código Quadrimestre',
+DEQUADRIMESTRE,
+AS 'Quadrimestre',
+CDSEMESTRE,
+AS 'Código Semestre',
+DESEMESTRE,
+AS 'Semestre',
+DTINICIOSEMANA,
+ AS 'Data Início Semana',
+DTFIMSEMANA,
+ AS 'Data Fim Semana',
+DEPERIODOSEMANA,
+ AS 'Período Semana'
+FROM  dwh.dbo.dtempo;
+
+-------------------------------------------------------------------------------
+-- Partition: dTempoPrevista
+SELECT
+	,
+IDDATA,
+ AS IDDTPREVISTA,
+[DATA] ,
+AS 'Data Prevista',
+CDDIA,
+ AS 'Código Dia',
+CDANO,
+ AS 'Código Ano',
+CDMES,
+ AS 'Código Mês',
+DEMES,
+ AS 'Mês',
+DEMESABV,
+AS 'Mês Abrev',
+CDPERIODO,
+AS 'Código Período',
+DEPERIODO,
+AS 'Período',
+CDDIASEMANA,
+AS 'Código Dia Semana',
+DEDIASEMANA,
+AS 'Dia Semana',
+DEDIASEMANAABV,
+AS 'Dia Semana Abrev',
+NUSEMANAMES ,
+AS 'Número Semana Mês',
+DESEMANAMES,
+AS 'Descrição Semana Mês',
+NUSEMANAANO,
+AS 'Número Semana Ano',
+FLFIMSEMANA,
+AS 'Flag Fim de Semana',
+FLDIASEMANA,
+AS 'Flag Dia de Semana',
+FLFERIADO,
+AS 'Flag Feriado',
+CDBIMESTRE,
+AS 'Código Bimestre',
+DEBIMESTRE,
+AS 'Bimestre',
+CDTRIMESTRE,
+AS 'Código Trimestre',
+DETRIMESTRE,
+AS 'Trimestre',
+CDQUADRIMESTRE,
+AS 'Código Quadrimestre',
+DEQUADRIMESTRE,
+AS 'Quadrimestre',
+CDSEMESTRE,
+AS 'Código Semestre',
+DESEMESTRE,
+AS 'Semestre',
+DTINICIOSEMANA,
+AS 'Data Início Semana',
+DTFIMSEMANA,
+ AS 'Data Fim Semana',
+DEPERIODOSEMANA,
+ AS 'Período Semana'
+FROM ,
+dwh.dbo.dtempo;
+
+-------------------------------------------------------------------------------
+-- Partition: dTempoResolucao
+SELECT
+IDDATA ,
+ AS IDDTRESOLUCAO,
+[DATA] ,
+ AS 'Data Resolução',
+CDDIA,
+ AS 'Código Dia',
+CDANO,
+ AS 'Código Ano',
+CDMES,
+ AS 'Código Mês',
+DEMES,
+ AS 'Mês',
+DEMESABV,
+AS 'Mês Abrev',
+CDPERIODO,
+AS 'Código Período',
+DEPERIODO,
+AS 'Período',
+CDDIASEMANA,
+AS 'Código Dia Semana',
+DEDIASEMANA,
+AS 'Dia Semana',
+DEDIASEMANAABV,
+AS 'Dia Semana Abrev',
+NUSEMANAMES,
+AS 'Número Semana Mês',
+DESEMANAMES,
+AS 'Descrição Semana Mês',
+NUSEMANAANO,
+AS 'Número Semana Ano',
+FLFIMSEMANA,
+AS 'Flag Fim de Semana',
+FLDIASEMANA,
+AS 'Flag Dia de Semana',
+FLFERIADO,
+AS 'Flag Feriado',
+CDBIMESTRE,
+AS 'Código Bimestre',
+DEBIMESTRE,
+AS 'Bimestre',
+CDTRIMESTRE,
+AS 'Código Trimestre',
+DETRIMESTRE,
+AS 'Trimestre',
+CDQUADRIMESTRE,
+AS 'Código Quadrimestre',
+DEQUADRIMESTRE,
+AS 'Quadrimestre',
+CDSEMESTRE,
+AS 'Código Semestre',
+DESEMESTRE,
+AS 'Semestre',
+DTINICIOSEMANA,
+ AS 'Data Início Semana',
+DTFIMSEMANA,
+ AS 'Data Fim Semana',
+DEPERIODOSEMANA,
+ AS 'Período Semana'
+FROM  dwh.dbo.dtempo;
+
+-------------------------------------------------------------------------------
+-- Partition: dTempoSolucao
+SELECT
+IDDATA ,
+ AS IDDTSOLUCAO,
+[DATA] ,
+ AS 'Data Solução',
+CDDIA,
+ AS 'Código Dia',
+CDANO,
+ AS 'Código Ano',
+CDMES,
+ AS 'Código Mês',
+DEMES,
+ AS 'Mês',
+DEMESABV,
+AS 'Mês Abrev',
+CDPERIODO,
+AS 'Código Período',
+DEPERIODO,
+AS 'Período',
+CDDIASEMANA,
+AS 'Código Dia Semana',
+DEDIASEMANA,
+AS 'Dia Semana',
+DEDIASEMANAABV,
+AS 'Dia Semana Abrev',
+NUSEMANAMES,
+AS 'Número Semana Mês',
+DESEMANAMES,
+AS 'Descrição Semana Mês',
+NUSEMANAANO,
+AS 'Número Semana Ano',
+FLFIMSEMANA,
+AS 'Flag Fim de Semana',
+FLDIASEMANA,
+AS 'Flag Dia de Semana',
+FLFERIADO,
+AS 'Flag Feriado',
+CDBIMESTRE,
+AS 'Código Bimestre',
+DEBIMESTRE,
+AS 'Bimestre',
+CDTRIMESTRE,
+AS 'Código Trimestre',
+DETRIMESTRE,
+AS 'Trimestre',
+CDQUADRIMESTRE,
+AS 'Código Quadrimestre',
+DEQUADRIMESTRE,
+AS 'Quadrimestre',
+CDSEMESTRE,
+AS 'Código Semestre',
+DESEMESTRE,
+AS 'Semestre',
+DTINICIOSEMANA,
+ AS 'Data Início Semana',
+DTFIMSEMANA,
+ AS 'Data Fim Semana',
+DEPERIODOSEMANA,
+ AS 'Período Semana'
+FROM  dwh.dbo.dtempo;
+
+-------------------------------------------------------------------------------
+-- Partition: dTempoPriorizado
+SELECT
+IDDATA ,
+ AS IDDTPRIORIZADO,
+[DATA] ,
+ AS 'Data Priorizado',
+CDDIA,
+ AS 'Código Dia',
+CDANO,
+ AS 'Código Ano',
+CDMES,
+ AS 'Código Mês',
+DEMES,
+ AS 'Mês',
+DEMESABV,
+AS 'Mês Abrev',
+CDPERIODO,
+AS 'Código Período',
+DEPERIODO,
+AS 'Período',
+CDDIASEMANA,
+AS 'Código Dia Semana',
+DEDIASEMANA,
+AS 'Dia Semana',
+DEDIASEMANAABV,
+AS 'Dia Semana Abrev',
+NUSEMANAMES,
+AS 'Número Semana Mês',
+DESEMANAMES,
+AS 'Descrição Semana Mês',
+NUSEMANAANO,
+AS 'Número Semana Ano',
+FLFIMSEMANA,
+AS 'Flag Fim de Semana',
+FLDIASEMANA,
+AS 'Flag Dia de Semana',
+FLFERIADO,
+AS 'Flag Feriado',
+CDBIMESTRE,
+AS 'Código Bimestre',
+DEBIMESTRE,
+AS 'Bimestre',
+CDTRIMESTRE,
+AS 'Código Trimestre',
+DETRIMESTRE,
+AS 'Trimestre',
+CDQUADRIMESTRE,
+AS 'Código Quadrimestre',
+DEQUADRIMESTRE,
+AS 'Quadrimestre',
+CDSEMESTRE,
+AS 'Código Semestre',
+DESEMESTRE,
+AS 'Semestre',
+DTINICIOSEMANA,
+ AS 'Data Início Semana',
+DTFIMSEMANA,
+ AS 'Data Fim Semana',
+DEPERIODOSEMANA,
+ AS 'Período Semana'
+FROM  dwh.dbo.dtempo;
+
+-------------------------------------------------------------------------------
+-- Partition: dTipoApontamento
+SELECT
+IDTIPOAPONTAMENTO,
+CDTIPOAPONTAMENTO,
+AS 'Código Tipo Apontamento',
+DENOME,
+AS 'Tipo Apontamento'
+FROM  dwh.dbo.dtipoapontamento;
+
+-------------------------------------------------------------------------------
+-- Partition: dSistema
+SELECT
+IDSISTEMA,
+CDSISTEMA,
+AS 'Código Sistema',
+DENOME,
+ AS 'Sistema'
+FROM  dwh.dbo.dsistema;
+
+-------------------------------------------------------------------------------
+-- Partition: dTempoApontamento
+SELECT
+	,
+IDDATA ,
+ AS IDDATA,
+[DATA],
+AS 'Data Apontamento',
+CDDIA,
+ AS 'Código Dia',
+CDANO,
+ AS 'Código Ano',
+CDMES,
+ AS 'Código Mês',
+DEMES,
+ AS 'Mês',
+DEMESABV,
+AS 'Mês Abrev',
+CDPERIODO,
+AS 'Código Período',
+DEPERIODO,
+AS 'Período',
+CDDIASEMANA,
+ AS 'Código Dia Semana',
+DEDIASEMANA,
+AS 'Dia Semana',
+DEDIASEMANAABV,
+AS 'Dia Semana Abrev',
+NUSEMANAMES,
+AS 'Número Semana Mês',
+DESEMANAMES,
+AS 'Semana por Extenso',
+NUSEMANAANO,
+ AS 'Número Semana Ano',
+FLFIMSEMANA,
+AS 'Flag Fim de Semana',
+FLDIASEMANA,
+AS 'Flag Dia de Semana',
+FLFERIADO,
+AS 'Flag Feriado',
+CDBIMESTRE ,
+ AS 'Código Bimestre',
+DEBIMESTRE,
+AS 'Bimestre',
+CDTRIMESTRE,
+AS 'Código Trimestre',
+DETRIMESTRE,
+AS 'Trimestre',
+CDQUADRIMESTRE ,
+AS 'Código Quadrimestre',
+DEQUADRIMESTRE,
+AS 'Quadrimestre',
+CDSEMESTRE,
+ AS 'Código Semestre',
+DESEMESTRE,
+AS 'Semestre',
+DTINICIOSEMANA ,
+ AS 'Data Início Semana',
+DTFIMSEMANA,
+AS 'Data Fim Semana',
+DEPERIODOSEMANA,
+ AS 'Período Semana'
+FROM ,
+dwh.dbo.dtempo
+WHERE  EXISTS',
+(',
+SELECT
+TOP 1 1,
+
+FROM  ,
+dwh.dbo.fchamadoapontamento',
+
+WHERE,
+LEFT( dwh.dbo.fchamadoapontamento.iddata,
+4 ) = LEFT( dwh.dbo.dtempo.iddata,
+4 )',
+)
+
+-------------------------------------------------------------------------------
+-- Partition: fChamadoApontamentoPerfilSeguranca
+SELECT
+	* 
+FROM  fChamadoApontamento;
+
+-------------------------------------------------------------------------------
+-- Partition: dModulo
+SELECT
+IDMODULO,
+DENOME,
+AS 'Módulo'
+FROM  dwh.dbo.dmodulo;
+
+-------------------------------------------------------------------------------
+-- Partition: dPerformance
+SELECT
+IDPERFORMANCE,
+CDPERFORMANCE,
+ AS 'Código Performance',
+DENOME,
+ AS 'Performance'
+FROM  dwh.dbo.dperformance;
+
+-------------------------------------------------------------------------------
+-- Partition: dPerformanceEncaminhada
+SELECT
+IDPERFORMANCEENCAMINHADA,
+CDPERFORMANCEENCAMINHADA,
+AS 'Código Performance Encaminhada',
+DENOME,
+ AS 'Performance Encaminhada'
+FROM  dwh.dbo.dperformanceencaminhada;
+
+-------------------------------------------------------------------------------
+-- Partition: dOriundoRejeite
+SELECT
+IDORIUNDOREJEITE,
+CDORIUNDOREJEITE,
+AS 'Código Oriundo Rejeite',
+DENOME,
+ AS 'Oriundo Rejeite'
+FROM  dwh.dbo.doriundorejeite;
+
+-------------------------------------------------------------------------------
+-- Partition: dEquipeUsuario
+SELECT
+IDEQUIPEUSUARIO,
+IDEQUIPE,
+ AS 'Código Equipe Usuário',
+DEEQUIPE,
+ AS 'Equipe Usuário'
+FROM  dwh.dbo.dequipeusuario;
+
+-------------------------------------------------------------------------------
+-- Partition: dCCustoUsuario
+SELECT
+IDCCUSTOUSUARIO,
+CDCCUSTOUSUARIO,
+AS'Código Centro de Custo Usuário',
+DECCUSTOUSUARIO,
+AS'Centro de Custo Usuário'
+FROM ,
+dwh.dbo.dccustousuario;
+
+-------------------------------------------------------------------------------
+-- Partition: dTarefaSerp
+SELECT
+IDTAREFASERP,
+CDTAREFASERP,
+ AS 'Código Tarefa Serp',
+DENOME,
+AS 'Tarefa Serp'
+FROM  dwh.dbo.dtarefaserp;
+
+-------------------------------------------------------------------------------
+-- Partition: dProjetoSerp
+SELECT
+	,
+IDPROJETOSERP,
+CDPROJETOSERP AS 'Código Projeto Serp',
+DENOME ,
+AS 'Nome Projeto Serp'
+FROM  dwh.dbo.dprojetoserp;
+
+-------------------------------------------------------------------------------
+-- Partition: dSistemaOrigem
+SELECT
+IDSISTEMAORIGEM,
+DENOME,
+AS 'Sistema Origem'
+FROM  dwh.dbo.dsistemaorigem;
+
+-------------------------------------------------------------------------------
+-- Partition: dIteracao
+SELECT
+IDITERACAO,
+CDITERACAO,
+AS 'Código Iteração',
+DENOME,
+ AS 'Iteração'
+FROM  dwh.dbo.diteracao;
+
+-------------------------------------------------------------------------------
+-- Partition: dEquipeUsuarioHist
+SELECT
+IDEQUIPEUSUARIOHIST,
+IDUSUARIOHIST AS IDUSUARIOHIST,
+IDEQUIPEHIST,
+AS 'Código Equipe Usuário',
+DEEQUIPEHIST,
+ AS 'Equipe Usuário',
+dtinicioperiodo,
+AS 'Início Período',
+dtfimperiodo ,
+ AS 'Fim Período',
+FLREGISTROATUAL,
+ AS 'Flag Registro Atual'
+FROM  dwh.dbo.dequipeusuariohist;
+
+-------------------------------------------------------------------------------
+-- Partition: fChamadoApontamentoIHT
+SELECT
+	,
+fchamadoapontamento.idusuario,
+fchamadoapontamento.iddata,
+fchamadoapontamento.idequipeusuariohist,
+fchamadoapontamento.idequipeusuario,
+fchamadoapontamento.IDTIPOENTREGA,
+SUM( minutos / 60.00 ) / 8.00AS 'IHT'
+FROM  fchamadoapontamento'GROUP BY',
+fchamadoapontamento.idusuario,
+fchamadoapontamento.iddata,
+fchamadoapontamento.idequipeusuariohist,
+fchamadoapontamento.idequipeusuario,
+fchamadoapontamento.IDTIPOENTREGA;
+
+-------------------------------------------------------------------------------
+-- Partition: dEquipeChamado
+SELECT
+IDEQUIPECHAMADO,
+CDEQUIPE,
+ AS 'Código Equipe',
+DENOME,
+ AS 'Equipe',
+-- stg.rivw_vw_team.team,
+DESIGLA,
+ AS 'Sigla Equipe',
+URLIMAGEM1,
+ AS 'Imagem Quadrada',
+URLIMAGEM2,
+ AS 'Imagem Redonda'
+FROM  dwh.dbo.dequipechamado;
+
+-------------------------------------------------------------------------------
+-- Partition: dUsuarioCriacao
+SELECT  IDUSUARIO ,
+ AS 'IDUSUARIOCRIACAO',
+ CDUSUARIO ,
+ AS 'Código Usuário',
+ DENOME ,
+ AS 'Usuário Criação',
+ DENOMEABV ,
+ AS 'Login' 
 FROM  dwh.dbo.dusuario;
 
-
-dTempoApuracao Partition:
-	SELECT
-	 
-	 IDDATA                     AS IDDTAPURACAO,
-	
-	 [DATA] AS Data Apuração
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANAAS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMESAS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANOAS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTREAS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTREAS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTREAS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                    AS Data Início Semana
-	,
-	 DTFIMSEMANA                                            AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
-
-
-dTempoCriacao Partition:
-	SELECT
-	 
-	 IDDATA                     AS IDDTCRIACAO,
-	
-	 [DATA] AS Data Criação
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANAAS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMESAS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANOAS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTREAS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTREAS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTREAS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                    AS Data Início Semana
-	,
-	 DTFIMSEMANA                                            AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
-
-
-dTempoCriacaoSAC Partition:
-	SELECT
-	 
-	 IDDATA                     AS IDDTCRIACAOSAC,
-	
-	 [DATA] AS Data Criação SAC
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANAAS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMESAS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANOAS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTREAS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTREAS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTREAS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                    AS Data Início Semana
-	,
-	 DTFIMSEMANA                                            AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
-
-
-dTempoFinalStatus Partition:
-	SELECT
-	 
-	 IDDATA                     AS IDDTFINALSTATUS,
-	
-	 [DATA] AS Data Final Status
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANAAS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMESAS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANOAS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTREAS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTREAS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTREAS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                    AS Data Início Semana
-	,
-	 DTFIMSEMANA                                            AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
-
-
-dTempoInicioStatus Partition:
-	SELECT
-	 
-	 IDDATA                     AS IDDTINICIOSTATUS,
-	
-	 [DATA] AS Data Início Status
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANAAS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMESAS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANOAS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTREAS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTREAS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTREAS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                    AS Data Início Semana
-	,
-	 DTFIMSEMANA                                            AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
-
-
-dTempoPrazoSLA Partition:
-	SELECT
-	 
-	 IDDATA                     AS IDDTPRAZOSLA,
-	
-	 [DATA] AS Data Prazo SLA
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANAAS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMESAS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANOAS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTREAS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTREAS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTREAS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                    AS Data Início Semana
-	,
-	 DTFIMSEMANA                                            AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
-
-
-dTempoPrevista Partition:
-	SELECT
-	
-	 IDDATAAS IDDTPREVISTA,
-	
-	 [DATA]                                       AS Data Prevista
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANAAS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMES AS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANOAS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTREAS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTREAS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTREAS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                               AS Data Início Semana
-	,
-	 DTFIMSEMANA                                        AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROMdwh.dbo.dtempo;
-
-
-dTempoResolucao Partition:
-	SELECT
-	 
-	 IDDATA                     AS IDDTRESOLUCAO,
-	
-	 [DATA] AS Data Resolução
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANAAS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMESAS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANOAS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTREAS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTREAS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTREAS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                    AS Data Início Semana
-	,
-	 DTFIMSEMANA                                            AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
-
-
-dTempoSolucao Partition:
-	SELECT
-	 
-	 IDDATA                     AS IDDTSOLUCAO,
-	
-	 [DATA] AS Data Solução
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANAAS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMESAS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANOAS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTREAS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTREAS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTREAS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                    AS Data Início Semana
-	,
-	 DTFIMSEMANA                                            AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
-
-
-dTempoPriorizado Partition:
-	SELECT
-	 
-	 IDDATA                     AS IDDTPRIORIZADO,
-	
-	 [DATA] AS Data Priorizado
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANAAS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMESAS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANOAS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTREAS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTREAS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTREAS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                    AS Data Início Semana
-	,
-	 DTFIMSEMANA                                            AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
-
-
-dTipoApontamento Partition:
-	SELECT
-	 
-	 IDTIPOAPONTAMENTO,
-	 
-	 CDTIPOAPONTAMENTOAS Código Tipo Apontamento
-	,
-	 DENOMEAS Tipo Apontamento,
-	 
-FROM dwh.dbo.dtipoapontamento;
-
-
-dSistema Partition:
-	SELECT
-	 
-	 IDSISTEMA,
-	
-	 CDSISTEMAAS Código Sistema
-	,
-	 DENOMEAS Sistema,
-	 
-FROM dwh.dbo.dsistema;
-
-
-dTempoApontamento Partition:
-	SELECT
-	
-	 IDDATA                               AS IDDATA,
-	
-	 [DATA]                                      AS Data Apontamento
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANA          AS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMES                                AS Número Semana Mês
-	,
-	 DESEMANAMESAS Semana por Extenso
-	,
-	 NUSEMANAANO                  AS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTRE                     AS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTRE                 AS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTRE                  AS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                     AS Data Início Semana
-	,
-	 DTFIMSEMANA                          AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROMdwh.dbo.dtempo
-	 
-WHERE   EXISTS
-	 (
-	 SELECT
-	 
-	 TOP 1 1
-	 
-FROM dwh.dbo.fchamadoapontamento
-	 
-WHERELEFT( dwh.dbo.fchamadoapontamento.iddata,
-	 4 ) = LEFT( dwh.dbo.dtempo.iddata,
-	 4 )
-	 )
-
-
-fChamadoApontamentoPerfilSeguranca Partition:
-	SELECT
-	 * 
-FROM fChamadoApontamento;
-
-
-dModulo Partition:
-	SELECT
-	 
-	 IDMODULO,
-	
-	 DENOMEAS Módulo,
-	 
-FROM dwh.dbo.dmodulo;
-
-
-dPerformance Partition:
-	SELECT
-	 
-	 IDPERFORMANCE,
-	
-	 CDPERFORMANCE                AS Código Performance
-	,
-	 DENOMEAS Performance,
-	 
-FROM dwh.dbo.dperformance;
-
-
-dPerformanceEncaminhada Partition:
-	SELECT
-	 
-	 IDPERFORMANCEENCAMINHADA,
-	
-	 CDPERFORMANCEENCAMINHADA                                AS Código Performance Encaminhada
-	,
-	 DENOMEAS Performance Encaminhada,
-	 
-FROM dwh.dbo.dperformanceencaminhada;
-
-
-dOriundoRejeite Partition:
-	SELECT
-	 
-	 IDORIUNDOREJEITE,
-	
-	 CDORIUNDOREJEITE                AS Código Oriundo Rejeite
-		 DENOMEAS Oriundo Rejeite,
-	 
-FROM dwh.dbo.doriundorejeite;
-
-
-dEquipeUsuario Partition:
-	SELECT
-	 
-	 IDEQUIPEUSUARIO,
-	
-	 IDEQUIPEAS Código Equipe Usuário
-		 DEEQUIPEAS Equipe Usuário,
-	 
-FROM dwh.dbo.dequipeusuario;
-
-
-dCCustoUsuario Partition:
-	SELECT
-	 
-	 IDCCUSTOUSUARIO,
-	
-	 CDCCUSTOUSUARIOAS  Código Centro de Custo Usuário
-	,
-	 DECCUSTOUSUARIOAS  Centro de Custo Usuário,
-	 
-FROMdwh.dbo.dccustousuario;
-
-
-dTarefaSerp Partition:
-	SELECT
-	 
-	 IDTAREFASERP,
-	
-	 CDTAREFASERPAS Código Tarefa Serp
-	,
-	 DENOMEAS Tarefa Serp,
-	 
-FROM dwh.dbo.dtarefaserp;
-
-
-dProjetoSerp Partition:
-	SELECT
-	
-	 IDPROJETOSERP,
-	
-	 CDPROJETOSERP    AS Código Projeto Serp
-	,
-	 DENOME AS Nome Projeto Serp,
-	 
-FROM dwh.dbo.dprojetoserp;
-
-
-dSistemaOrigem Partition:
-	SELECT
-	 
-	 IDSISTEMAORIGEM,
-	
-	 DENOMEAS Sistema Origem,
-	 
-FROM dwh.dbo.dsistemaorigem;
-
-
-dIteracao Partition:
-	SELECT
-	 
-	 IDITERACAO,
-	
-	 CDITERACAOAS Código Iteração
-	,
-	 DENOMEAS Iteração,
-	 
-FROM dwh.dbo.diteracao;
-
-
-dEquipeUsuarioHist Partition:
-	SELECT
-	 
-	 IDEQUIPEUSUARIOHIST,
-	
-	 IDUSUARIOHIST                                      AS IDUSUARIOHIST,
-	 
-	 IDEQUIPEHIST                AS Código Equipe Usuário
-		 DEEQUIPEHISTAS Equipe Usuário
-		 dtinicioperiodo                AS Início Período
-	 	 dtfimperiodo AS Fim Período
-	 	 FLREGISTROATUALAS Flag Registro Atual,
-	 
-FROM dwh.dbo.dequipeusuariohist;
-
-
-fChamadoApontamentoIHT Partition:
-	SELECT
-	
-	 fchamadoapontamento.idusuario,
-	
-	 fchamadoapontamento.iddata,
-	
-	 fchamadoapontamento.idequipeusuariohist,
-	
-	 fchamadoapontamento.idequipeusuario,
-	
-	 fchamadoapontamento.IDTIPOENTREGA,
-	
-	 SUM( minutos / 60.00 ) / 8.00 AS IHT,
-	 
-FROM fchamadoapontamento
-	 GROUP BY
-	 fchamadoapontamento.idusuario,
-	
-	 fchamadoapontamento.iddata,
-	
-	 fchamadoapontamento.idequipeusuariohist,
-	
-	 fchamadoapontamento.idequipeusuario,
-	
-	                fchamadoapontamento.IDTIPOENTREGA;
-
-
-dEquipeChamado Partition:
-	SELECT
-	 
-	       IDEQUIPECHAMADO,
-	
-	       CDEQUIPEAS Código Equipe
-		       DENOMEAS Equipe
-	 -- stg.rivw_vw_team.team,
-	       DESIGLAAS Sigla Equipe
-	,
-	       URLIMAGEM1AS Imagem Quadrada
-	,
-	       URLIMAGEM2AS Imagem Redonda,
-	 
-FROM dwh.dbo.dequipechamado;
-
-
-dUsuarioCriacao Partition:
-	SELECT
-	
-	  IDUSUARIO AS IDUSUARIOCRIACAO
-	,
-	  CDUSUARIO AS Código Usuário
-	,
-	  DENOME AS Usuário Criação
-	,
-	  DENOMEABV AS Login	 
-FROM dwh.dbo.dusuario;
-
-
-dUsuarioPriorizado Partition:
-	SELECT
-	
-	  IDUSUARIO AS IDUSUARIOPRIORIZADO
-	,
-	  CDUSUARIO AS Código Usuário
-	,
-	  DENOME AS Usuário Priorizado
-	,
-	  DENOMEABV AS Login	 
-FROM dwh.dbo.dusuario;
-
-
-dUsuarioProprietario Partition:
-	SELECT
-	
-	  IDUSUARIO AS  IDUSUARIOPROPRIETARIO
-	,
-	  CDUSUARIO AS Código Usuário
-	,
-	  DENOME AS Usuário Proprietário
-	,
-	  DENOMEABV AS Login	 
-FROM dwh.dbo.dusuario;
-
-
-dUsuarioSolucao Partition:
-	SELECT
-	
-	  IDUSUARIO AS IDUSUARIOSOLUCAO
-	,
-	  CDUSUARIO AS Código Usuário
-	,
-	  DENOME AS Usuário Solução
-	,
-	  DENOMEABV AS Login	 
-FROM dwh.dbo.dusuario;
-
-
-dTempoPrazoPPF Partition:
-	SELECT
-	 
-	 IDDATA                                       AS IDDTPRAZOPPF,
-	
-	 [DATA]AS Data Prazo PPF
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANA             AS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMES                      AS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANO        AS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTRE            AS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTRE                   AS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTRE                AS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANAAS Data Início Semana
-	,
-	 DTFIMSEMANA AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
-
-
-dTempoPrazoAnalise Partition:
-	SELECT
-	 
-	 IDDATA                                       AS IDDTPRAZOANALISE,
-	
-	 [DATA] AS Data Prazo Análise
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANA             AS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMES                      AS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANO        AS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTRE            AS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTRE                   AS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTRE                AS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANAAS Data Início Semana
-	,
-	 DTFIMSEMANAAS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
-
-
-dTempoPrazoEspecificacao Partition:
-	SELECT
-	 
-	 IDDATA                                       AS IDDTPRAZOESPECIFICACAO,
-	
-	 [DATA]AS Data Prazo Especificação
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANA             AS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMES                      AS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANO        AS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTRE            AS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTRE                   AS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTRE                AS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANAAS Data Início Semana
-	,
-	 DTFIMSEMANAAS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
-
-
-dUsuarioPO Partition:
-	SELECT
-	 
-	 IDUSUARIOAS IDUSUARIOPO
-	,
-	 CDUSUARIOAS Código Usuário
-	,
-	 DENOMEAS Usuário PO
-	,
-	 DENOMEABVAS Login,
-	 
-FROM dwh.dbo.dusuario;
-
-
-dUsuarioPM Partition:
-	SELECT
-	 
-	 IDUSUARIOAS IDUSUARIOPM
-	,
-	 CDUSUARIOAS Código Usuário
-	,
-	 DENOMEAS Usuário PM
-	,
-	 DENOMEABVAS Login,
-	 
-FROM dwh.dbo.dusuario;
-
-
-dUsuarioUX Partition:
-	SELECT
-	 
-	 IDUSUARIOAS IDUSUARIOUX
-	,
-	 CDUSUARIOAS Código Usuário
-	,
-	 DENOMEAS Usuário UX
-	,
-	 DENOMEABVAS Login,
-	 
-FROM dwh.dbo.dusuario;
-
-
-dUnidade Partition:
-	SELECT
-	 
-	 IDUNIDADE AS IDUNIDADECHAMADO
-	,
-	 CDUNIDADEAS Código Unidade
-	,
-	 DENOMEAS Unidade
-	,
-	 DESIGLAAS Sigla Unidade,
-	 
-FROM dwh.dbo.dunidade;
-
-
-dVertical Partition:
-	SELECT
-	 
-	 IDVERTICALAS IDVERTICALCHAMADO
-	,
-	 CDVERTICALAS Código Vertical
-	,
-	 DENOMEAS Vertical
-	,
-	 DESIGLAAS Sigla Vertical,
-	 
-FROM dwh.dbo.dvertical;
-
-
-dEquipeUsuarioExcel Partition:
-	SELECT
-	 
-	 IDEQUIPEUSUARIOEXCEL,
-	 
-	 IDDTAPURACAO,
-	 
-	 DENOMEUSUARIO                AS Usuário
-		 DENOMEEQUIPE                AS Equipe
-		 DESTATUSUSUARIOAS Status Usuário,
-	 
-FROM dwh.dbo.dequipeusuarioexcel;
-
-
-dTipoEntrega Partition:
-	SELECT
-	 
-	 IDTIPOENTREGA,
-	
-	 CDTIPOENTREGA                AS Código Tipo Entrega
-	,
-	 DENOMEAS Tipo Entrega,
-	 
-FROM dwh.dbo.dtipoentrega;
-
-
-dTipoConfiguracao Partition:
-	SELECT
-	 
-	 IDTIPOCONFIGURACAO,
-	
-	 CDTIPOCONFIGURACAO                AS Código Tipo Configuração
-	,
-	 DENOMEAS Tipo Configuração,
-	 
-FROM dwh.dbo.dtipoconfiguracao;
-
-
-dIncidenteCliente Partition:
-	SELECT
-	 
-	 IDINCIDENTECLIENTE,
-	 
-	 CDINCIDENTECLIENTE AS Código Incidente Cliente
-	,
-	 DENOME                 AS Incidente Cliente,
-	 
-FROM dwh.dbo.dincidentecliente;
-
-
-dComplexidade Partition:
-	SELECT
-	 
-	 IDCOMPLEXIDADE,
-	 
-	 CDCOMPLEXIDADE                AS Código Complexidade
-		 DENOMEAS Complexidade,
-	 
-FROM dwh.dbo.dComplexidade;
-
-
-dEquipeEspecialista Partition:
-	SELECT
-	 
-	 IDEQUIPEESPECIALISTA,
-	 
-	 CDEQUIPEESPECIALISTA             AS Código Equipe Especialista
-	,
-	 DENOME                                       AS Equipe Especialista,
-	 
-FROM dwh.dbo.dEquipeEspecialista;
-
-
-dSeveridade Partition:
-	SELECT
-	 
-	 IDSEVERIDADE,
-	
-	 CDSEVERIDADE                AS Código Severidade
-		 DENOMEAS Severidade,
-	 
-FROM dwh.dbo.dSeveridade;
-
-
-dCategory Partition:
-	SELECT
-	 
-	        IDCATEGORIA,
-	
-	        CDCATEGORIA AS Código Categoria
-	,
-	        DENOME AS Categoria
-	,
-	        DEDOMINIOAS  Domínio
-	,
-	        DECATEGORIADEFEITO   AS Categoria Defeito,
-	 
-FROM dwh.dbo.dCategory;
-
-
-dCausaRaiz Partition:
-	SELECT
-	 
-	       IDCAUSARAIZ,
-	
-	       CDCAUSARAIZ AS Código Causa Raíz
-	,
-	       DENOME AS Causa Raíz,
-	 
-FROM dwh.dbo.dcausaraiz;
-
-
-dFaseCiclo Partition:
-	SELECT
-	 
-	 IDFASECICLO,
-	
-	 CDFASECICLOAS Código Fase Ciclo
-		 DENOMEAS Fase Ciclo
-		 DEAMBIENTEAS Atividade Fase Ciclo,
-	 
-FROM dwh.dbo.dfaseciclo;
-
-
-dPlanejadoPara Partition:
-	SELECT
-	 
-	 IDITERACAO,
-	
-	 CDITERACAOAS Código Planejado para
-	,
-	 DENOMEAS Planejado para,
-	 
-FROM dwh.dbo.diteracao;
-
-
-dModuloFuncional Partition:
-	SELECT
-	 
-	 IDMODULOFUNCIONAL,
-	 
-	 CDMODULOFUNCIONALAS Código Módulo Funcional
-	,
-	 DENOMEAS Módulo Funcional,
-	 
-FROM dwh.dbo.dmodulofuncional;
-
-
-dPrioridade Partition:
-	SELECT
-	 
-	 IDPRIORIDADE,
-	
-	 CDPRIORIDADE                AS Código Prioridade
-	,
-	 DENOMEAS Prioridade,
-	 
-FROM dwh.dbo.dprioridade;
-
-
-dPrioridadeNegociada Partition:
-	SELECT
-	 
-	 IDPRIORIDADENEGOCIADA,
-	 
-	 CDPRIORIDADENEGOCIADAAS Código Prioridade Negociada
-	,
-	 DENOMEAS Prioridade Negociada,
-	 
-FROM dwh.dbo.dprioridadenegociada;
-
-
-dProjeto Partition:
-	SELECT
-	 
-	 IDPROJETO,
-	
-	 CDPROJETOAS Código Projeto
-	,
-	 DENOMEAS Projeto,
-	 
-FROM dwh.dbo.dprojeto;
-
-
-dSimuladoBaseInterna Partition:
-	SELECT
-	 
-	 IDSIMULADOBASEINTERNA,
-	
-	 CDSIMULADOBASEINTERNAAS Código Simulado Base Interna
-	,
-	 DENOMEAS Simulado Base Interna - origem,
-	 
-FROM dwh.dbo.dsimuladobaseinterna;
-
-
-dTester Partition:
-	SELECT
-	 
-	 IDTESTER,
-	 
-	 CDTESTERAS Código Tester
-	,
-	 DENOMEAS Tester,
-	 
-FROM dwh.dbo.dtester;
-
-
-dTipoChamado Partition:
-	SELECT
-	 
-	 IDTIPOCHAMADO,
-	
-	 CDTIPOCHAMADOAS Código Tipo Chamado
-	,
-	 DENOMEAS Tipo Chamado,
-	 
-FROM dwh.dbo.dtipochamado;
-
-
-dUsuario Partition:
-	SELECT
-	 
-	 IDUSUARIO,
-	
-	 CDUSUARIOAS Código Usuário
-	,
-	 DENOMEAS Usuário
-	,
-	 DENOMEABVAS Login,
-	 
-FROM dwh.dbo.dusuario;
-
-
-Medidas Partition:
-	SELECT
-	 1 AS Medidas;
-
-
-dAtividade Partition:
-	SELECT
-	 
-	    IDATIVIDADE,
-	
-	    CDATIVIDADEAS  Código Atividade
-	,
-	    DENOME AS  Atividade,
-	 
-FROM dwh.dbo.datividade;
-
-
-dTarefa Partition:
-	SELECT
-	 
-	 IDTAREFA,
-	
-	 CDTAREFAAS Código Tarefa
-	,
-	 DENOMEAS Tarefa
-	,
-	 DEURLAS URL,
-	 
-FROM dwh.dbo.dtarefa;
-
-
-dChamado Partition:
-	SELECT
-	 IDCHAMADO,
-	
-	       CDCHAMADOAS Código Chamado
-	,
-	       NUCHAMADOAS Número Chamado
-	,
-	       NUSCCDAS Numero SCCD
-	,
-	       DETITULOAS Título
-	,
-	       DENOMEAS Chamado
-	,
-	       DETAGAS Tag
-	,
-	       DESTATUSAS Status
-	,
-	       NUSALTAS Número Salt
-	,
-	       DECAUSAAS Causa
-	,
-	       DEURLAS URL
-	,
-	       FLBLOQUEADO                AS Binário Flag Bloqueado
-	,
-	       FLPERFORMANCEAS Flag Performace - origem
-	,
-	       FLPERFORMANCEENCAMINHADA  AS Flag Performace Encaminhada - origem
-	,
-	       DEVERSAOORIGEMAS Versão Origem
-	,
-	       FLINTERNACIONALAS Flag Internacional
-	,
-	       demotivoreproducaoAS Motivo Reprodução,
-	 
-FROM dwh.dbo.dchamado;
-
-
-dCliente Partition:
-	SELECT
-	 
-	       IDCLIENTE,
-	
-	       CDCLIENTE AS Código Cliente
-	,
-	       DENOMEAS Cliente
-	,
-	       DESIGLAAS Sigla,
-	 
-FROM dwh.dbo.dcliente;
-
-
-dTempo Partition:
-	SELECT
-	 
-	 IDDATA                     AS IDDATA,
-	
-	 [DATA] AS Data
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANAAS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMESAS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANOAS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTREAS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTREAS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTREAS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                    AS Data Início Semana
-	,
-	 DTFIMSEMANA                                            AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo
-	 
-WHERE CDANO >= 2015 AND CDANO <= YEAR(GETDATE()) + 1
-
-
-fChamadoApontamento Partition:
-	SELECT
-	 
-	       IDCATEGORIA,
-	
-	       IDCHAMADO,
-	
-	       IDATIVIDADE,
-	
-	       IDUSUARIO,
-	
-	       IDEQUIPECHAMADO,
-	
-	       IDITERACAO,
-	
-	       IDTAREFA,
-	
-	       IDPROJETO,
-	
-	       IDTIPOCHAMADO,
-	
-	       IDSTATUSCHAMADO,
-	
-	       IDDATA,
-	
-	       MINUTOS,
-	
-	       HORAS,
-	
-	       IDTIPOAPONTAMENTO,
-	
-	       IDSISTEMA,
-	
-	       IDSISTEMAORIGEM,
-	
-	       IDEQUIPEUSUARIO,
-	
-	       IDCCUSTOUSUARIO,
-	
-	       IDTAREFASERP,
-	
-	       IDPROJETOSERP,
-	
-	       IDEQUIPEUSUARIOHIST,
-	
-	       IDUSUARIOUX,
-	
-	       IDUSUARIOPO,
-	
-	       IDUSUARIOPM,
-	
-	       IDVERTICALCHAMADO,
-	
-	       IDUNIDADECHAMADO,
-	
-	       IDTIPOENTREGA,
-	
-	       IDTIPOCONFIGURACAO,
-	
-	       IDINCIDENTECLIENTE,
-	
-	 SUM ( ( minutos / 60.00 ) / 8.00 ) over ( partition by fchamadoapontamento.idusuario,
-	 fchamadoapontamento.iddata ) AS IHT,
-	 replace ( SUM ( ( minutos / 60.00 ) / 8.00 ) over ( partition by fchamadoapontamento.idusuario,
-	 fchamadoapontamento.iddata ),
-	 .
-	 
-	 ) AS IHT_calc,
-	,
-	       DTCARGA
-	 
-FROM dwh.dbo.fchamadoapontamento;
-
-
-fChamadoArtefatoEvolucao Partition:
-	SELECT
-	 * 
-FROM fChamadoArtefatoEvolucao;
-
-
-fChamadoBacklog Partition:
-	SELECT
-	 
-	 IDCHAMADO,
-	
-	 IDTESTER,
-	
-	 IDTIPOCHAMADO,
-	
-	 IDSTATUSCHAMADO,
-	
-	 IDEQUIPECHAMADO,
-	 
-	 IDPRIORIDADE,
-	 
-	 IDUSUARIOCRIACAO,
-	 
-	 IDUSUARIOSOLUCAO,
-	 
-	 IDUSUARIOPROPRIETARIO,
-	 
-	 IDMODULOFUNCIONAL,
-	 
-	 IDCAUSARAIZ,
-	 
-	 IDPROJETO,
-	 
-	 IDFASECICLO,
-	 
-	 IDCLIENTE,
-	 
-	 IDPRIORIDADENEGOCIADA,
-	 
-	 IDSIMULADOBASEINTERNA,
-	 
-	 IDCATEGORIA,
-	 
-	 IDITERACAO,
-	 
-	 IDMODULO,
-	
-	 IDDTCRIACAO,
-	 
-	 IDHRCRIACAO,
-	 
-	 IDDTRESOLUCAO,
-	 
-	 IDHRRESOLUCAO,
-	 
-	 IDDTPRAZOSLA,
-	 
-	 IDHRPRAZOSLA,
-	 
-	 IDDTCRIACAOSAC,
-	 
-	 IDHRCRIACAOSAC,
-	 
-	 IDDTPREVISTA,
-	 
-	 IDHRPREVISTA,
-	 
-	 IDDTAPURACAO,
-	 
-	 IDPERFORMANCE,
-	 
-	 IDPERFORMANCEENCAMINHADA,
-	 
-	 IDORIUNDOREJEITE,
-	 
-	 IDSISTEMAORIGEM,
-	 
-	 IDSISTEMA,
-	 
-	 IDUSUARIOUX,
-	 
-	 IDUSUARIOPO,
-	 
-	 IDUSUARIOPM,
-	 
-	 IDVERTICALCHAMADO,
-	 
-	 IDUNIDADECHAMADO,
-	 
-	 IDEQUIPEUSUARIOEXCEL,
-	 
-	 IDCOMPLEXIDADE,
-	 
-	 IDSEVERIDADE,
-	 
-	 IDEQUIPEESPECIALISTA,
-	 
-	 QTBACKLOG,
-	
-	 DTCARGA
-	 
-FROM dwh.dbo.fChamadoBacklog;
-
-
-fChamadoEntrada Partition:
-	SELECT
-	 
-	 IDCHAMADO,
-	
-	 IDTESTER,
-	 
-	 IDTIPOCHAMADO,
-	 
-	 IDSTATUSCHAMADO,
-	 
-	 IDEQUIPECHAMADO,
-	 
-	 IDPRIORIDADE,
-	 
-	 IDUSUARIOCRIACAO,
-	 
-	 IDUSUARIOSOLUCAO,
-	 
-	 IDUSUARIOPROPRIETARIO,
-	 
-	 IDMODULOFUNCIONAL,
-	 
-	 IDCAUSARAIZ,
-	 
-	 IDPROJETO,
-	 
-	 IDFASECICLO,
-	 
-	 IDCLIENTE,
-	 
-	 IDPRIORIDADENEGOCIADA,
-	 
-	 IDSIMULADOBASEINTERNA,
-	 
-	 IDCATEGORIA,
-	 
-	 IDITERACAO,
-	 
-	 IDMODULO,
-	 
-	 IDDTCRIACAO,
-	 
-	 IDHRCRIACAO,
-	 
-	 IDDTRESOLUCAO,
-	 
-	 IDHRRESOLUCAO,
-	 
-	 IDDTPRAZOSLA,
-	 
-	 IDHRPRAZOSLA,
-	 
-	 IDDTCRIACAOSAC,
-	 
-	 IDHRCRIACAOSAC,
-	 
-	 IDDTPREVISTA,
-	 
-	 IDHRPREVISTA,
-	 
-	 IDDTAPURACAO,
-	 
-	 IDPERFORMANCE,
-	 
-	 IDPERFORMANCEENCAMINHADA,
-	 
-	 IDORIUNDOREJEITE,
-	 
-	 IDSISTEMAORIGEM,
-	 
-	 IDSISTEMA,
-	 
-	 IDUSUARIOUX,
-	 
-	 IDUSUARIOPO,
-	 
-	 IDUSUARIOPM,
-	 
-	 IDVERTICALCHAMADO,
-	 
-	 IDUNIDADECHAMADO,
-	 
-	 IDEQUIPEUSUARIOEXCEL,
-	 
-	 IDCOMPLEXIDADE,
-	 
-	 IDSEVERIDADE,
-	 
-	 IDEQUIPEESPECIALISTA,
-	 
-	 QTENTRADA,
-	 
-	 DTCARGA
-	 
-FROM dwh.dbo.fChamadoEntrada;
-
-
-fChamadoNegociado Partition:
-	SELECT
-	 * 
-FROM fChamadoNegociado;
-
-
-fChamadoSaida Partition:
-	SELECT
-	 
-	 IDCHAMADO,
-	
-	 IDTESTER,
-	 
-	 IDTIPOCHAMADO,
-	 
-	 IDSTATUSCHAMADO,
-	 
-	 IDEQUIPECHAMADO,
-	 
-	 IDPRIORIDADE,
-	 
-	 IDUSUARIOCRIACAO,
-	 
-	 IDUSUARIOSOLUCAO,
-	 
-	 IDUSUARIOPROPRIETARIO,
-	 
-	 IDMODULOFUNCIONAL,
-	 
-	 IDCAUSARAIZ,
-	 
-	 IDPROJETO,
-	 
-	 IDFASECICLO,
-	 
-	 IDCLIENTE,
-	 
-	 IDPRIORIDADENEGOCIADA,
-	 
-	 IDSIMULADOBASEINTERNA,
-	 
-	 IDCATEGORIA,
-	 
-	 IDITERACAO,
-	 
-	 IDMODULO,
-	 
-	 IDDTCRIACAO,
-	 
-	 IDHRCRIACAO,
-	 
-	 IDDTRESOLUCAO,
-	 
-	 IDHRRESOLUCAO,
-	 
-	 IDDTPRAZOSLA,
-	 
-	 IDHRPRAZOSLA,
-	 
-	 IDDTCRIACAOSAC,
-	 
-	 IDHRCRIACAOSAC,
-	 
-	 IDDTPREVISTA,
-	 
-	 IDHRPREVISTA,
-	 
-	 IDDTAPURACAO,
-	 
-	 IDPERFORMANCE,
-	 
-	 IDPERFORMANCEENCAMINHADA,
-	 
-	 IDORIUNDOREJEITE,
-	 
-	 IDSISTEMAORIGEM,
-	 
-	 IDSISTEMA,
-	 
-	 IDUSUARIOUX,
-	 
-	 IDUSUARIOPO,
-	 
-	 IDUSUARIOPM,
-	 
-	 IDVERTICALCHAMADO,
-	 
-	 IDUNIDADECHAMADO,
-	 
-	 IDEQUIPEUSUARIOEXCEL,
-	 
-	 IDCOMPLEXIDADE,
-	 
-	 IDSEVERIDADE,
-	 
-	 IDEQUIPEESPECIALISTA,
-	 
-	 QTSAIDA,
-	 
-	 DTCARGA
-	 
-FROM dwh.dbo.fChamadoSaida;
-
-
-fChamadoTempoMedio Partition:
-	SELECT
-	 
-	 IDCHAMADO,
-	
-	 IDSTATUSCHAMADOANTERIOR,
-	 
-	 IDSTATUSCHAMADOFUTURO,
-	 
-	 IDTIPOCHAMADO,
-	 
-	 IDEQUIPECHAMADO,
-	 
-	 IDCATEGORIA,
-	 
-	 IDCLIENTE,
-	 
-	 IDDTINICIOSTATUS,
-	 
-	 IDHRINICIOSTATUS,
-	 
-	 IDDTFINALSTATUS,
-	 
-	 IDHRFINALSTATUS,
-	 
-	 IDDTCRIACAO,
-	 
-	 IDHRCRIACAO,
-	 
-	 IDDTRESOLUCAO,
-	 
-	 IDHRRESOLUCAO,
-	 
-	 IDSISTEMAORIGEM,
-	 
-	 IDSISTEMA,
-	 
-	 IDVERTICALCHAMADO,
-	 
-	 IDUNIDADECHAMADO,
-	 
-	 IDPROJETO,
-	 
-	 QTTEMPOMEDIO,
-	 
-	 DTCARGA,
-	 
-	 IDDESENVOLVEDOR
-	 
-FROM dwh.dbo.fChamadoTempoMedio;
-
-
-dStatusChamado Partition:
-	SELECT
-	 
-	 IDSTATUSCHAMADO,
-	
-	 CDSTATUSCHAMADOAS Código Status Chamado
-	,
-	 DENOMEAS Status Chamado,
-	 
-FROM dwh.dbo.dstatuschamado;
-
-
-fChamadoBacklogZero Partition:
-	SELECT
-	 * 
-FROM fChamadoBacklogZero;
-
-
-dDesenvolvedor Partition:
-	SELECT
-	 
-	 IDUSUARIOAS IDDESENVOLVEDOR,
-	
-	 CDUSUARIOAS Código Desenvolvedor
-	,
-	 DENOMEAS Desenvolvedor
-	,
-	 DENOMEABVAS Desenvolvedor Abrev,
-	 
+-------------------------------------------------------------------------------
+-- Partition: dUsuarioPriorizado
+SELECT  IDUSUARIO ,
+ AS 'IDUSUARIOPRIORIZADO',
+ CDUSUARIO ,
+ AS 'Código Usuário',
+ DENOME ,
+ AS 'Usuário Priorizado',
+ DENOMEABV ,
+ AS 'Login' 
 FROM  dwh.dbo.dusuario;
 
-
-dTempoApuracao Partition:
-	SELECT
-	 
-	 IDDATA                     AS IDDTAPURACAO,
-	
-	 [DATA] AS Data Apuração
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANAAS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMESAS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANOAS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTREAS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTREAS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTREAS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                    AS Data Início Semana
-	,
-	 DTFIMSEMANA                                            AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
-
-
-dTempoCriacao Partition:
-	SELECT
-	 
-	 IDDATA                     AS IDDTCRIACAO,
-	
-	 [DATA] AS Data Criação
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANAAS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMESAS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANOAS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTREAS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTREAS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTREAS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                    AS Data Início Semana
-	,
-	 DTFIMSEMANA                                            AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
-
-
-dTempoCriacaoSAC Partition:
-	SELECT
-	 
-	 IDDATA                     AS IDDTCRIACAOSAC,
-	
-	 [DATA] AS Data Criação SAC
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANAAS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMESAS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANOAS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTREAS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTREAS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTREAS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                    AS Data Início Semana
-	,
-	 DTFIMSEMANA                                            AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
-
-
-dTempoFinalStatus Partition:
-	SELECT
-	 
-	 IDDATA                     AS IDDTFINALSTATUS,
-	
-	 [DATA] AS Data Final Status
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANAAS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMESAS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANOAS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTREAS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTREAS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTREAS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                    AS Data Início Semana
-	,
-	 DTFIMSEMANA                                            AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
-
-
-dTempoInicioStatus Partition:
-	SELECT
-	 
-	 IDDATA                     AS IDDTINICIOSTATUS,
-	
-	 [DATA] AS Data Início Status
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANAAS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMESAS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANOAS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTREAS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTREAS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTREAS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                    AS Data Início Semana
-	,
-	 DTFIMSEMANA                                            AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
-
-
-dTempoPrazoSLA Partition:
-	SELECT
-	 
-	 IDDATA                     AS IDDTPRAZOSLA,
-	
-	 [DATA] AS Data Prazo SLA
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANAAS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMESAS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANOAS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTREAS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTREAS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTREAS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                    AS Data Início Semana
-	,
-	 DTFIMSEMANA                                            AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
-
-
-dTempoPrevista Partition:
-	SELECT
-	
-	 IDDATAAS IDDTPREVISTA,
-	
-	 [DATA]                                       AS Data Prevista
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANAAS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMES AS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANOAS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTREAS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTREAS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTREAS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                               AS Data Início Semana
-	,
-	 DTFIMSEMANA                                        AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROMdwh.dbo.dtempo;
-
-
-dTempoResolucao Partition:
-	SELECT
-	 
-	 IDDATA                     AS IDDTRESOLUCAO,
-	
-	 [DATA] AS Data Resolução
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANAAS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMESAS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANOAS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTREAS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTREAS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTREAS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                    AS Data Início Semana
-	,
-	 DTFIMSEMANA                                            AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
-
-
-dTempoSolucao Partition:
-	SELECT
-	 
-	 IDDATA                     AS IDDTSOLUCAO,
-	
-	 [DATA] AS Data Solução
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANAAS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMESAS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANOAS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTREAS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTREAS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTREAS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                    AS Data Início Semana
-	,
-	 DTFIMSEMANA                                            AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
-
-
-dTempoPriorizado Partition:
-	SELECT
-	 
-	 IDDATA                     AS IDDTPRIORIZADO,
-	
-	 [DATA] AS Data Priorizado
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANAAS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMESAS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANOAS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTREAS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTREAS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTREAS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                    AS Data Início Semana
-	,
-	 DTFIMSEMANA                                            AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
-
-
-dTipoApontamento Partition:
-	SELECT
-	 
-	 IDTIPOAPONTAMENTO,
-	 
-	 CDTIPOAPONTAMENTOAS Código Tipo Apontamento
-	,
-	 DENOMEAS Tipo Apontamento,
-	 
-FROM dwh.dbo.dtipoapontamento;
-
-
-dSistema Partition:
-	SELECT
-	 
-	 IDSISTEMA,
-	
-	 CDSISTEMAAS Código Sistema
-	,
-	 DENOMEAS Sistema,
-	 
-FROM dwh.dbo.dsistema;
-
-
-dTempoApontamento Partition:
-	SELECT
-	
-	 IDDATA                               AS IDDATA,
-	
-	 [DATA]                                      AS Data Apontamento
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANA          AS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMES                                AS Número Semana Mês
-	,
-	 DESEMANAMESAS Semana por Extenso
-	,
-	 NUSEMANAANO                  AS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTRE                     AS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTRE                 AS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTRE                  AS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANA                                     AS Data Início Semana
-	,
-	 DTFIMSEMANA                          AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROMdwh.dbo.dtempo
-	 
-WHERE   EXISTS
-	 (
-	 SELECT
-	 
-	 TOP 1 1
-	 
-FROM dwh.dbo.fchamadoapontamento
-	 
-WHERELEFT( dwh.dbo.fchamadoapontamento.iddata,
-	 4 ) = LEFT( dwh.dbo.dtempo.iddata,
-	 4 )
-	 )
-
-
-fChamadoApontamentoPerfilSeguranca Partition:
-	SELECT
-	 * 
-FROM fChamadoApontamento;
-
-
-dModulo Partition:
-	SELECT
-	 
-	 IDMODULO,
-	
-	 DENOMEAS Módulo,
-	 
-FROM dwh.dbo.dmodulo;
-
-
-dPerformance Partition:
-	SELECT
-	 
-	 IDPERFORMANCE,
-	
-	 CDPERFORMANCE                AS Código Performance
-	,
-	 DENOMEAS Performance,
-	 
-FROM dwh.dbo.dperformance;
-
-
-dPerformanceEncaminhada Partition:
-	SELECT
-	 
-	 IDPERFORMANCEENCAMINHADA,
-	
-	 CDPERFORMANCEENCAMINHADA                                AS Código Performance Encaminhada
-	,
-	 DENOMEAS Performance Encaminhada,
-	 
-FROM dwh.dbo.dperformanceencaminhada;
-
-
-dOriundoRejeite Partition:
-	SELECT
-	 
-	 IDORIUNDOREJEITE,
-	
-	 CDORIUNDOREJEITE                AS Código Oriundo Rejeite
-		 DENOMEAS Oriundo Rejeite,
-	 
-FROM dwh.dbo.doriundorejeite;
-
-
-dEquipeUsuario Partition:
-	SELECT
-	 
-	 IDEQUIPEUSUARIO,
-	
-	 IDEQUIPEAS Código Equipe Usuário
-		 DEEQUIPEAS Equipe Usuário,
-	 
-FROM dwh.dbo.dequipeusuario;
-
-
-dCCustoUsuario Partition:
-	SELECT
-	 
-	 IDCCUSTOUSUARIO,
-	
-	 CDCCUSTOUSUARIOAS  Código Centro de Custo Usuário
-	,
-	 DECCUSTOUSUARIOAS  Centro de Custo Usuário,
-	 
-FROMdwh.dbo.dccustousuario;
-
-
-dTarefaSerp Partition:
-	SELECT
-	 
-	 IDTAREFASERP,
-	
-	 CDTAREFASERPAS Código Tarefa Serp
-	,
-	 DENOMEAS Tarefa Serp,
-	 
-FROM dwh.dbo.dtarefaserp;
-
-
-dProjetoSerp Partition:
-	SELECT
-	
-	 IDPROJETOSERP,
-	
-	 CDPROJETOSERP    AS Código Projeto Serp
-	,
-	 DENOME AS Nome Projeto Serp,
-	 
-FROM dwh.dbo.dprojetoserp;
-
-
-dSistemaOrigem Partition:
-	SELECT
-	 
-	 IDSISTEMAORIGEM,
-	
-	 DENOMEAS Sistema Origem,
-	 
-FROM dwh.dbo.dsistemaorigem;
-
-
-dIteracao Partition:
-	SELECT
-	 
-	 IDITERACAO,
-	
-	 CDITERACAOAS Código Iteração
-	,
-	 DENOMEAS Iteração,
-	 
-FROM dwh.dbo.diteracao;
-
-
-dEquipeUsuarioHist Partition:
-	SELECT
-	 
-	 IDEQUIPEUSUARIOHIST,
-	
-	 IDUSUARIOHIST                                      AS IDUSUARIOHIST,
-	 
-	 IDEQUIPEHIST                AS Código Equipe Usuário
-		 DEEQUIPEHISTAS Equipe Usuário
-		 dtinicioperiodo                AS Início Período
-	 	 dtfimperiodo AS Fim Período
-	 	 FLREGISTROATUALAS Flag Registro Atual,
-	 
-FROM dwh.dbo.dequipeusuariohist;
-
-
-fChamadoApontamentoIHT Partition:
-	SELECT
-	
-	 fchamadoapontamento.idusuario,
-	
-	 fchamadoapontamento.iddata,
-	
-	 fchamadoapontamento.idequipeusuariohist,
-	
-	 fchamadoapontamento.idequipeusuario,
-	
-	 fchamadoapontamento.IDTIPOENTREGA,
-	
-	 SUM( minutos / 60.00 ) / 8.00 AS IHT,
-	 
-FROM fchamadoapontamento
-	 GROUP BY
-	 fchamadoapontamento.idusuario,
-	
-	 fchamadoapontamento.iddata,
-	
-	 fchamadoapontamento.idequipeusuariohist,
-	
-	 fchamadoapontamento.idequipeusuario,
-	
-	                fchamadoapontamento.IDTIPOENTREGA;
-
-
-dEquipeChamado Partition:
-	SELECT
-	 
-	       IDEQUIPECHAMADO,
-	
-	       CDEQUIPEAS Código Equipe
-		       DENOMEAS Equipe
-	 -- stg.rivw_vw_team.team,
-	       DESIGLAAS Sigla Equipe
-	,
-	       URLIMAGEM1AS Imagem Quadrada
-	,
-	       URLIMAGEM2AS Imagem Redonda,
-	 
-FROM dwh.dbo.dequipechamado;
-
-
-dUsuarioCriacao Partition:
-	SELECT
-	
-	  IDUSUARIO AS IDUSUARIOCRIACAO
-	,
-	  CDUSUARIO AS Código Usuário
-	,
-	  DENOME AS Usuário Criação
-	,
-	  DENOMEABV AS Login	 
-FROM dwh.dbo.dusuario;
-
-
-dUsuarioPriorizado Partition:
-	SELECT
-	
-	  IDUSUARIO AS IDUSUARIOPRIORIZADO
-	,
-	  CDUSUARIO AS Código Usuário
-	,
-	  DENOME AS Usuário Priorizado
-	,
-	  DENOMEABV AS Login	 
-FROM dwh.dbo.dusuario;
-
-
-dUsuarioProprietario Partition:
-	SELECT
-	
-	  IDUSUARIO AS  IDUSUARIOPROPRIETARIO
-	,
-	  CDUSUARIO AS Código Usuário
-	,
-	  DENOME AS Usuário Proprietário
-	,
-	  DENOMEABV AS Login	 
-FROM dwh.dbo.dusuario;
-
-
-dUsuarioSolucao Partition:
-	SELECT
-	
-	  IDUSUARIO AS IDUSUARIOSOLUCAO
-	,
-	  CDUSUARIO AS Código Usuário
-	,
-	  DENOME AS Usuário Solução
-	,
-	  DENOMEABV AS Login	 
-FROM dwh.dbo.dusuario;
-
-
-dTempoPrazoPPF Partition:
-	SELECT
-	 
-	 IDDATA                                       AS IDDTPRAZOPPF,
-	
-	 [DATA]AS Data Prazo PPF
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANA             AS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMES                      AS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANO        AS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTRE            AS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTRE                   AS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTRE                AS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANAAS Data Início Semana
-	,
-	 DTFIMSEMANA AS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
-
-
-dTempoPrazoAnalise Partition:
-	SELECT
-	 
-	 IDDATA                                       AS IDDTPRAZOANALISE,
-	
-	 [DATA] AS Data Prazo Análise
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANA             AS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMES                      AS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANO        AS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTRE            AS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTRE                   AS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTRE                AS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANAAS Data Início Semana
-	,
-	 DTFIMSEMANAAS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
-
-
-dTempoPrazoEspecificacao Partition:
-	SELECT
-	 
-	 IDDATA                                       AS IDDTPRAZOESPECIFICACAO,
-	
-	 [DATA]AS Data Prazo Especificação
-	,
-	 CDDIAAS Código Dia
-	,
-	 CDANOAS Código Ano
-	,
-	 CDMESAS Código Mês
-	,
-	 DEMESAS Mês
-	,
-	 DEMESABVAS Mês Abrev
-	,
-	 CDPERIODOAS Código Período
-	,
-	 DEPERIODOAS Período
-	,
-	 CDDIASEMANA             AS Código Dia Semana
-	,
-	 DEDIASEMANAAS Dia Semana
-		 DEDIASEMANAABVAS Dia Semana Abrev
-	,
-	 NUSEMANAMES                      AS Número Semana Mês
-	,
-	 DESEMANAMESAS Descrição Semana Mês
-	,
-	 NUSEMANAANO        AS Número Semana Ano
-		 FLFIMSEMANAAS Flag Fim de Semana
-		 FLDIASEMANAAS Flag Dia de Semana
-	,
-	 FLFERIADOAS Flag Feriado
-	,
-	 CDBIMESTRE            AS Código Bimestre
-	,
-	 DEBIMESTREAS Bimestre
-	,
-	 CDTRIMESTREAS Código Trimestre
-	,
-	 DETRIMESTREAS Trimestre
-	,
-	 CDQUADRIMESTRE                   AS Código Quadrimestre
-	,
-	 DEQUADRIMESTREAS Quadrimestre
-	,
-	 CDSEMESTRE                AS Código Semestre
-	,
-	 DESEMESTREAS Semestre
-	,
-	 DTINICIOSEMANAAS Data Início Semana
-	,
-	 DTFIMSEMANAAS Data Fim Semana
-	,
-	 DEPERIODOSEMANAAS Período Semana,
-	 
-FROM dwh.dbo.dtempo;
-
-
-dUsuarioPO Partition:
-	SELECT
-	 
-	 IDUSUARIOAS IDUSUARIOPO
-	,
-	 CDUSUARIOAS Código Usuário
-	,
-	 DENOMEAS Usuário PO
-	,
-	 DENOMEABVAS Login,
-	 
-FROM dwh.dbo.dusuario;
-
-
-dUsuarioPM Partition:
-	SELECT
-	 
-	 IDUSUARIOAS IDUSUARIOPM
-	,
-	 CDUSUARIOAS Código Usuário
-	,
-	 DENOMEAS Usuário PM
-	,
-	 DENOMEABVAS Login,
-	 
-FROM dwh.dbo.dusuario;
-
-
-dUsuarioUX Partition:
-	SELECT
-	 
-	 IDUSUARIOAS IDUSUARIOUX
-	,
-	 CDUSUARIOAS Código Usuário
-	,
-	 DENOMEAS Usuário UX
-	,
-	 DENOMEABVAS Login,
-	 
-FROM dwh.dbo.dusuario;
-
-
-dUnidade Partition:
-	SELECT
-	 
-	 IDUNIDADE AS IDUNIDADECHAMADO
-	,
-	 CDUNIDADEAS Código Unidade
-	,
-	 DENOMEAS Unidade
-	,
-	 DESIGLAAS Sigla Unidade,
-	 
-FROM dwh.dbo.dunidade;
-
-
-dVertical Partition:
-	SELECT
-	 
-	 IDVERTICALAS IDVERTICALCHAMADO
-	,
-	 CDVERTICALAS Código Vertical
-	,
-	 DENOMEAS Vertical
-	,
-	 DESIGLAAS Sigla Vertical,
-	 
-FROM dwh.dbo.dvertical;
-
-
-dEquipeUsuarioExcel Partition:
-	SELECT
-	 
-	 IDEQUIPEUSUARIOEXCEL,
-	 
-	 IDDTAPURACAO,
-	 
-	 DENOMEUSUARIO                AS Usuário
-		 DENOMEEQUIPE                AS Equipe
-		 DESTATUSUSUARIOAS Status Usuário,
-	 
-FROM dwh.dbo.dequipeusuarioexcel;
-
-
-dTipoEntrega Partition:
-	SELECT
-	 
-	 IDTIPOENTREGA,
-	
-	 CDTIPOENTREGA                AS Código Tipo Entrega
-	,
-	 DENOMEAS Tipo Entrega,
-	 
-FROM dwh.dbo.dtipoentrega;
-
-
-dTipoConfiguracao Partition:
-	SELECT
-	 
-	 IDTIPOCONFIGURACAO,
-	
-	 CDTIPOCONFIGURACAO                AS Código Tipo Configuração
-	,
-	 DENOMEAS Tipo Configuração,
-	 
-FROM dwh.dbo.dtipoconfiguracao;
-
-
-dIncidenteCliente Partition:
-	SELECT
-	 
-	 IDINCIDENTECLIENTE,
-	 
-	 CDINCIDENTECLIENTE AS Código Incidente Cliente
-	,
-	 DENOME                 AS Incidente Cliente,
-	 
-FROM dwh.dbo.dincidentecliente;
-
-
-dComplexidade Partition:
-	SELECT
-	 
-	 IDCOMPLEXIDADE,
-	 
-	 CDCOMPLEXIDADE                AS Código Complexidade
-		 DENOMEAS Complexidade,
-	 
-FROM dwh.dbo.dComplexidade;
-
-
-dEquipeEspecialista Partition:
-	SELECT
-	 
-	 IDEQUIPEESPECIALISTA,
-	 
-	 CDEQUIPEESPECIALISTA             AS Código Equipe Especialista
-	,
-	 DENOME                                       AS Equipe Especialista,
-	 
-FROM dwh.dbo.dEquipeEspecialista;
-
-
-dSeveridade Partition:
-	SELECT
-	 
-	 IDSEVERIDADE,
-	
-	 CDSEVERIDADE                AS Código Severidade
-		 DENOMEAS Severidade,
-	 
-FROM dwh.dbo.dSeveridade;
-
+-------------------------------------------------------------------------------
+-- Partition: dUsuarioProprietario
+SELECT  IDUSUARIO ,
+ AS ' IDUSUARIOPROPRIETARIO',
+ CDUSUARIO ,
+ AS 'Código Usuário',
+ DENOME ,
+ AS 'Usuário Proprietário',
+ DENOMEABV ,
+ AS 'Login' 
+FROM  dwh.dbo.dusuario;
+
+-------------------------------------------------------------------------------
+-- Partition: dUsuarioSolucao
+SELECT  IDUSUARIO ,
+ AS 'IDUSUARIOSOLUCAO',
+ CDUSUARIO ,
+ AS 'Código Usuário',
+ DENOME ,
+ AS 'Usuário Solução',
+ DENOMEABV ,
+ AS 'Login' 
+FROM  dwh.dbo.dusuario;
+
+-------------------------------------------------------------------------------
+-- Partition: dTempoPrazoPPF
+SELECT
+IDDATA,
+ ,
+AS IDDTPRAZOPPF,
+[DATA],
+ AS 'Data Prazo PPF',
+CDDIA,
+ AS 'Código Dia',
+CDANO,
+ AS 'Código Ano',
+CDMES,
+ AS 'Código Mês',
+DEMES,
+ AS 'Mês',
+DEMESABV,
+AS 'Mês Abrev',
+CDPERIODO,
+AS 'Código Período',
+DEPERIODO,
+AS 'Período',
+CDDIASEMANA ,
+ AS 'Código Dia Semana',
+DEDIASEMANA,
+AS 'Dia Semana',
+DEDIASEMANAABV,
+AS 'Dia Semana Abrev',
+NUSEMANAMES,
+ AS 'Número Semana Mês',
+DESEMANAMES,
+AS 'Descrição Semana Mês',
+NUSEMANAANO,
+ AS 'Número Semana Ano',
+FLFIMSEMANA,
+AS 'Flag Fim de Semana',
+FLDIASEMANA,
+AS 'Flag Dia de Semana',
+FLFERIADO,
+AS 'Flag Feriado',
+CDBIMESTRE,
+ AS 'Código Bimestre',
+DEBIMESTRE,
+AS 'Bimestre',
+CDTRIMESTRE,
+AS 'Código Trimestre',
+DETRIMESTRE,
+AS 'Trimestre',
+CDQUADRIMESTRE ,
+AS 'Código Quadrimestre',
+DEQUADRIMESTRE,
+AS 'Quadrimestre',
+CDSEMESTRE,
+ AS 'Código Semestre',
+DESEMESTRE,
+AS 'Semestre',
+DTINICIOSEMANA,
+AS 'Data Início Semana',
+DTFIMSEMANA ,
+AS 'Data Fim Semana',
+DEPERIODOSEMANA,
+ AS 'Período Semana'
+FROM  dwh.dbo.dtempo;
+
+-------------------------------------------------------------------------------
+-- Partition: dTempoPrazoAnalise
+SELECT
+IDDATA,
+ ,
+AS IDDTPRAZOANALISE,
+[DATA],
+ ,
+AS 'Data Prazo Análise',
+CDDIA,
+ AS 'Código Dia',
+CDANO,
+ AS 'Código Ano',
+CDMES,
+ AS 'Código Mês',
+DEMES,
+ AS 'Mês',
+DEMESABV,
+AS 'Mês Abrev',
+CDPERIODO,
+AS 'Código Período',
+DEPERIODO,
+AS 'Período',
+CDDIASEMANA ,
+ AS 'Código Dia Semana',
+DEDIASEMANA,
+AS 'Dia Semana',
+DEDIASEMANAABV,
+AS 'Dia Semana Abrev',
+NUSEMANAMES,
+ AS 'Número Semana Mês',
+DESEMANAMES,
+AS 'Descrição Semana Mês',
+NUSEMANAANO,
+ AS 'Número Semana Ano',
+FLFIMSEMANA,
+AS 'Flag Fim de Semana',
+FLDIASEMANA,
+AS 'Flag Dia de Semana',
+FLFERIADO,
+AS 'Flag Feriado',
+CDBIMESTRE,
+ AS 'Código Bimestre',
+DEBIMESTRE,
+AS 'Bimestre',
+CDTRIMESTRE,
+AS 'Código Trimestre',
+DETRIMESTRE,
+AS 'Trimestre',
+CDQUADRIMESTRE ,
+AS 'Código Quadrimestre',
+DEQUADRIMESTRE,
+AS 'Quadrimestre',
+CDSEMESTRE,
+ AS 'Código Semestre',
+DESEMESTRE,
+AS 'Semestre',
+DTINICIOSEMANA,
+AS 'Data Início Semana',
+DTFIMSEMANA,
+AS 'Data Fim Semana',
+DEPERIODOSEMANA,
+ AS 'Período Semana'
+FROM  dwh.dbo.dtempo;
+
+-------------------------------------------------------------------------------
+-- Partition: dTempoPrazoEspecificacao
+SELECT
+IDDATA,
+ ,
+AS IDDTPRAZOESPECIFICACAO,
+[DATA],
+ AS 'Data Prazo Especificação',
+CDDIA,
+ AS 'Código Dia',
+CDANO,
+ AS 'Código Ano',
+CDMES,
+ AS 'Código Mês',
+DEMES,
+ AS 'Mês',
+DEMESABV,
+AS 'Mês Abrev',
+CDPERIODO,
+AS 'Código Período',
+DEPERIODO,
+AS 'Período',
+CDDIASEMANA ,
+ AS 'Código Dia Semana',
+DEDIASEMANA,
+AS 'Dia Semana',
+DEDIASEMANAABV,
+AS 'Dia Semana Abrev',
+NUSEMANAMES,
+ AS 'Número Semana Mês',
+DESEMANAMES,
+AS 'Descrição Semana Mês',
+NUSEMANAANO,
+ AS 'Número Semana Ano',
+FLFIMSEMANA,
+AS 'Flag Fim de Semana',
+FLDIASEMANA,
+AS 'Flag Dia de Semana',
+FLFERIADO,
+AS 'Flag Feriado',
+CDBIMESTRE,
+ AS 'Código Bimestre',
+DEBIMESTRE,
+AS 'Bimestre',
+CDTRIMESTRE,
+AS 'Código Trimestre',
+DETRIMESTRE,
+AS 'Trimestre',
+CDQUADRIMESTRE ,
+AS 'Código Quadrimestre',
+DEQUADRIMESTRE,
+AS 'Quadrimestre',
+CDSEMESTRE,
+ AS 'Código Semestre',
+DESEMESTRE,
+AS 'Semestre',
+DTINICIOSEMANA,
+AS 'Data Início Semana',
+DTFIMSEMANA,
+AS 'Data Fim Semana',
+DEPERIODOSEMANA,
+ AS 'Período Semana'
+FROM  dwh.dbo.dtempo;
+
+-------------------------------------------------------------------------------
+-- Partition: dUsuarioPO
+SELECT
+IDUSUARIO,
+ AS 'IDUSUARIOPO',
+CDUSUARIO,
+ AS 'Código Usuário',
+DENOME,
+AS 'Usuário PO',
+DENOMEABV,
+ AS 'Login'
+FROM  dwh.dbo.dusuario;
+
+-------------------------------------------------------------------------------
+-- Partition: dUsuarioPM
+SELECT
+IDUSUARIO,
+ AS 'IDUSUARIOPM',
+CDUSUARIO,
+ AS 'Código Usuário',
+DENOME,
+AS 'Usuário PM',
+DENOMEABV,
+ AS 'Login'
+FROM  dwh.dbo.dusuario;
+
+-------------------------------------------------------------------------------
+-- Partition: dUsuarioUX
+SELECT
+IDUSUARIO,
+ AS 'IDUSUARIOUX',
+CDUSUARIO,
+ AS 'Código Usuário',
+DENOME,
+AS 'Usuário UX',
+DENOMEABV,
+ AS 'Login'
+FROM  dwh.dbo.dusuario;
+
+-------------------------------------------------------------------------------
+-- Partition: dUnidade
+SELECT
+IDUNIDADE ,
+AS 'IDUNIDADECHAMADO',
+CDUNIDADE,
+AS 'Código Unidade',
+DENOME,
+ AS 'Unidade',
+DESIGLA,
+ AS 'Sigla Unidade'
+FROM  dwh.dbo.dunidade;
+
+-------------------------------------------------------------------------------
+-- Partition: dVertical
+SELECT
+IDVERTICAL,
+AS 'IDVERTICALCHAMADO',
+CDVERTICAL,
+AS 'Código Vertical',
+DENOME,
+ AS 'Vertical',
+DESIGLA,
+ AS 'Sigla Vertical'
+FROM  dwh.dbo.dvertical;
+
+-------------------------------------------------------------------------------
+-- Partition: dEquipeUsuarioExcel
+SELECT
+IDEQUIPEUSUARIOEXCEL,
+IDDTAPURACAO,
+DENOMEUSUARIO,
+AS 'Usuário',
+DENOMEEQUIPE,
+AS 'Equipe',
+DESTATUSUSUARIO,
+AS 'Status Usuário'
+FROM  dwh.dbo.dequipeusuarioexcel;
+
+-------------------------------------------------------------------------------
+-- Partition: dTipoEntrega
+SELECT
+IDTIPOENTREGA,
+CDTIPOENTREGA,
+AS 'Código Tipo Entrega',
+DENOME,
+AS 'Tipo Entrega'
+FROM  dwh.dbo.dtipoentrega;
+
+-------------------------------------------------------------------------------
+-- Partition: dTipoConfiguracao
+SELECT
+IDTIPOCONFIGURACAO,
+CDTIPOCONFIGURACAO,
+AS 'Código Tipo Configuração',
+DENOME,
+ AS 'Tipo Configuração'
+FROM  dwh.dbo.dtipoconfiguracao;
+
+-------------------------------------------------------------------------------
+-- Partition: dIncidenteCliente
+SELECT
+IDINCIDENTECLIENTE,
+CDINCIDENTECLIENTE,
+AS 'Código Incidente Cliente',
+DENOME,
+AS 'Incidente Cliente'
+FROM  dwh.dbo.dincidentecliente;
+
+-------------------------------------------------------------------------------
+-- Partition: dComplexidade
+SELECT
+IDCOMPLEXIDADE,
+CDCOMPLEXIDADE,
+AS 'Código Complexidade',
+DENOME,
+AS 'Complexidade'
+FROM  dwh.dbo.dComplexidade;
+
+-------------------------------------------------------------------------------
+-- Partition: dEquipeEspecialista
+SELECT
+IDEQUIPEESPECIALISTA,
+CDEQUIPEESPECIALISTAAS 'Código Equipe Especialista',
+DENOMEAS 'Equipe Especialista'
+FROM  dwh.dbo.dEquipeEspecialista;
+
+-------------------------------------------------------------------------------
+-- Partition: dSeveridade
+SELECT
+IDSEVERIDADE,
+CDSEVERIDADE,
+ AS 'Código Severidade',
+DENOME,
+ AS 'Severidade'
+FROM  dwh.dbo.dSeveridade;
 
