@@ -17,6 +17,7 @@ SQL Server Analysis Services (SSAS) features extensions.
 /_/    \__, //____/____/_/  |_/____/  
       /____/                        
 
+SQL Server Analysis Services with Python
 ```
 
 ## Features
