@@ -2,25 +2,43 @@ import json
 import os
 import pickle
 import re
+import sys
 from pathlib import Path
 
 
 def get_path_projects(path_olap: str):
     """
     :return:
-    ['C:\\Users\\bruno.moura\\projects\\automate-ssas-build\\examples/bi-project_name-olap',
-     'C:\\Users\\bruno.moura\\projects\\automate-ssas-build\\examples/bi-TWO-olap']
+    ['$HOME\\projects\\automate-ssas-build\\examples/bi-project_name-olap',
+     'C:\\Users\\Env:USER\\projects\\automate-ssas-build\\examples/bi-TWO-olap']
     """
     list_path_proj = []
     list_files = os.listdir(path_olap)
 
-    print(f'\nProjects OLAP found:')
+    print(f'Projects OLAP found:')
     for file in list_files:
         project_olap = os.path.join(path_olap + '/' + file).lower()
 
-        if file.endswith('olap') or file.startswith('bi') or file.startswith('ssas') or file.endswith('ssas'):
+        if file.endswith('olap') or file.endswith('olap') \
+           or file.startswith('bi') or file.endswith('bi') \
+           or file.startswith('ssas') or file.endswith('ssas'):
             list_path_proj.append(project_olap)
             print(project_olap)
+            
+    if './pyssas' in list_path_proj:
+        list_path_proj.clear()        
+        print(list_path_proj)
+
+        if len(list_path_proj) == 0:
+            print(
+                """
+                ************************************************************************************
+                !!! OLAP project NOT FOUND !!!\n
+                Check if is executing in folder what contains files .bim
+                Folder with SSAS project must start or end with: olap or bi or ssas\n
+                ************************************************************************************
+                """)
+            return sys.exit()
 
     return list_path_proj
 
@@ -37,7 +55,10 @@ def get_proj_name(path: str):
     for file in list_files:
         file = file.lower()
 
-        if file.endswith('olap') or file.startswith('bi') or file.startswith('ssas') or file.endswith('ssas'):
+
+        if file.endswith('olap') or file.endswith('olap') \
+           or file.startswith('bi') or file.endswith('bi') \
+           or file.startswith('ssas') or file.endswith('ssas'):
             list_olap_name.append(file)
             print(file)
 
@@ -47,8 +68,8 @@ def get_proj_name(path: str):
 def get_path_bim(list_path_proj: list):
     """
     :return:
-    C:\\Users\\bruno.moura\\projects\\automate-ssas-build\\examples/bi-project_name-olap/ssas_data_base_name.bim
-    C:\\Users\\bruno.moura\\projects\\automate-ssas-build\\examples/bi-TWO-olap/ssas_data_base_name.bim
+    C:\\Users\\$Env:USER\\projects\\automate-ssas-build\\examples/bi-project_name-olap/ssas_data_base_name.bim
+    C:\\Users\\$Env:USER\\projects\\automate-ssas-build\\examples/bi-TWO-olap/ssas_data_base_name.bim
     """
     list_path_bim = []
 
@@ -69,8 +90,8 @@ def create_directory(list_path_proj: list, dir_name: str):
     """
     :return:
     Directory created at
-    c:\\users\\bruno.moura\\projects\\automate-ssas-build\\examples/bi-project_name-olap/queries/
-    c:\\users\\bruno.moura\\projects\\automate-ssas-build\\examples/bi-two-olap/queries/
+    c:\\users\\$Env:USER\\projects\\automate-ssas-build\\examples/bi-project_name-olap/queries/
+    c:\\users\\$Env:USER\\projects\\automate-ssas-build\\examples/bi-two-olap/queries/
     """
     list_path_proj_with_dir = []
 
@@ -116,8 +137,8 @@ def write_changes_bim(bim_stream: str, path_bim: str):
 def get_path_pickle(path: str, name_project: str):
     """
     :return:
-        ['C:/Users/bruno.moura/projects/bi-indicadores/src/set_ssas/../tmp/BI-UNJ.pickle',
-        'C:/Users/bruno.moura/projects/bi-indicadores/src/set_ssas/../tmp/cols_BI-UNJ.pickle']
+        ['C:/Users/$Env:USER/projects/bi-indicadores/src/set_ssas/../tmp/BI-UNJ.pickle',
+        'C:/Users/$Env:USER/projects/bi-indicadores/src/set_ssas/../tmp/cols_BI-UNJ.pickle']
     """
 
     list_path_dict = []

@@ -5,6 +5,21 @@
 
 SQL Server Analysis Services (SSAS) features extensions.
 
+
+<img src="img/ssas.png" align="right" height=auto width=28%/>
+<img src="img/python.svg" align="left" height=auto width=15%/>
+
+```bash
+    ____        __________ ___   _____
+   / __ \__  __/ ___/ ___//   | / ___/
+  / /_/ / / / /\__ \\__ \/ /| | \__ \ 
+ / ____/ /_/ /___/ /__/ / ___ |___/ / 
+/_/    \__, //____/____/_/  |_/____/  
+      /____/                        
+
+Build and deploy SQL Server Analysis Services with Python
+```
+
 ## Features
 - MetaData Exporter
   - [x] Export queries from data source on  file `.sql`

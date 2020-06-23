@@ -44,7 +44,7 @@ def get_proj_name(path: str):
 def get_path_proj(path: str, olap_project_name: str):
     """
     :return:
-        ['C:\\Users\\bruno.moura\\projects\\bi-indicadores\\src\\set_ssas/../../olap/analysis_services/BI-.../']
+        ['C:\\Users\\$Env:USER\\projects\\bi-indicadores\\src\\set_ssas/../../olap/analysis_services/BI-.../']
     """
     list_path_proj = []
     list_files = os.listdir(path)
@@ -69,7 +69,7 @@ def get_path_proj(path: str, olap_project_name: str):
 def get_path_bim(list_path_proj: list):
     """
     :return:
-        ['C:\\Users\\bruno.moura\\projects\\bi-...\\src\\set_ssas/../../olap/analysis_services/BI-.../....bim']
+        ['C:\\Users\\$Env:USER\\projects\\bi-...\\src\\set_ssas/../../olap/analysis_services/BI-.../....bim']
     """
     list_path_bim = []
 
@@ -88,8 +88,8 @@ def get_path_bim(list_path_proj: list):
 def get_path_pickle(path: str, name_project: str):
     """
     :return:
-        ['C:/Users/bruno.moura/projects/bi-.../src/set_ssas/../tmp/BI-....pickle',
-        'C:/Users/bruno.moura/projects/bi-.../src/set_ssas/../tmp/cols_BI-....pickle']
+        ['C:/Users/$Env:USER/projects/bi-.../src/set_ssas/../tmp/BI-....pickle',
+        'C:/Users/$Env:USER/projects/bi-.../src/set_ssas/../tmp/cols_BI-....pickle']
     """
 
     list_path_dict = []
