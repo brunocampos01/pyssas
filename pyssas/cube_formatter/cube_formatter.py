@@ -48,7 +48,7 @@ if __name__ == "__main__":
                         required=True,
                         default='all',
                         help='Path where is bim file.'
-                             ' E.g: $Env:home\\projects\\analysis-services-features\\examples')
+                             ' E.g: $Env:home\\analysis-services-features\\examples')
 
     args = parser.parse_args()  # <class 'argparse.ArgumentParser'>
     path_olap = args.path_olap
