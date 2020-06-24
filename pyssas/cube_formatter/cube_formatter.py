@@ -2,12 +2,14 @@ import argparse
 import os
 import sys
 
+from pyssas.cube_formatter.set_params import *
+
+import config
+from utils.files import *
+
 here = os.path.abspath(os.path.dirname(__file__))
 path_outside = os.path.join(here + '/..')
 sys.path.insert(1, path_outside)
-import config
-from utils.files import *
-from pyssas.cube_formatter.set_params import *
 
 # Genaral
 folder_columns = config.CUBE_GENERAL_CONFIG['folder_columns']

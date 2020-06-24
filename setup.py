@@ -1,5 +1,7 @@
 import os
-from setuptools import find_packages  # get modules (pyssas) and submodules (cube_formatter, ...)
+
+from setuptools import \
+    find_packages  # get modules (pyssas) and submodules (cube_formatter, ...)
 from setuptools import setup
 
 try:  # for pip >= 10

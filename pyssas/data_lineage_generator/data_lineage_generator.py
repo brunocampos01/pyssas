@@ -2,13 +2,14 @@ import argparse
 import os
 import sys
 
+import config
+from map_olap_to_dw import *
+from set_lineage_cube import *
+from utils.files import *
+
 here = os.path.abspath(os.path.dirname(__file__))
 path_outside = os.path.join(here + '/..')
 sys.path.insert(1, path_outside)
-import config
-from utils.files import *
-from map_olap_to_dw import *
-from set_lineage_cube import *
 
 path_tmp = config.PATHS['tmp']
 path_dict = os.path.join(path_outside + path_tmp)
