@@ -7,7 +7,7 @@ path_outside = os.path.join(here + '/..')
 sys.path.insert(1, path_outside)
 import config
 from utils.files import *
-from set_params import *
+from pyssas.cube_formatter.set_params import *
 
 # Genaral
 folder_columns = config.CUBE_GENERAL_CONFIG['folder_columns']

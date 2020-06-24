@@ -11,7 +11,7 @@ PATHS = {
     'ssis': '/etl/ssis/',
     'ssas': '/olap/analysis_services/',
     'stored_procedures': 'stored_procedures/',
-    'tmp': '/tmp/'
+    'tmp': '/../tmp/'
 }
 
 CUBE_GENERAL_CONFIG = {

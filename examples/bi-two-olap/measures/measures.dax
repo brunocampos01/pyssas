@@ -1,0 +1,362 @@
+Meta Produtividade Individual :=
+	   8
+
+
+Usuário Nome :=
+	MID(USERNAME(), SEARCH("\\", USERNAME())	
+, 1 
+00)
+
+
+Usuário Logado :=
+	RIGHT([Usuário Nome];
+         (LEN([Usuário Nome])-1))
+
+
+Título - Seleção Cliente :=
+	   IF(HASONEFILTER(dCliente[Sigla Cliente]);
+     "CENÁRIO ➝ "&FILTERS(dCliente[Sigla Cliente]);
+     "SELECIONE O CLIENTE")
+
+
+Mês Corrente :=
+	MONTH(TODAY())
+
+
+Ano Corrente :=
+	YEAR(TODAY())
+
+
+Data e Horário Corrente :=
+	 NOW()
+
+
+Dia Corrente :=
+	DAY(TODAY())
+
+
+Aux Horas Apontadas no Mês :=
+	CALCULATE(SUM(fchamadoApontamento[Horas Apontadas]);
+               FILTER(dTempoApontamento, dTempoApontamento[Código Mês] == MONTH(TODAY()));
+               FILTER(dTempoApontamento,  dTempoApontamento[Código Ano] == YEAR(TODAY())))
+
+
+Soma Minutos :=
+	FORMAT(SUM([Minutos]), "Standard")
+
+
+Média Horas Apontadas :=
+	FORMAT(AVERAGE([Horas Apontadas]), "Standard")
+
+
+Soma Horas :=
+	FORMAT(SUM([Horas Apontadas]), "Standard")
+
+
+Média Minutos :=
+	AVERAGE([Minutos])
+
+
+Distinct Count IDUSUARIO :=
+	FORMAT(DISTINCTCOUNT(fChamadoApontamento[IDUSUARIO]), "Standard")
+
+
+Horas Potenciais :=
+	FORMAT( fChamadoApontamento[Distinct Count IDUSUARIO] * [Horas Úteis Mês], "Standard")
+
+
+Qtde Chamados Apontamento :=
+	 DISTINCTCOUNT([IDCHAMADO])
+
+
+Horas Apontadas Formatada :=
+	FORMAT(SUM([Horas Apontadas]), "Standard")
+
+
+Qtde Apontamento Formatada :=
+	FORMAT(SUM([Qtde Apontamento]), "Standard")
+
+
+Qtde Tarefa Projeto Serp :=
+	DISTINCTCOUNT([IDTAREFASERP])
+
+
+Qtde Projeto Serp :=
+	DISTINCTCOUNT([IDPROJETOSERP])
+
+
+Horas Apontadas no Mês :=
+	FORMAT( CALCULATE([Aux Horas Apontadas no Mês], ALL(dTempoApontamento)), "Standard")
+
+
+Aux Média Horas Apontadas no Mês :=
+	CALCULATE(AVERAGE(fChamadoApontamento[Média Horas Apontadas por Apontamento]);
+   FILTER(fChamadoApontamento, fChamadoApontamento[Média Horas Apontadas por Apontamento] > 0))
+
+
+Média Horas Apontadas no Mês :=
+	FORMAT( CALCULATE([Aux Média Horas Apontadas no Mês], ALL(dTempoApontamento)), "Standard")
+
+
+Qtde Backlog Consequência :=
+	   CALCULATE(COUNT(fChamadoBacklog[IDCHAMADO]);
+             FILTER(dTipoChamado, dTipoChamado[Tipo Chamado] = "Defeito Consequência"))
+
+
+Qtde A Vencer :=
+	   CALCULATE(SUM(fChamadoBacklog[SLA a Vencer]);
+             FILTER(dTipoChamado, dTipoChamado[Tipo Chamado] <> "Defeito Consequência"))  //1376 = Defeito Consequência
+
+
+Qtde Backlog :=
+	   CALCULATE(COUNT(fChamadoBacklog[IDCHAMADO]);
+             FILTER(dTipoChamado, dTipoChamado[Tipo Chamado] <> "Defeito Consequência"))  //1376 = Defeito Consequência
+
+
+Qtde Sem SLA :=
+	   CALCULATE(SUM(fChamadoBacklog[Sem SLA]);
+             FILTER(dTipoChamado, dTipoChamado[Tipo Chamado] <> "Defeito Consequência"))  //1376 = Defeito Consequência
+
+
+Qtde Vencidos :=
+	   CALCULATE(SUM(fChamadoBacklog[SLA Vencido]);
+             FILTER(dTipoChamado, dTipoChamado[Tipo Chamado] <> "Defeito Consequência"))  //1376 = Defeito Consequência
+
+
+Count of SLA a Vencer :=
+	COUNTA([SLA a Vencer])
+
+
+Qtde Rejeites Backlog :=
+	CALCULATE(COUNT(fChamadoBacklog[IDORIUNDOREJEITE]);
+       FILTER(fChamadoBacklog, fChamadoBacklog[IDORIUNDOREJEITE] = 1))
+
+
+Soma de IDORIUNDOREJEITE :=
+	SUM([IDORIUNDOREJEITE])
+
+
+Média Entradas - Diária :=
+	   ROUND([Qtde Entradas aux]/[Dias Úteis Mês Apuração]	
+, 1 
+)
+
+
+Média Entradas - Dias Úteis :=
+	   ROUND([Qtde Entradas aux]/[Dias Úteis Mês Apuração]	
+, 1 
+)
+
+
+Média Entradas - Mensal :=
+	   ROUND([Qtde Entradas aux]/[Meses Contabilizados]	
+, 1 
+)
+
+
+Qtde Entradas aux :=
+	   CALCULATE(COUNT(fChamadoEntrada[IDCHAMADO]);
+             FILTER(dTipoChamado, dTipoChamado[Tipo Chamado] <> "Defeito Consequência")) 
+
+
+Qtde Entradas Consequência :=
+	   CALCULATE(COUNT(fChamadoEntrada[IDCHAMADO]);
+             FILTER(dTipoChamado, dTipoChamado[Tipo Chamado] = "Defeito Consequência"))
+
+
+Qtde Entradas :=
+	   IF(ISBLANK([Qtde Entradas aux]);
+   0;
+   [Qtde Entradas aux])
+
+
+Qtde Entradas Chegaram com SLA Perdido :=
+	CALCULATE(SUM((fChamadoEntrada[SLA Venceu no Suporte])))
+
+
+Qtde Rejeites Abertura :=
+	CALCULATE(SUM(fChamadoEntrada[IDORIUNDOREJEITE]),  								 FILTER(fChamadoEntrada, fChamadoEntrada[IDORIUNDOREJEITE] = 1))
+
+
+Qtde Negociações :=
+	   COUNTROWS(fChamadoNegociado)
+
+
+Média Entregas Dev :=
+	   [Qtde Entregas]/fChamadoSaida[distinctcount_IDDTAPURACAO_dIFf_blank]
+
+
+Última Entrega :=
+	   CALCULATE(MAX(fChamadoSaida[Data e Horário IDDTRESOLUCAO]);
+             FILTER(dTipoChamado, dTipoChamado[Tipo Chamado] <> "Defeito Consequência"))
+
+
+Média Entregas - Mensal :=
+	   ROUND([Qtde Entregas]/[Meses Contabilizados], 0)
+
+
+Produtividade DEV :=
+	   [Qtde Entregas]/[Qtde Analistas]
+
+
+Produtividade Testers :=
+	   [Qtde Entregas]/[Qtde Testers]
+
+
+IAD :=
+	   IF([Qtde Entradas aux] > 0;
+       CALCULATE(DIVIDE([Qtde Entregas], [Qtde Entradas aux], 0));
+       [Qtde Entregas])
+
+
+SLA :=
+	   DIVIDE([Qtde Entregas No Prazo];
+         ([Qtde Entregas No Prazo] + [Qtde Entregas Fora Prazo]))
+
+
+Produtividade :=
+	   [Qtde Entregas]/[Qtde Analistas]
+
+
+Média Entregas - Diária :=
+	   ROUND([Qtde Entregas]/[Dias Úteis Mês Apuração], 0)
+
+
+Qtde Entregas :=
+	   CALCULATE(COUNT(fChamadoSaida[IDCHAMADO]);
+             FILTER(dTipoChamado, dTipoChamado[Tipo Chamado] <> "Defeito Consequência"))
+
+
+Qtde Dias Última Entrega :=
+	CALCULATE(DATEDIFF(MAX(fChamadoSaida[Data e Horário IDDTRESOLUCAO]), TODAY(), DAY);
+             FILTER(dTipoChamado, dTipoChamado[Tipo Chamado] <> "Defeito Consequência"))
+
+
+Qtde Analistas :=
+	   CALCULATE(DISTINCTCOUNT(fChamadoSaida[IDUSUARIOPROPRIETARIO]);
+             FILTER(dTipoChamado,dTipoChamado[Tipo Chamado] <> "Defeito Consequência"))
+
+
+Qtde Entregas No Prazo :=
+	   CALCULATE(COUNTROWS(fChamadoSaida);
+             FILTER(fChamadoSaida, fChamadoSaida[No Prazo]=1);
+             FILTER(dTipoChamado, dTipoChamado[Tipo Chamado] <> "Defeito Consequência"))
+
+
+Qtde Entregas Fora Prazo :=
+	   CALCULATE(COUNTROWS(fChamadoSaida);
+             FILTER(fChamadoSaida, fChamadoSaida[Fora Prazo] = 1);
+             FILTER(dTipoChamado, dTipoChamado[Tipo Chamado] <> "Defeito Consequência"))
+
+
+Qtde Entregas Consequência :=
+	   CALCULATE(COUNT(fChamadoSaida[IDCHAMADO]);
+             FILTER(dTipoChamado, dTipoChamado[Tipo Chamado] = "Defeito Consequência"))
+
+
+Qtde Testers :=
+	   CALCULATE(DISTINCTCOUNT(fChamadoSaida[IDTESTER]);
+             FILTER(dTipoChamado, dTipoChamado[Tipo Chamado] <> "Defeito Consequência")) // unsigned, null e \'\' como Não Informado
+
+
+Produtividade Mês :=
+	DIVIDE([Qtde Entregas], [Dias Úteis Mês Apuração])
+
+
+distinctcount_IDDTAPURACAO_diff_blank :=
+	calculate( distinctcount(fChamadoSaida[IDDTAPURACAO Manipulado]), fChamadoSaida[IDDTAPURACAO Manipulado] <> BLANK())// original', "// Dias Úteis Mês = CALCULATE(sum('dCalendário'[Fim de Semana]))", '
+
+
+Qtde Rejeites Entregues :=
+	CALCULATE(SUM(fChamadoSaida[IDORIUNDOREJEITE]),  								 FILTER(fChamadoSaida, fChamadoSaida[IDORIUNDOREJEITE] = 1))
+
+
+Soma Tempo Gasto :=
+	SUM([Tempo Gasto])
+
+
+Média Tempo Gasto Status :=
+	   CALCULATE(SUM(fChamadoTempoMedio[Tempo Gasto]) / [Qtde Itens Tempo Médio])
+
+
+Tempo Médio Solução :=
+	   AVERAGE(fChamadoTempoMedio[Tempo Gasto])
+
+
+Qtde Itens Tempo Médio :=
+	   DISTINCTCOUNT(fChamadoTempoMedio[IDCHAMADO])
+
+
+Contagem Distinta de Status Chamado :=
+	DISTINCTCOUNT([Status Chamado])
+
+
+Qtde Backlog Zero :=
+	   COUNTROWS(fChamadoBacklogZero)
+
+
+Meses Contabilizados :=
+	   CALCULATE(DISTINCTCOUNT(dTempoApuracao[Código Período]);
+               FILTER(dTempoApuracao, dTempoApuracao[Código Ano] >= 2017);
+               FILTER(dTempoApuracao, dTempoApuracao[Código Ano] < 2026))
+
+
+Dias Úteis Mês Apuração :=
+	CALCULATE(SUM(dTempoApuracao[Binário Flag Dia da Semana]);
+             FILTER(dTempoApuracao, dTempoApuracao[Código Ano] >= 2017);
+             FILTER(dTempoApuracao, dTempoApuracao[Data Apuração] < TODAY());
+             FILTER(dTempoApuracao, dTempoApuracao[Flag Feriado] = "N"))
+
+
+Semana Atual :=
+	WEEKNUM(TODAY())
+
+
+Próxima Semana :=
+	WEEKNUM(today())+1
+
+
+Horas Úteis Mês :=
+	[Dias Úteis Mês] * 8
+
+
+Dias Úteis Mês :=
+	CALCULATE(SUM(dTempoApontamento[Binário Flag Dia da Semana]);
+             FILTER(dTempoApontamento, dTempoApontamento[Código Ano] >= 2017);
+             FILTER(dTempoApontamento, dTempoApontamento[Data Apontamento] < TODAY());
+             FILTER(dTempoApontamento, dTempoApontamento[Flag Feriado] = "N"))
+
+
+Média Horas Apontadas no Mês fChamadoApontamentoPerfilSeguranca :=
+	CALCULATE(AVERAGE(fChamadoApontamento[Média Horas Apontadas por Apontamento]), ALL(fChamadoApontamento))
+
+
+Horas Apontadas no Mês fChamadoPerfilSeguranca :=
+	CALCULATE(SUM(fchamadoApontamento[Horas Apontadas]);
+             FILTER(dTempoApontamento,  dTempoApontamento[Código Mês] == MONTH(TODAY())), FILTER(dTempoApontamento,  dTempoApontamento[Código Ano] == YEAR(TODAY())))
+
+
+Soma Minutos fChamadoApontamentoPerfilSeguranca :=
+	SUM([Minutos])
+
+
+Média Horas Apontadas fChamadoApontamentoPerfilSeguranca :=
+	AVERAGE([Horas Apontadas - Origem])
+
+
+Soma Horas fChamadoApontamentoPerfilSeguranca :=
+	SUM([Horas Apontadas - Origem])
+
+
+Média Minutos fChamadoApontamentoPerfilSeguranca :=
+	AVERAGE([Minutos])
+
+
+Horas Potenciais fChamadoApontamentoPerfilSeguranca :=
+	fChamadoApontamento[Distinct Count IDUSUARIO] * [Horas Úteis Mês]
+
+
+Qtde Chamados Apontamento fChamadoApontamentoPerfilSeguranca :=
+	DISTINCTCOUNT([IDCHAMADO])
+
+

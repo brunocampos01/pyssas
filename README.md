@@ -150,15 +150,31 @@ In these cases above is shows that a common configuration is made to all but whe
 
 
 ### FEATURE: Data Lineage Generator
-...
-
+Em development
 
 ## Running
 1. Clone this repository
-```sh
-git clone https://github.com/brunocampos01/challenge-keyrus
-cd challenge-keyrus
+```bash
+git clone https://github.com/brunocampos01/pyssas/
+cd pyssas/
 ```
+
+2. Insert DB config
+- Open pyssas/config.py and change database configuration.
+
+3. Compile
+```bash
+cd ..
+python3 setup.py install
+```
+
+4. Test
+```bash
+cd examples/
+pyssas --func data_lineage_generator
+```
+
+
 
 ##### NOTES
 This scripts capture informations of file `.bim`

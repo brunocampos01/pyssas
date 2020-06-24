@@ -182,7 +182,7 @@ def create_dax_file(list_elements: list, list_name_elements: list,
                             .replace("', '", '') \
                             .replace("(        ", '(') \
                             .replace("[' ", '') \
-                            .replace(", 1", '\t\n, 1\n') \
+                            .replace(", 1", '\t\n, 1 \n') \
                             .replace(' & "/" &', '\n\t& "/" &\n') \
                             .replace(")<=", ') <= ') \
                             .replace('\\t', '') \
@@ -214,11 +214,7 @@ def create_queries_file(list_queries: list, list_name_queries: list,
                             .replace('DWH', 'dwh') \
                             .replace('DBO', 'dbo') \
                             .replace('STG', 'stg') \
-                            .replace('select ', 'SELECT\n') \
-                            .replace('SELECT\'', 'SELECT ') \
-                            .replace('SELECT ', 'SELECT\n\t') \
-                            .replace('SELECT\n\t,', 'SELECT') \
-                            .replace('SELECT \'', 'SELECT\n\t') \
+                            .replace('select ', 'SELECT') \
                             .replace('from', '\nFROM') \
                             .replace('FROM', '\nFROM') \
                             .replace('where', '\nWHERE') \
@@ -246,7 +242,7 @@ def create_queries_file(list_queries: list, list_name_queries: list,
                             .replace('left outer', 'LEFT OUTER')\
                             .replace('timestamp', 'TIMESTAMP') \
                             .replace('  ', '') \
-                            .replace('1\'', '1') \
+                            .replace('1\'', ' 1 ') \
                             .replace('[\'', '') \
                             .replace('\']', '') \
                             .replace('"', '') \
@@ -255,15 +251,36 @@ def create_queries_file(list_queries: list, list_name_queries: list,
                             .replace('"', '') \
                             .replace(',\',', ',') \
                             .replace(',  AS', ' AS') \
+                            .replace('1AS', '1 AS') \
                             .replace(',  AS', ' AS') \
                             .replace(',  AS', ' AS') \
                             .replace(',,AS', ' AS') \
                             .replace(', AS', ' AS') \
                             .replace(', , ', ',') \
+                            .replace(',,', ', ') \
+                            .replace(',,', ', ') \
+                            .replace('  ', ' ') \
+                            .replace(', AS', ' AS') \
+                            .replace('SELECT ', 'SELECT\n\t') \
+                            .replace('	 \' ', '	 ') \
+                            .replace('	 \'', '	 ') \
+                            .replace('	 , ', '	 ') \
+                            .replace(', ', ',') \
+                            .replace(',', ',\n\t') \
+                            .replace('AS\'', 'AS \'') \
+                            .replace('	,', '') \
+                            .replace('	,', '') \
+                            .replace("DTCARGA\'", 'DTCARGA') \
+                            .replace("FROM ,'", 'FROM') \
+                            .replace("SELECT',", 'SELECT') \
+                            .replace("FROM,", 'FROM') \
                             .replace('"', '')) # tree comma
 
                 # apply regex
                 str_file = re.sub(r"\t  '", "",
+                                  str_file,
+                                  flags=re.MULTILINE)
+                str_file = re.sub(r",\n	 AS", " AS",
                                   str_file,
                                   flags=re.MULTILINE)
                 str_file = re.sub(r"\t'", "\n",
@@ -281,15 +298,12 @@ def create_queries_file(list_queries: list, list_name_queries: list,
                 str_file = re.sub(r",\n", ",\n",
                                   str_file,
                                   flags=re.MULTILINE)
-                str_file = re.sub(r"SELECT\n", "SELECT\n",
-                                  str_file,
-                                  flags=re.MULTILINE)
                 str_file = re.sub(r"'\nWHERE", "\nWHERE ",
                                   str_file,
                                   flags=re.MULTILINE)
-                str_file = re.sub(r"FROM", "FROM ",
-                                  str_file,
-                                  flags=re.MULTILINE)
+                # str_file = re.sub(r".\',", "",
+                #                   str_file,
+                #                   flags=re.MULTILINE)
                 str_file = re.sub(r"\n,", "",
                                   str_file,
                                   flags=re.MULTILINE)
