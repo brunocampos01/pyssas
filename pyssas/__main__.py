@@ -31,10 +31,6 @@ def main():
         subprocess.call(f"python3 {path_cube_formatter}/cube_formatter.py --path_olap .",
             shell=True)
 
-    elif func == 'deploy':
-        path_cube_formatter = os.path.abspath(HERE + '/cube_formatter/') 
-        os.system(f'python3 {path_cube_formatter}/metadata_exporter.py')
-
     elif func == 'data_lineage_generator':
         path_cube_formatter = os.path.abspath(HERE + '/data_lineage_generator/') 
         os.system(f'python3 {path_cube_formatter}/data_lineage_generator.py --path_olap .')

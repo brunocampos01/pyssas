@@ -28,7 +28,7 @@ SQL Server Analysis Services with Python
 - Cube Formatter
   - [x] General parameters in tables, columns, calculated columns and measures
   - [x] Configure PK parameter in columns start `ID` and handler exceptions 
-  - [x] Automate build and deploy 
+  - [ ] Automated deploy 
 - Data Lineage Generator (in development)
   - By Table
     - [x] Create data lineage (data warehouse -> analysis services)
@@ -40,20 +40,18 @@ SQL Server Analysis Services with Python
     - [ ] Create data lineage (stage -> data warehouse)
     - [ ] Create data lineage (data source -> stage)
     - [ ] Create data lineage (data source -> stage -> data warehouse -> analysis services)
-
+- [ ] dynamic configuration
 
 
 ## Requirements
 
 - SSAS: compatibility level: tabular 1200
-
-- Project SSAS name must contains uma destas palavras:
+- Project SSAS name must contains one of these words:
   - ssas
   - bi
   - olap
   - tabular
-  
-- Python 3.8 or more<br/>
+- Python 3.7 or more<br/>
 ```sh
 sudo apt-get install Python3
 ```
@@ -85,6 +83,7 @@ To create dynamic documentation about the Business Intelligence project I decide
   - [measures](examples/bi-project_name-olap/measures)
   - [calculated columns](examples/bi-project_name-olap/calculated_cols)
   - [queries from data source](examples/bi-project_name-olap/queries)
+
 With this feature you can enter a job in an ETL system that runs the `pyssas --func metadata_exporter` and thus update the documentation every time the ETL process is executed.
 
 #### Usage
@@ -94,6 +93,11 @@ pyssas --func metadata_exporter
 ```
 As output 3 directories (queries, measures and calculated_cols) will be created within the *path_olap*.
 
+#### Test
+```bash
+cd examples/
+pyssas --func metadata_exporter
+```
 
 ### :star: FEATURE: `cube_formatter`
 I created these scripts to ensure standardized and fully **replicable OLAP projects**. This way we are able to create projects from scratch with a basic structure and identify with other SSIS projects.
@@ -141,9 +145,13 @@ cd examples/
 pyssas --func cube_formatter
 ```
 
-#### Add list_table_exceptions or list_col_exceptions to not formatt
-Open the file [config.py](pyssas/config.py) and add expections in `EXCEPTIONS_PK_CONFIG`
+#### Personal Configuration
+- Change properties folder_columns, folder_measures, folder_calculated_columns and summarize
+  - Open the file [config.py](pyssas/config.py) and add expections in `CUBE_GENERAL_CONFIG`
+- Add list_table_exceptions or list_col_exceptions to not formatt
+  - Open the file [config.py](pyssas/config.py) and add expections in `EXCEPTIONS_PK_CONFIG`
 
+**NOTE:** the next feature this project must need config.py by SSAS project. This do will the module work with dynamic configuration. 
 
 ### :star: FEATURE: Data Lineage Generator
 Em development

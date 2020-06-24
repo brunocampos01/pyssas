@@ -21,6 +21,7 @@ def get_path_projects(path_olap: str):
 
         if file.endswith('olap') or file.endswith('olap') \
            or file.startswith('bi') or file.endswith('bi') \
+           or file.startswith('tabular') or file.endswith('tabular') \
            or file.startswith('ssas') or file.endswith('ssas'):
             list_path_proj.append(project_olap)
             print(project_olap)
@@ -58,6 +59,7 @@ def get_proj_name(path: str):
 
         if file.endswith('olap') or file.endswith('olap') \
            or file.startswith('bi') or file.endswith('bi') \
+           or file.startswith('tabular') or file.endswith('tabular') \
            or file.startswith('ssas') or file.endswith('ssas'):
             list_olap_name.append(file)
             print(file)
