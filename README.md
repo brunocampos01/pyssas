@@ -1,4 +1,4 @@
-# PySSAS :star:
+# PySSAS 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/210d4a617a3d4411bab1d3618cafca89)](https://app.codacy.com/app/brunocampos01/becoming-a-python-expert?utm_source=github.com&utm_medium=referral&utm_content=brunocampos01/becoming-a-python-expert&utm_campaign=Badge_Grade_Dashboard)
 ![License](https://img.shields.io/badge/Code%20License-MIT-blue.svg)
 [![Python 3.8](https://img.shields.io/badge/python-3.7-yellow.svg)](https://www.python.org/downloads/release/python-371/)
@@ -29,7 +29,7 @@ SQL Server Analysis Services with Python
   - [x] General parameters in tables, columns, calculated columns and measures
   - [x] Configure PK parameter in columns start `ID` and handler exceptions 
   - [x] Automate build and deploy 
-- Data Lineage Generator
+- Data Lineage Generator (in development)
   - By Table
     - [x] Create data lineage (data warehouse -> analysis services)
     - [ ] Create data lineage (stage -> data warehouse)
@@ -44,6 +44,15 @@ SQL Server Analysis Services with Python
 
 
 ## Requirements
+
+- SSAS: compatibility level: tabular 1200
+
+- Project SSAS name must contains uma destas palavras:
+  - ssas
+  - bi
+  - olap
+  - tabular
+  
 - Python 3.8 or more<br/>
 ```sh
 sudo apt-get install Python3
@@ -69,56 +78,30 @@ pip3 install -r requirements.txt
 sudo apt-get install git
 ```
 
-- SSAS
-  - Compatibility level: 1200
+---
 
+### :star: FEATURE: `metadata_exporter`
+To create dynamic documentation about the Business Intelligence project I decided to extract the information from:
+  - [measures](examples/bi-project_name-olap/measures)
+  - [calculated columns](examples/bi-project_name-olap/calculated_cols)
+  - [queries from data source](examples/bi-project_name-olap/queries)
+With this feature you can enter a job in an ETL system that runs the `pyssas --func metadata_exporter` and thus update the documentation every time the ETL process is executed.
 
-### FEATURE: MetaData Exporter
-- To create dynamic documentation about the Business Intelligence project I decided to extract the information from:
-  - measures
-  - calculated columns
-  - queries from data source
-
-With this feature you can enter a job in an ETL system that runs the `metadata_exporter.py` and thus update the documentation every time the ETL process is executed.
-
-#### Doc
+#### Usage
 ```bash
-python .\metadata_exporter.py -h
-
-usage: metadata_exporter.py [-h] --path_olap PATH_OLAP
-
-Get metadata in cube
-
-optional arguments:
-  -h, --help            show this help message and exit
-  --path_olap PATH_OLAP
-                        Path where is bim file. E.g: $Env:home\projects\analysis-services-features\examples
-```
-
-#### Quickstart
-```
-python .\metadata_exporter.py --path_olap $Env:home\projects\analysis-services-features\examples
+cd <project_ssas>
+pyssas --func metadata_exporter
 ```
 As output 3 directories (queries, measures and calculated_cols) will be created within the *path_olap*.
 
 
-### FEATURE: Cube Builder
-
-#### Doc
-```bash
-
-```
-
-#### Quickstart
-```
-python .\cube_builder.py --path_olap $Env:home\\projects\\analysis-services-features\\examples
-```
-
-
-### Motivation
-I created these scripts to ensure standardized and fully replicable OLAP projects. This way we are able to create projects from scratch with a basic structure and identify with other SSIS projects.
+### :star: FEATURE: `cube_formatter`
+I created these scripts to ensure standardized and fully **replicable OLAP projects**. This way we are able to create projects from scratch with a basic structure and identify with other SSIS projects.
 <br/>
-In addition, we have the great advantage of having the whole project documented through the code itself, demosntrando until the particularities of each case, for example:
+In addition, we have the great advantage of having the whole **project documented through the code itself**.
+<br/>
+Example:
+- In these cases bellow is shows that a common configuration is made to all but when it is a column that starts with the name `ID` different rules will apply.
 
 ```python
             # ----- COLS: general params -----
@@ -139,46 +122,44 @@ In addition, we have the great advantage of having the whole project documented 
                 data['model']['tables'][table]['columns'][col]['formatString'] = '#,0'
                 data['model']['tables'][table]['columns'][col]['dataType'] = 'int64'
                 data['model']['tables'][table]['columns'][col]['isHidden'] = 'true'
-                data['model']['tables'][table]['columns'][col]['isNullable'] = 'fals
+                data['model']['tables'][table]['columns'][col]['isNullable'] = 'false
 ```
-In these cases above is shows that a common configuration is made to all but when it is a column that starts with the name `ID` different rules will apply.
 
-- Um grande problema que enfrentei com o build do SSAS foi ter que repetir várias vezes asgumas confugurações. Por exemplo, em colunas PK, preciso configurar alguns parâmetros. Infelizmente no Visual Studio (SSDT) não há suporte para processos em lote.
-- Havia casos que precisa configurar as mesmas propriedades para colunas especificas, por exemplo, garantir que colunas com o nome de `URL` sejam do tipo webUrl. Toda vez que adicionava uma dimensão no cubo tinha q ficar procurando essas propriedades específicas, que me fazia perder muuuuuuuito tempo. Agora, o que faço é executar o script de set e pronto, as propriedades são aplicadas.
-- Outro fato q me motivou foi não depender do Visual Studio (SSDT). Agora consigo trabalhar em qualquer IDE e logo não tenho mais a dependencia de ter que trabalhar no Windows.
+- A big problem I faced with building the SSAS was having to repeat several times the some confurations. For example, in PK columns, I need to configure some parameters. Unfortunately in Visual Studio (SSDT) there is no support for batch processes.
+- There were cases that you need to configure the same properties for specific columns, for example, make sure that columns named `URL` are of type webUrl. Every time I added a dimension to the cube I had to keep looking for those specific properties, which made me lose a lot of time. Now, what I do is run the set script and that's it, the properties are applied.
+- Another fact that motivated me was not to depend on Visual Studio (SSDT). Now I can work in any IDE and soon I don't have the dependency of having to work in Windows anymore.
+
+#### Usage
+```bash
+cd <project_ssas>
+pyssas --func cube_formatter
+```
+
+#### Test
+```bash
+cd examples/
+pyssas --func cube_formatter
+```
+
+#### Add list_table_exceptions or list_col_exceptions to not formatt
+Open the file [config.py](pyssas/config.py) and add expections in `EXCEPTIONS_PK_CONFIG`
 
 
-
-### FEATURE: Data Lineage Generator
+### :star: FEATURE: Data Lineage Generator
 Em development
 
-## Running
-1. Clone this repository
-```bash
-git clone https://github.com/brunocampos01/pyssas/
-cd pyssas/
-```
-
-2. Insert DB config
-- Open pyssas/config.py and change database configuration.
-
-3. Compile
-```bash
-cd ..
-python3 setup.py install
-```
-
-4. Test
+#### Test
 ```bash
 cd examples/
 pyssas --func data_lineage_generator
 ```
 
+#### Add DATABASE_CONFIG to validate Lineage
+Open the file [config.py](pyssas/config.py) and add configuration your database in `DATABASE_CONFIG`
 
 
 ##### NOTES
 This scripts capture informations of file `.bim`
-
 
 ---
 

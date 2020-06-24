@@ -22,10 +22,10 @@ CUBE_GENERAL_CONFIG = {
 }
 
 EXCEPTIONS_PK_CONFIG = {
-    'list_cols_exceptions': {"IDHR,"
-                             " IDUSUARIOHIST,"
-                             " IDDTAPURACAO Manipulado,"
-                             " IDDTAPURACAO"},
+    'list_cols_exceptions': {'IDHR,'
+                             'IDUSUARIOHIST,'
+                             'IDDTAPURACAO Manipulado,'
+                             'IDDTAPURACAO'},
     'list_tables_exceptions': {'f',
                                'fact',
                                'dTempo',
