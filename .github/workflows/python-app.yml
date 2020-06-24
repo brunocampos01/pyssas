@@ -39,4 +39,3 @@ jobs:
         # sort the whole project
         isort --recursive .
         
-        run black .
