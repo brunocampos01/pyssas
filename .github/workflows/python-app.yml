@@ -16,7 +16,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: psf/black@stable    
     - name: Set up Python 3.8
       uses: actions/setup-python@v2
       with:
@@ -38,4 +37,6 @@ jobs:
         
         # sort the whole project
         isort --recursive .
+        
+        black .
         
