@@ -9,6 +9,7 @@ from sty import fg, bg, ef, rs
 f = Figlet(font='slant')
 HERE = os.path.abspath(os.path.dirname(__file__))
 
+
 def main():    
     parser = argparse.ArgumentParser(description='\cube_formatter --path_olap <PATH>'
                                                  '\ncube'
@@ -23,8 +24,7 @@ def main():
     func = args.func
 
     print(f.renderText('PySSAS'))
-    msg = ef.italic + 'Build and deploy SQL Server Analysis Services with Python\n ----- \n' + rs.italic
-    print(msg)
+    print('Build and deploy SQL Server Analysis Services with Python\n ----- \n')
 
     if 'cube_formatter' in func:
         path_cube_formatter = os.path.abspath(HERE + '/cube_formatter/')

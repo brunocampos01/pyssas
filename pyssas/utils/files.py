@@ -13,33 +13,13 @@ def get_path_projects(path_olap: str):
      'C:\\Users\\Env:USER\\projects\\automate-ssas-build\\examples/bi-TWO-olap']
     """
     list_path_proj = []
-    list_files = os.listdir(path_olap)
 
-    print(f'Projects OLAP found:')
-    for file in list_files:
-        project_olap = os.path.join(path_olap + '/' + file).lower()
+    for root, dirs, files in os.walk(path_olap):
+        for file in files:
 
-        if file.endswith('olap') or file.endswith('olap') \
-           or file.startswith('bi') or file.endswith('bi') \
-           or file.startswith('tabular') or file.endswith('tabular') \
-           or file.startswith('ssas') or file.endswith('ssas'):
-            list_path_proj.append(project_olap)
-            print(project_olap)
-            
-    if './pyssas' in list_path_proj:
-        list_path_proj.clear()        
-        print(list_path_proj)
-
-        if len(list_path_proj) == 0:
-            print(
-                """
-                ************************************************************************************
-                !!! OLAP project NOT FOUND !!!\n
-                Check if is executing in folder what contains files .bim
-                Folder with SSAS project must start or end with: olap or bi or ssas\n
-                ************************************************************************************
-                """)
-            return sys.exit()
+            if file.endswith(".bim"):
+                project_olap = os.path.join(root)
+                list_path_proj.append(project_olap)
 
     return list_path_proj
 
@@ -62,7 +42,6 @@ def get_proj_name(path: str):
            or file.startswith('tabular') or file.endswith('tabular') \
            or file.startswith('ssas') or file.endswith('ssas'):
             list_olap_name.append(file)
-            print(file)
 
     return list_olap_name
 
@@ -77,13 +56,15 @@ def get_path_bim(list_path_proj: list):
 
     print(f'\nBim file found:')
     for project in list_path_proj:
-        list_files = os.listdir(project)
 
-        for file in list_files:
-            if file.endswith('.bim'):
-                bim_path = os.path.join(project + '/' + file)
-                list_path_bim.append(bim_path)
-                print(bim_path)
+        for root, dirs, files in os.walk(project):
+            for file in files:
+
+                if file.endswith(".bim"):
+                    project_olap = os.path.join(root + '/' + file)
+                    list_path_bim.append(project_olap)
+                    print(project_olap)
+
 
     return list_path_bim
 

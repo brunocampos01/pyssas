@@ -147,9 +147,9 @@ pyssas --func cube_formatter
 
 #### Personal Configuration
 - Change properties folder_columns, folder_measures, folder_calculated_columns and summarize
-  - Open the file [config.py](pyssas/config.py) and add expections in `CUBE_GENERAL_CONFIG`
+  - Open the file [config.py](pyssas/config.py) and add in `CUBE_GENERAL_CONFIG`
 - Add list_table_exceptions or list_col_exceptions to not formatt
-  - Open the file [config.py](pyssas/config.py) and add expections in `EXCEPTIONS_PK_CONFIG`
+  - Open the file [config.py](pyssas/config.py) and add in `EXCEPTIONS_PK_CONFIG`
 
 **NOTE:** the next feature this project must need config.py by SSAS project. This do will the module work with dynamic configuration. 
 
