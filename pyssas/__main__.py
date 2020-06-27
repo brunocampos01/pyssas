@@ -1,12 +1,8 @@
 import argparse
 import os
 import subprocess
-
-
-
-
-
 from pyfiglet import Figlet
+
 from pyssas.cube_formatter.cube_formatter import *
 
 f = Figlet(font='slant')

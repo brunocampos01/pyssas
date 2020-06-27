@@ -77,238 +77,238 @@ Período Atual :=
 
 
 Ano IDDATA :=
-	MID(fChamadoApontamento[IDDATA]	
+	MID(factRegistry[IDDATA]	
 , 1 
 , 4)
 
 
 Mês IDDATA :=
-	MID(fChamadoApontamento[IDDATA], 5, 2)
+	MID(factRegistry[IDDATA], 5, 2)
 
 
 Data IDDATA :=
-	DATEVALUE(MID(fChamadoApontamento[IDDATA];
+	DATEVALUE(MID(factRegistry[IDDATA];
            1, 4)
 	& "/" &
-        MID(fChamadoApontamento[IDDATA];
+        MID(factRegistry[IDDATA];
            5, 2) 
 	& "/" &
-       MID(fChamadoApontamento[IDDATA];
+       MID(factRegistry[IDDATA];
            7, 2)    )
 
 
-Média Horas Apontadas por Apontamento :=
+Média Horas Apontadas por Registry :=
 	   IF(AND([Ano IDDATA] == YEAR(TODAY()), [Mês IDDATA] == MONTH(TODAY()));
-       fChamadoApontamento[Horas Apontadas];
+       factRegistry[Horas Apontadas];
        0)
 
 
-Qtde Apontamento :=
+Qtde Registry :=
 	1
 
 
 Prazo SLA Formatado :=
-	IF(fChamadoArtefatoEvolucao[Data IDDTPRAZOSLA] == DATEVALUE("01/01/1900");
-                       BLANK(),                        fChamadoArtefatoEvolucao[Data IDDTPRAZOSLA])
+	IF(factArtefatoEvolucao[Data IDDTPRAZOSLA] == DATEVALUE("01/01/1900");
+                       BLANK(),                        factArtefatoEvolucao[Data IDDTPRAZOSLA])
 
 
 Data IDDTPRAZOSLA :=
-	DATEVALUE(    MID(fChamadoArtefatoEvolucao[IDDTPRAZOSLA];
+	DATEVALUE(    MID(factArtefatoEvolucao[IDDTPRAZOSLA];
                1, 4)
 	& "/" &
-            MID(fChamadoArtefatoEvolucao[IDDTPRAZOSLA];
+            MID(factArtefatoEvolucao[IDDTPRAZOSLA];
                5, 2) 
 	& "/" &
-           MID(fChamadoArtefatoEvolucao[IDDTPRAZOSLA];
+           MID(factArtefatoEvolucao[IDDTPRAZOSLA];
                7, 2)        )
 
 
 SLA Vencido :=
-	IF(fChamadoBacklog[Data e Horário IDDTPRAZOSLA] = DATEVALUE("01/01/1900");
-   0,              IF(fChamadoBacklog[IDDTAPURACAO é: Ano e Mês Corrente];
-       IF(fChamadoBacklog[Data e Horário IDDTPRAZOSLA] >= dTempo[Data e Horário Corrente];
+	IF(factBacklog[Data e Horário IDDTPRAZOSLA] = DATEVALUE("01/01/1900");
+   0,              IF(factBacklog[IDDTAPURACAO é: Ano e Mês Corrente];
+       IF(factBacklog[Data e Horário IDDTPRAZOSLA] >= dTempo[Data e Horário Corrente];
            0;
            1);
-       IF(fChamadoBacklog[Data e Horário IDDTPRAZOSLA] >= [Data e Horário IDDTAPURACAO];
+       IF(factBacklog[Data e Horário IDDTPRAZOSLA] >= [Data e Horário IDDTAPURACAO];
            0;
            1)    ) )
 
 
 Sem SLA :=
-	IF(fChamadoBacklog[Data e Horário IDDTPRAZOSLA] = DATEVALUE("01/01/1900");
+	IF(factBacklog[Data e Horário IDDTPRAZOSLA] = DATEVALUE("01/01/1900");
    1;
    0)
 
 
 SLA a Vencer :=
-	     IF(fChamadoBacklog[Data e Horário IDDTPRAZOSLA] = DATEVALUE("01/01/1900");
+	     IF(factBacklog[Data e Horário IDDTPRAZOSLA] = DATEVALUE("01/01/1900");
        0;
-       IF(fChamadoBacklog[IDDTAPURACAO é: Ano e Mês Corrente];
-           IF(fChamadoBacklog[Data e Horário IDDTPRAZOSLA] >= dTempo[Data e Horário Corrente];
+       IF(factBacklog[IDDTAPURACAO é: Ano e Mês Corrente];
+           IF(factBacklog[Data e Horário IDDTPRAZOSLA] >= dTempo[Data e Horário Corrente];
                1;
                0);
-           IF(fChamadoBacklog[Data e Horário IDDTPRAZOSLA] >= [Data e Horário IDDTAPURACAO];
+           IF(factBacklog[Data e Horário IDDTPRAZOSLA] >= [Data e Horário IDDTAPURACAO];
                1;
                0)        )    )
 
 
 Data e Horário IDDTAPURACAO :=
-	DATEVALUE(MID(fChamadoBacklog[IDDTAPURACAO];
+	DATEVALUE(MID(factBacklog[IDDTAPURACAO];
            1, 4)
 	& "/" &
-        MID(fChamadoBacklog[IDDTAPURACAO];
+        MID(factBacklog[IDDTAPURACAO];
            5, 2) 
 	& "/" &
-       MID(fChamadoBacklog[IDDTAPURACAO];
+       MID(factBacklog[IDDTAPURACAO];
            7, 2)    )
 
 
 Data e Horário IDDTPRAZOSLA :=
-	   MID(fChamadoBacklog[IDDTPRAZOSLA];
+	   MID(factBacklog[IDDTPRAZOSLA];
        1, 4)
 	& "/" &
-    MID(fChamadoBacklog[IDDTPRAZOSLA];
+    MID(factBacklog[IDDTPRAZOSLA];
        5,2) 
 	& "/" &
-   MID(fChamadoBacklog[IDDTPRAZOSLA];
-       7, 2) & " "&   fChamadoBacklog[IDHRPRAZOSLA]
+   MID(factBacklog[IDDTPRAZOSLA];
+       7, 2) & " "&   factBacklog[IDHRPRAZOSLA]
 
 
 Tipo SLA :=
-	IF(fChamadoBacklog[Data e Horário IDDTPRAZOSLA] = DATEVALUE("01/01/1900");
+	IF(factBacklog[Data e Horário IDDTPRAZOSLA] = DATEVALUE("01/01/1900");
    "Sem SLA";
-   IF(AND(MONTH(fChamadoBacklog[Data e Horário IDDTAPURACAO]) = MONTH(TODAY());
-           fChamadoBacklog[Data e Horário IDDTAPURACAO] >= TODAY());
+   IF(AND(MONTH(factBacklog[Data e Horário IDDTAPURACAO]) = MONTH(TODAY());
+           factBacklog[Data e Horário IDDTAPURACAO] >= TODAY());
        "SLA a Vencer";
-       IF(AND(MONTH(fChamadoBacklog[Data e Horário IDDTAPURACAO]) <> MONTH(TODAY());
-           fChamadoBacklog[Data e Horário IDDTPRAZOSLA] >= fChamadoBacklog[Data e Horário IDDTAPURACAO]);
+       IF(AND(MONTH(factBacklog[Data e Horário IDDTAPURACAO]) <> MONTH(TODAY());
+           factBacklog[Data e Horário IDDTPRAZOSLA] >= factBacklog[Data e Horário IDDTAPURACAO]);
        "SLA a Vencer";
        "SLA Vencido")    ))
 
 
 Prazo SLA Formatado :=
-	IF(fChamadoBacklog[Data e Horário IDDTPRAZOSLA] == DATEVALUE("01/01/1900");
+	IF(factBacklog[Data e Horário IDDTPRAZOSLA] == DATEVALUE("01/01/1900");
                        BLANK();
-                       fChamadoBacklog[Data e Horário IDDTPRAZOSLA])
+                       factBacklog[Data e Horário IDDTPRAZOSLA])
 
 
 Data e Horário IDDTPREVISTA :=
-	   MID(fChamadoBacklog[IDDTPREVISTA];
+	   MID(factBacklog[IDDTPREVISTA];
            1, 4)
 	& "/" &
-        MID(fChamadoBacklog[IDDTPREVISTA];
+        MID(factBacklog[IDDTPREVISTA];
            5, 2) 
 	& "/" &
-       MID(fChamadoBacklog[IDDTPREVISTA];
-           7, 2) & " "&   fChamadoBacklog[IDHRPREVISTA]
+       MID(factBacklog[IDDTPREVISTA];
+           7, 2) & " "&   factBacklog[IDHRPREVISTA]
 
 
 IDDTAPURACAO é: Ano e Mês Corrente :=
-	['IF( AND(MONTH(fChamadoBacklog[Data e Horário IDDTAPURACAO]) = dTempo[Mês Corrente],                       YEAR(fChamadoBacklog[Data e Horário IDDTAPURACAO]) = dTempo[Ano Corrente]), TRUE(), FALSE())
+	['IF( AND(MONTH(factBacklog[Data e Horário IDDTAPURACAO]) = dTempo[Mês Corrente],                       YEAR(factBacklog[Data e Horário IDDTAPURACAO]) = dTempo[Ano Corrente]), TRUE(), FALSE())
 
 
 Data e Horário IDDTCRIACAO :=
-	MID(fChamadoBacklog[IDDTCRIACAO];
+	MID(factBacklog[IDDTCRIACAO];
            1, 4)
 	& "/" &
-    MID(fChamadoBacklog[IDDTCRIACAO];
+    MID(factBacklog[IDDTCRIACAO];
            5, 2) 
 	& "/" &
-    MID(fChamadoBacklog[IDDTCRIACAO];
-           7, 2) & " "&   fChamadoBacklog[IDHRCRIACAO]
+    MID(factBacklog[IDDTCRIACAO];
+           7, 2) & " "&   factBacklog[IDHRCRIACAO]
 
 
 Data e Horário IDDTCRIACAOSAC :=
-	   MID(fChamadoBacklog[IDDTCRIACAOSAC];
+	   MID(factBacklog[IDDTCRIACAOSAC];
            1, 4)
 	& "/" &
-        MID(fChamadoBacklog[IDDTCRIACAOSAC];
+        MID(factBacklog[IDDTCRIACAOSAC];
            5, 2) 
 	& "/" &
-       MID(fChamadoBacklog[IDDTCRIACAOSAC];
+       MID(factBacklog[IDDTCRIACAOSAC];
            7, 2)
 
 
 Idade Backlog :=
-	DATEDIFF(fChamadoBacklog[Data e Horário IDDTCRIACAOSAC], [Data e Horário Corrente], DAY)
+	DATEDIFF(factBacklog[Data e Horário IDDTCRIACAOSAC], [Data e Horário Corrente], DAY)
 
 
 Data IDDTPRAZOSLA :=
-	   DATEVALUE(MID(fChamadoEntrada[IDDTPRAZOSLA];
+	   DATEVALUE(MID(factInput[IDDTPRAZOSLA];
            1, 4)
 	& "/" &
-        MID(fChamadoEntrada[IDDTPRAZOSLA];
+        MID(factInput[IDDTPRAZOSLA];
            5, 2) 
 	& "/" &
-       MID(fChamadoEntrada[IDDTPRAZOSLA];
+       MID(factInput[IDDTPRAZOSLA];
            7, 2)    )
 
 
 Prazo SLA Formatado :=
-	IF(fChamadoEntrada[Data IDDTPRAZOSLA] == DATEVALUE("01/01/1900");
+	IF(factInput[Data IDDTPRAZOSLA] == DATEVALUE("01/01/1900");
                        BLANK();
-                       fChamadoEntrada[Data IDDTPRAZOSLA])
+                       factInput[Data IDDTPRAZOSLA])
 
 
 SLA Venceu no Suporte :=
-	   IF(fChamadoEntrada[Data IDDTPRAZOSLA] == DATEVALUE("01/01/1900");
+	   IF(factInput[Data IDDTPRAZOSLA] == DATEVALUE("01/01/1900");
        0;
-       IF(fChamadoEntrada[Data IDDTPRAZOSLA] <= fChamadoEntrada[Data IDDTCRIACAO];
+       IF(factInput[Data IDDTPRAZOSLA] <= factInput[Data IDDTCRIACAO];
            1;
            0)        ) 
 
 
 Data IDDTCRIACAO :=
-	   DATEVALUE(MID(fChamadoEntrada[IDDTCRIACAO];
+	   DATEVALUE(MID(factInput[IDDTCRIACAO];
            1, 4)
 	& "/" &
-        MID(fChamadoEntrada[IDDTCRIACAO];
+        MID(factInput[IDDTCRIACAO];
            5, 2) 
 	& "/" &
-       MID(fChamadoEntrada[IDDTCRIACAO];
+       MID(factInput[IDDTCRIACAO];
            7, 2)    )
 
 
 Data IDDTCRIACAOSAC :=
-	   MID(fChamadoEntrada[IDDTCRIACAOSAC];
+	   MID(factInput[IDDTCRIACAOSAC];
            1, 4)
 	& "/" &
-        MID(fChamadoEntrada[IDDTCRIACAOSAC];
+        MID(factInput[IDDTCRIACAOSAC];
            5, 2) 
 	& "/" &
-       MID(fChamadoEntrada[IDDTCRIACAOSAC];
+       MID(factInput[IDDTCRIACAOSAC];
            7, 2)
 
 
 Tempo Suporte Aux :=
-	DATEDIFF(fChamadoEntrada[Data IDDTCRIACAOSAC Tratado Valores Nulos], fChamadoEntrada[Data IDDTCRIACAO],DAY)
+	DATEDIFF(factInput[Data IDDTCRIACAOSAC Tratado Valores Nulos], factInput[Data IDDTCRIACAO],DAY)
 
 
 Data IDDTCRIACAOSAC Tratado Valores Nulos :=
-	IF(OR(OR(fChamadoEntrada[Data IDDTCRIACAOSAC] == DATEVALUE("01/01/1900"), (fChamadoEntrada[Data IDDTCRIACAOSAC] == DATEVALUE("02/01/1900"))), fChamadoEntrada[Data IDDTCRIACAOSAC] > [Data e Horário Corrente]);
+	IF(OR(OR(factInput[Data IDDTCRIACAOSAC] == DATEVALUE("01/01/1900"), (factInput[Data IDDTCRIACAOSAC] == DATEVALUE("02/01/1900"))), factInput[Data IDDTCRIACAOSAC] > [Data e Horário Corrente]);
                       BLANK();
-                       fChamadoEntrada[Data IDDTCRIACAOSAC]) // desta forma sempre retorna um valor negativo. Depois trato em outra medida
+                       factInput[Data IDDTCRIACAOSAC]) // desta forma sempre retorna um valor negativo. Depois trato em outra medida
 
 
 Tempo Suporte :=
-	IF(fChamadoEntrada[Tempo Suporte Aux] > 0, fChamadoEntrada[Tempo Suporte Aux], 0)
+	IF(factInput[Tempo Suporte Aux] > 0, factInput[Tempo Suporte Aux], 0)
 
 
 Data IDDTPRAZOSLA :=
-	   DATEVALUE(MID(fChamadoNegociado[IDDTPRAZOSLA];
+	   DATEVALUE(MID(factNegociado[IDDTPRAZOSLA];
            1, 4)
 	& "/" &
-        MID(fChamadoNegociado[IDDTPRAZOSLA];
+        MID(factNegociado[IDDTPRAZOSLA];
            5, 2) 
 	& "/" &
-       MID(fChamadoNegociado[IDDTPRAZOSLA];
+       MID(factNegociado[IDDTPRAZOSLA];
            7, 2)    )
 
 
 Prazo SLA Formatado :=
-	IF(fChamadoNegociado[Data IDDTPRAZOSLA] == DATEVALUE("01/01/1900");
+	IF(factNegociado[Data IDDTPRAZOSLA] == DATEVALUE("01/01/1900");
                        BLANK();
-                       fChamadoNegociado[Data IDDTPRAZOSLA])
+                       factNegociado[Data IDDTPRAZOSLA])
 
 
 Tipo Negociação :=
@@ -316,7 +316,7 @@ Tipo Negociação :=
        "#NEGOCIADOSPOC";
        IF(SEARCH("#negociadoaustralia", RELATED(dChamado[tag]),BLANK()) > 0;
            "#NEGOCIADOAUSTRALIA";
-           IF(fChamadoNegociado[IDFASECICLO] = 12;
+           IF(factNegociado[IDFASECICLO] = 12;
                "#ULTIMAMILHA";
                IF(SEARCH("#prioridademaxima", RELATED(dChamado[tag]),BLANK()) > 0;
                    "#PRIORIDADE MÁXIMA";
@@ -337,51 +337,51 @@ Entregue Cliente :=
 
 
 Data e Horário IDDTRESOLUCAO :=
-	       MID(fChamadoSaida[IDDTRESOLUCAO];
+	       MID(factOutput[IDDTRESOLUCAO];
            1, 4)
 	& "/" &
-        MID(fChamadoSaida[IDDTRESOLUCAO];
+        MID(factOutput[IDDTRESOLUCAO];
            5, 2) 
 	& "/" &
-       MID(fChamadoSaida[IDDTRESOLUCAO];
+       MID(factOutput[IDDTRESOLUCAO];
            7, 2) & " "&        [IDHRRESOLUCAO]
 
 
 No Prazo :=
-	   IF(fChamadoSaida[Data IDDTPRAZOSLA] = DATEVALUE("01/01/1900");
+	   IF(factOutput[Data IDDTPRAZOSLA] = DATEVALUE("01/01/1900");
        1;
-       IF(fChamadoSaida[IDFASECICLO] = 5;
+       IF(factOutput[IDFASECICLO] = 5;
            1;
-           IF(fChamadoSaida[IDFASECICLO] = 11;
+           IF(factOutput[IDFASECICLO] = 11;
                1;
-               IF(fChamadoSaida[IDFASECICLO] = 19;
+               IF(factOutput[IDFASECICLO] = 19;
                    1;
-                   IF(fChamadoSaida[Data e Horário IDDTRESOLUCAO] <= fChamadoSaida[Data IDDTPRAZOSLA];
+                   IF(factOutput[Data e Horário IDDTRESOLUCAO] <= factOutput[Data IDDTPRAZOSLA];
                        1;
                        0)                )            )        )     )
 
 
 Fora Prazo :=
-	IF(fChamadoSaida[No Prazo]=1, 0	
+	IF(factOutput[No Prazo]=1, 0	
 , 1 
 )
 
 
 Data IDDTPRAZOSLA :=
-	       MID(fChamadoSaida[IDDTPRAZOSLA];
+	       MID(factOutput[IDDTPRAZOSLA];
            1, 4)
 	& "/" &
-        MID(fChamadoSaida[IDDTPRAZOSLA];
+        MID(factOutput[IDDTPRAZOSLA];
            5, 2) 
 	& "/" &
-       MID(fChamadoSaida[IDDTPRAZOSLA];
+       MID(factOutput[IDDTPRAZOSLA];
            7, 2) & " "&    [IDHRPRAZOSLA]
 
 
 Prazo SLA Formatado :=
-	IF(fChamadoSaida[Data IDDTPRAZOSLA] == DATEVALUE("01/01/1900");
+	IF(factOutput[Data IDDTPRAZOSLA] == DATEVALUE("01/01/1900");
                        BLANK();
-                       fChamadoSaida[Data IDDTPRAZOSLA])
+                       factOutput[Data IDDTPRAZOSLA])
 
 
 IDDTAPURACAO Manipulado :=
@@ -389,185 +389,185 @@ IDDTAPURACAO Manipulado :=
 
 
 Data e Horário IDDTCRIACAOSAC :=
-	   MID(fChamadoSaida[IDDTCRIACAOSAC];
+	   MID(factOutput[IDDTCRIACAOSAC];
            1, 4)
 	& "/" &
-        MID(fChamadoSaida[IDDTCRIACAOSAC];
+        MID(factOutput[IDDTCRIACAOSAC];
            5, 2) 
 	& "/" &
-       MID(fChamadoSaida[IDDTCRIACAOSAC];
+       MID(factOutput[IDDTCRIACAOSAC];
            7, 2)
 
 
 Tempo Solução Aux :=
-	DATEDIFF(fChamadoSaida[Data IDDTCRIACAOSAC com Vazio], fChamadoSaida[Data e Horário IDDTRESOLUCAO], DAY)
+	DATEDIFF(factOutput[Data IDDTCRIACAOSAC com Vazio], factOutput[Data e Horário IDDTRESOLUCAO], DAY)
 
 
 Data IDDTCRIACAOSAC :=
-	   DATEVALUE(MID(fChamadoSaida[IDDTCRIACAOSAC];
+	   DATEVALUE(MID(factOutput[IDDTCRIACAOSAC];
            1, 4)
 	& "/" &
-        MID(fChamadoSaida[IDDTCRIACAOSAC];
+        MID(factOutput[IDDTCRIACAOSAC];
            5, 2) 
 	& "/" &
-       MID(fChamadoSaida[IDDTCRIACAOSAC];
+       MID(factOutput[IDDTCRIACAOSAC];
            7, 2)    )
 
 
 Data IDDTCRIACAOSAC com Vazio :=
-	IF(OR(OR(fChamadoSaida[Data IDDTCRIACAOSAC] == DATEVALUE("01/01/1900"), (fChamadoSaida[Data IDDTCRIACAOSAC] == DATEVALUE("02/01/1900"))), fChamadoSaida[Data e Horário IDDTCRIACAOSAC] > [Data e Horário Corrente]);
+	IF(OR(OR(factOutput[Data IDDTCRIACAOSAC] == DATEVALUE("01/01/1900"), (factOutput[Data IDDTCRIACAOSAC] == DATEVALUE("02/01/1900"))), factOutput[Data e Horário IDDTCRIACAOSAC] > [Data e Horário Corrente]);
                       TODAY();
-                       fChamadoSaida[Data IDDTCRIACAOSAC]) // desta forma sempre retorna um valor negativo. Depois trato em outra medida
+                       factOutput[Data IDDTCRIACAOSAC]) // desta forma sempre retorna um valor negativo. Depois trato em outra medida
 
 
 Data IDDTRESOLUCAO :=
-	       MID(fChamadoSaida[IDDTRESOLUCAO];
+	       MID(factOutput[IDDTRESOLUCAO];
            1, 4)
 	& "/" &
-        MID(fChamadoSaida[IDDTRESOLUCAO];
+        MID(factOutput[IDDTRESOLUCAO];
            5, 2) 
 	& "/" &
-       MID(fChamadoSaida[IDDTRESOLUCAO];
+       MID(factOutput[IDDTRESOLUCAO];
            7, 2)
 
 
 Tempo Solução :=
-	IF(fChamadoSaida[Tempo Solução Aux] > 0, fChamadoSaida[Tempo Solução Aux], 0)
+	IF(factOutput[Tempo Solução Aux] > 0, factOutput[Tempo Solução Aux], 0)
 
 
 Tempo Gasto :=
 	IF(CALCULATE(SUM(dTempo[Binário Flag Dia da Semana]);
                            DATESBETWEEN(dTempo[Data];
-                                       fChamadoTempoMedio[Data IDDTINICIOSTATUS];
-                                       fChamadoTempoMedio[Data IDDTFINALSTATUS])) = 0;
+                                       factTempoMedio[Data IDDTINICIOSTATUS];
+                                       factTempoMedio[Data IDDTFINALSTATUS])) = 0;
                0;
                CALCULATE(SUM(dTempo[Binário Flag Dia da Semana]);
                            DATESBETWEEN(dTempo[Data];
-                                       fChamadoTempoMedio[Data IDDTINICIOSTATUS];
-                                       fChamadoTempoMedio[Data IDDTFINALSTATUS])) - 1)
+                                       factTempoMedio[Data IDDTINICIOSTATUS];
+                                       factTempoMedio[Data IDDTFINALSTATUS])) - 1)
 
 
 Data IDDTINICIOSTATUS :=
-	   DATEVALUE(MID(fChamadoTempoMedio[IDDTINICIOSTATUS];
+	   DATEVALUE(MID(factTempoMedio[IDDTINICIOSTATUS];
            1, 4)
 	& "/" &
-        MID(fChamadoTempoMedio[IDDTINICIOSTATUS];
+        MID(factTempoMedio[IDDTINICIOSTATUS];
            5, 2) 
 	& "/" &
-       MID(fChamadoTempoMedio[IDDTINICIOSTATUS];
+       MID(factTempoMedio[IDDTINICIOSTATUS];
            7, 2)    )
 
 
 Data IDDTFINALSTATUS :=
-	   DATEVALUE(MID(fChamadoTempoMedio[IDDTFINALSTATUS];
+	   DATEVALUE(MID(factTempoMedio[IDDTFINALSTATUS];
            1, 4)
 	& "/" &
-        MID(fChamadoTempoMedio[IDDTFINALSTATUS];
+        MID(factTempoMedio[IDDTFINALSTATUS];
            5, 2) 
 	& "/" &
-       MID(fChamadoTempoMedio[IDDTFINALSTATUS];
+       MID(factTempoMedio[IDDTFINALSTATUS];
            7, 2)    )
 
 
 Diferença Dias Status :=
-	DATEDIFF(fChamadoTempoMedio[Data IDDTINICIOSTATUS], fChamadoTempoMedio[Data IDDTFINALSTATUS], DAY)
+	DATEDIFF(factTempoMedio[Data IDDTINICIOSTATUS], factTempoMedio[Data IDDTFINALSTATUS], DAY)
 
 
 dstatuschamado_status_chamado :=
-	LOOKUPVALUE(dStatusChamado[Status Chamado], dStatusChamado[IDSTATUSCHAMADO], fChamadoTempoMedio[IDSTATUSCHAMADOANTERIOR])
+	LOOKUPVALUE(dStatusChamado[Status Chamado], dStatusChamado[IDSTATUSCHAMADO], factTempoMedio[IDSTATUSCHAMADOANTERIOR])
 
 
 Agrupador de Status :=
-	IF(fChamadoTempoMedio[dstatuschamado_status_chamado] = "New";
+	IF(factTempoMedio[dstatuschamado_status_chamado] = "New";
        "Backlog";
-       IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="Ready for Dev";
+       IF(factTempoMedio[dstatuschamado_status_chamado]="Ready for Dev";
            "Backlog";
-           IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="Backlog";
+           IF(factTempoMedio[dstatuschamado_status_chamado]="Backlog";
                "Backlog";
-               IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="Ag CodIFicação";
+               IF(factTempoMedio[dstatuschamado_status_chamado]="Ag CodIFicação";
                    "Backlog";
-                   IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="Em Análise";
+                   IF(factTempoMedio[dstatuschamado_status_chamado]="Em Análise";
                        "Análise";
-                       IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="In-Progress";
+                       IF(factTempoMedio[dstatuschamado_status_chamado]="In-Progress";
                            "CodIFicação";
-                           IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="Needs-CodeQA";
+                           IF(factTempoMedio[dstatuschamado_status_chamado]="Needs-CodeQA";
                                "CodIFicação";
-                               IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="In-CodeQA";
+                               IF(factTempoMedio[dstatuschamado_status_chamado]="In-CodeQA";
                                    "CodIFicação";
-                                   IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="Needs Validation";
+                                   IF(factTempoMedio[dstatuschamado_status_chamado]="Needs Validation";
                                        "CodIFicação";
-                                       IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="Validation";
+                                       IF(factTempoMedio[dstatuschamado_status_chamado]="Validation";
                                            "CodIFicação";
-                                           IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="Em CodIFicação";
+                                           IF(factTempoMedio[dstatuschamado_status_chamado]="Em CodIFicação";
                                                "CodIFicação";
-                                               IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="Ag Revisão";
+                                               IF(factTempoMedio[dstatuschamado_status_chamado]="Ag Revisão";
                                                    "CodIFicação";
-                                                   IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="Em Revisão";
+                                                   IF(factTempoMedio[dstatuschamado_status_chamado]="Em Revisão";
                                                        "CodIFicação";
-                                                       IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="Ag Sincronização";
+                                                       IF(factTempoMedio[dstatuschamado_status_chamado]="Ag Sincronização";
                                                            "CodIFicação";
-                                                           IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="Em Sincronização";
+                                                           IF(factTempoMedio[dstatuschamado_status_chamado]="Em Sincronização";
                                                                "CodIFicação";
-                                                               IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="Em Validação Final";
+                                                               IF(factTempoMedio[dstatuschamado_status_chamado]="Em Validação Final";
                                                                    "CodIFicação";
-                                                                   IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="In Sinc";
+                                                                   IF(factTempoMedio[dstatuschamado_status_chamado]="In Sinc";
                                                                        "CodIFicação";
-                                                                       IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="Revisado";
+                                                                       IF(factTempoMedio[dstatuschamado_status_chamado]="Revisado";
                                                                            "CodIFicação";
-                                                                           IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="Ag CodIFicação (Retorno PML)";
+                                                                           IF(factTempoMedio[dstatuschamado_status_chamado]="Ag CodIFicação (Retorno PML)";
                                                                                "Ag. CodIFicação (já iniciado)";
-                                                                               IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="Ag CodIFicação (Retorno Suporte)";
+                                                                               IF(factTempoMedio[dstatuschamado_status_chamado]="Ag CodIFicação (Retorno Suporte)";
                                                                                    "Ag. CodIFicação (já iniciado)";
-                                                                                   IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="Not Approved";
+                                                                                   IF(factTempoMedio[dstatuschamado_status_chamado]="Not Approved";
                                                                                        "Ag. CodIFicação (já iniciado)";
-                                                                                           IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="Reprovado";
+                                                                                           IF(factTempoMedio[dstatuschamado_status_chamado]="Reprovado";
                                                                                                "Ag. CodIFicação (já iniciado)";
-                                                                                               IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="Aprovado / Ag Fechamento";
+                                                                                               IF(factTempoMedio[dstatuschamado_status_chamado]="Aprovado / Ag Fechamento";
                                                                                                    "Ag. Lib. Versão";
-                                                                                                   IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="Ag PML";
+                                                                                                   IF(factTempoMedio[dstatuschamado_status_chamado]="Ag PML";
                                                                                                        "Ag. PML";
-                                                                                                       IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="Ag Suporte";
+                                                                                                       IF(factTempoMedio[dstatuschamado_status_chamado]="Ag Suporte";
                                                                                                            "Ag. Suporte";
-                                                                                                           IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="Waiting Support";
+                                                                                                           IF(factTempoMedio[dstatuschamado_status_chamado]="Waiting Support";
                                                                                                                "Ag. Suporte";
-                                                                                                               IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="Ag Versões";
+                                                                                                               IF(factTempoMedio[dstatuschamado_status_chamado]="Ag Versões";
                                                                                                                    "Ag. Versão";
-                                                                                                                   IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="Needs Version";
+                                                                                                                   IF(factTempoMedio[dstatuschamado_status_chamado]="Needs Version";
                                                                                                                        "Ag. Versão";
-                                                                                                                       IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="Ag Teste Master";
+                                                                                                                       IF(factTempoMedio[dstatuschamado_status_chamado]="Ag Teste Master";
                                                                                                                            "Ag. Teste";
-                                                                                                                           IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="Ag Teste Local";
+                                                                                                                           IF(factTempoMedio[dstatuschamado_status_chamado]="Ag Teste Local";
                                                                                                                                "Ag. Teste";
-                                                                                                                               IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="Ag Validação Final";
+                                                                                                                               IF(factTempoMedio[dstatuschamado_status_chamado]="Ag Validação Final";
                                                                                                                                    "Ag. Teste";
-                                                                                                                                   IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="Needs-VerIFication";
+                                                                                                                                   IF(factTempoMedio[dstatuschamado_status_chamado]="Needs-VerIFication";
                                                                                                                                        "Ag. Teste";
-                                                                                                                                       IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="Blocked";
+                                                                                                                                       IF(factTempoMedio[dstatuschamado_status_chamado]="Blocked";
                                                                                                                                            "Bloqueado";
-                                                                                                                                           IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="Em Teste Master";
+                                                                                                                                           IF(factTempoMedio[dstatuschamado_status_chamado]="Em Teste Master";
                                                                                                                                                "Teste";
-                                                                                                                                               IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="Em Teste Local";
+                                                                                                                                               IF(factTempoMedio[dstatuschamado_status_chamado]="Em Teste Local";
                                                                                                                                                    "Teste";
-                                                                                                                                                   IF(fChamadoTempoMedio[dstatuschamado_status_chamado]="In-Test";
+                                                                                                                                                   IF(factTempoMedio[dstatuschamado_status_chamado]="In-Test";
                                                                                                                                                        "Teste";
                                                                                                                                                        "Pronto")                                                                                                                                                )                                                                                                                                            )                                                                                                                                        )                                                                                                                                    )                                                                                                                                )                                                                                                                            )                                                                                                                        )                                                                                                                    )                                                                                                                )                                                                                                            )                                                                                                        )                                                                                                    )                                                                                                )                                                                                            )                                                                                        )                                                                                    )                                                                                )                                                                            )                                                                        )                                                                    )                                                                )                                                            )                                                        )                                                    )                                                )                                            )                                        )                                    )                                )                            )                        )                    )                )            )        )
 
 
 Data IDDTPRAZOSLA :=
-	   DATEVALUE(MID(fChamadoBacklogZero[IDDTPRAZOSLA];
+	   DATEVALUE(MID(factBacklogZero[IDDTPRAZOSLA];
            1, 4)
 	& "/" &
-        MID(fChamadoBacklogZero[IDDTPRAZOSLA];
+        MID(factBacklogZero[IDDTPRAZOSLA];
            5, 2) 
 	& "/" &
-       MID(fChamadoBacklogZero[IDDTPRAZOSLA];
+       MID(factBacklogZero[IDDTPRAZOSLA];
            7, 2)    )
 
 
 Prazo SLA Formatado :=
-	IF(fChamadoBacklogZero[Data IDDTPRAZOSLA] == DATEVALUE("01/01/1900");
+	IF(factBacklogZero[Data IDDTPRAZOSLA] == DATEVALUE("01/01/1900");
                        BLANK();
-                       fChamadoBacklogZero[Data IDDTPRAZOSLA])
+                       factBacklogZero[Data IDDTPRAZOSLA])
 
 
 Período Atual :=
@@ -623,21 +623,21 @@ Semana Por Extenso :=
 
 
 Binário Flag Dia da Semana :=
-	IF(dTempoApontamento[Flag Dia de Semana] = "S"	
+	IF(dTempoRegistry[Flag Dia de Semana] = "S"	
 , 1 
 , 0 )
 
 
-Quatidade Apontamento :=
+Quatidade Registry :=
 	1
 
 
-Média Horas Apontadas por Apontamento :=
-	IF(AND(INT(MID(fChamadoApontamentoPerfilSeguranca[IDDATA]	
+Média Horas Apontadas por Registry :=
+	IF(AND(INT(MID(factRegistryPerfilSeguranca[IDDATA]	
 , 1 
 , 4)) == YEAR(TODAY());
-       INT(MID(fChamadoApontamentoPerfilSeguranca[IDDATA], 5, 2)) == MONTH(TODAY()));
-   fChamadoApontamentoPerfilSeguranca[Horas Apontadas - Origem];
+       INT(MID(factRegistryPerfilSeguranca[IDDATA], 5, 2)) == MONTH(TODAY()));
+   factRegistryPerfilSeguranca[Horas Apontadas - Origem];
    0)
 
 

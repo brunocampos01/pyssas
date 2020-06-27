@@ -23,7 +23,7 @@ with open(os.path.join(HERE, 'README.md')) as f:
     README = f.read()
 
 setup(name='pyssas',
-      version='0.1',
+      version='0.3',
       packages=find_packages(),
       install_requires=requirements,
       entry_points={
@@ -41,12 +41,8 @@ setup(name='pyssas',
       license='MIT',
       platforms='any',
       classifiers=[
-          'Environment :: Terminal',
           'Programming Language :: Python',
-          'Development Status :: 4 - Beta',
           'Natural Language :: English',
-          'Intended Audience :: Developers, Data Engineers, Data Scientists',
-          'License :: MIT',
-          'Topic :: Software Development :: Libraries :: Python Modules'
+          'License :: OSI Approved :: MIT License'
       ]
       )

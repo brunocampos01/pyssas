@@ -187,7 +187,7 @@ FROM dwh.dbo.dtempo
 WHERE  CDANO >= 2015 AND CDANO <= YEAR(GETDATE()) + 1 ]
 
 -------------------------------------------------------------------------------
--- Partition: fChamadoApontamento
+-- Partition: factRegistry
 SELECT
 IDCATEGORIA,
 IDCHAMADO,
@@ -202,7 +202,7 @@ IDSTATUSCHAMADO,
 IDDATA,
 MINUTOS,
 HORAS,
-IDTIPOAPONTAMENTO,
+IDTIPORegistry,
 IDSISTEMA,
 IDSISTEMAORIGEM,
 IDEQUIPEUSUARIO,
@@ -218,22 +218,22 @@ IDUNIDADECHAMADO,
 IDTIPOENTREGA,
 IDTIPOCONFIGURACAO,
 IDINCIDENTECLIENTE,
-	SUM ( ( minutos / 60.00 ) / 8.00 ) over ( partition by fchamadoapontamento.idusuario,
-	fchamadoapontamento.iddata )AS IHT,
-	replace ( SUM ( ( minutos / 60.00 ) / 8.00 ) over ( partition by fchamadoapontamento.idusuario,
-	fchamadoapontamento.iddata ).',
+	SUM ( ( minutos / 60.00 ) / 8.00 ) over ( partition by factRegistry.idusuario,
+	factRegistry.iddata )AS IHT,
+	replace ( SUM ( ( minutos / 60.00 ) / 8.00 ) over ( partition by factRegistry.idusuario,
+	factRegistry.iddata ).',
 )AS IHT_calc,
 	DTCARGA
-FROM dwh.dbo.fchamadoapontamento;
+FROM dwh.dbo.factRegistry;
 
 -------------------------------------------------------------------------------
--- Partition: fChamadoArtefatoEvolucao
+-- Partition: factArtefatoEvolucao
 SELECT
 	* 
-FROM fChamadoArtefatoEvolucao;
+FROM factArtefatoEvolucao;
 
 -------------------------------------------------------------------------------
--- Partition: fChamadoBacklog
+-- Partition: factBacklog
 SELECT
 	IDCHAMADO,
 	IDTESTER,
@@ -281,10 +281,10 @@ SELECT
 	IDEQUIPEESPECIALISTA,
 	QTBACKLOG,
 	DTCARGA
-FROM dwh.dbo.fChamadoBacklog;
+FROM dwh.dbo.factBacklog;
 
 -------------------------------------------------------------------------------
--- Partition: fChamadoEntrada
+-- Partition: factInput
 SELECT
 	IDCHAMADO,
 	IDTESTER,
@@ -330,18 +330,18 @@ SELECT
 	IDCOMPLEXIDADE,
 	IDSEVERIDADE,
 	IDEQUIPEESPECIALISTA,
-	QTENTRADA,
+	QTInput,
 	DTCARGA
-FROM dwh.dbo.fChamadoEntrada;
+FROM dwh.dbo.factInput;
 
 -------------------------------------------------------------------------------
--- Partition: fChamadoNegociado
+-- Partition: factNegociado
 SELECT
 	* 
-FROM fChamadoNegociado;
+FROM factNegociado;
 
 -------------------------------------------------------------------------------
--- Partition: fChamadoSaida
+-- Partition: factOutput
 SELECT
 	IDCHAMADO,
 	IDTESTER,
@@ -387,12 +387,12 @@ SELECT
 	IDCOMPLEXIDADE,
 	IDSEVERIDADE,
 	IDEQUIPEESPECIALISTA,
-	QTSAIDA,
+	QTOutput,
 	DTCARGA
-FROM dwh.dbo.fChamadoSaida;
+FROM dwh.dbo.factOutput;
 
 -------------------------------------------------------------------------------
--- Partition: fChamadoTempoMedio
+-- Partition: factTempoMedio
 SELECT
 	IDCHAMADO,
 	IDSTATUSCHAMADOANTERIOR,
@@ -417,7 +417,7 @@ SELECT
 	QTTEMPOMEDIO,
 	DTCARGA,
 	IDDESENVOLVEDOR'
-FROM dwh.dbo.fChamadoTempoMedio;
+FROM dwh.dbo.factTempoMedio;
 
 -------------------------------------------------------------------------------
 -- Partition: dStatusChamado
@@ -428,10 +428,10 @@ SELECT
 FROM dwh.dbo.dstatuschamado;
 
 -------------------------------------------------------------------------------
--- Partition: fChamadoBacklogZero
+-- Partition: factBacklogZero
 SELECT
 	* 
-FROM fChamadoBacklogZero;
+FROM factBacklogZero;
 
 -------------------------------------------------------------------------------
 -- Partition: dDesenvolvedor
@@ -784,12 +784,12 @@ SELECT
 FROM dwh.dbo.dtempo;
 
 -------------------------------------------------------------------------------
--- Partition: dTipoApontamento
+-- Partition: dTipoRegistry
 SELECT
-	IDTIPOAPONTAMENTO,
-	CDTIPOAPONTAMENTO AS 'Código Tipo Apontamento',
-	DENOME AS 'Tipo Apontamento'
-FROM dwh.dbo.dtipoapontamento;
+	IDTIPORegistry,
+	CDTIPORegistry AS 'Código Tipo Registry',
+	DENOME AS 'Tipo Registry'
+FROM dwh.dbo.dtipoRegistry;
 
 -------------------------------------------------------------------------------
 -- Partition: dSistema
@@ -800,10 +800,10 @@ SELECT
 FROM dwh.dbo.dsistema;
 
 -------------------------------------------------------------------------------
--- Partition: dTempoApontamento
+-- Partition: dTempoRegistry
 SELECT
 	IDDATA AS IDDATA,
-	[DATA] AS 'Data Apontamento',
+	[DATA] AS 'Data Registry',
 	CDDIA AS 'Código Dia',
 	CDANO AS 'Código Ano',
 	CDMES AS 'Código Mês',
@@ -839,19 +839,19 @@ WHERE  EXISTS',
 	TOP 1 1 ,
 	
 FROM ,
-	dwh.dbo.fchamadoapontamento',
+	dwh.dbo.factRegistry',
 	
 WHERE,
-	LEFT( dwh.dbo.fchamadoapontamento.iddata,
+	LEFT( dwh.dbo.factRegistry.iddata,
 	4 ) = LEFT( dwh.dbo.dtempo.iddata,
 	4 )',
 	)
 
 -------------------------------------------------------------------------------
--- Partition: fChamadoApontamentoPerfilSeguranca
+-- Partition: factRegistryPerfilSeguranca
 SELECT
 	* 
-FROM fChamadoApontamento;
+FROM factRegistry;
 
 -------------------------------------------------------------------------------
 -- Partition: dModulo
@@ -945,20 +945,20 @@ SELECT
 FROM dwh.dbo.dequipeusuariohist;
 
 -------------------------------------------------------------------------------
--- Partition: fChamadoApontamentoIHT
+-- Partition: factRegistryIHT
 SELECT
-	fchamadoapontamento.idusuario,
-	fchamadoapontamento.iddata,
-	fchamadoapontamento.idequipeusuariohist,
-	fchamadoapontamento.idequipeusuario,
-	fchamadoapontamento.IDTIPOENTREGA,
+	factRegistry.idusuario,
+	factRegistry.iddata,
+	factRegistry.idequipeusuariohist,
+	factRegistry.idequipeusuario,
+	factRegistry.IDTIPOENTREGA,
 	SUM( minutos / 60.00 ) / 8.00AS 'IHT'
-FROM fchamadoapontamento'GROUP BY',
-	fchamadoapontamento.idusuario,
-	fchamadoapontamento.iddata,
-	fchamadoapontamento.idequipeusuariohist,
-	fchamadoapontamento.idequipeusuario,
-fchamadoapontamento.IDTIPOENTREGA;
+FROM factRegistry'GROUP BY',
+	factRegistry.idusuario,
+	factRegistry.iddata,
+	factRegistry.idequipeusuariohist,
+	factRegistry.idequipeusuario,
+factRegistry.IDTIPOENTREGA;
 
 -------------------------------------------------------------------------------
 -- Partition: dEquipeChamado

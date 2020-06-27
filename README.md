@@ -76,13 +76,18 @@ pip3 install -r requirements.txt
 sudo apt-get install git
 ```
 
+- pyssas
+```sh
+pip install pyssas
+```
+
 ---
 
 ### :star: FEATURE: `metadata_exporter`
 To create dynamic documentation about the Business Intelligence project I decided to extract the information from:
-  - [measures](examples/bi-project_name-olap/measures)
-  - [calculated columns](examples/bi-project_name-olap/calculated_cols)
-  - [queries from data source](examples/bi-project_name-olap/queries)
+  - [measures](https://github.com/brunocampos01/pyssas/tree/master/examples/bi-project_name-olap/measures)
+  - [calculated columns](https://github.com/brunocampos01/pyssas/tree/master/examples/bi-project_name-olap/calculated_cols)
+  - [queries from data source](https://github.com/brunocampos01/pyssas/tree/master/examples/bi-project_name-olap/queries)
 
 With this feature you can enter a job in an ETL system that runs the `pyssas --func metadata_exporter` and thus update the documentation every time the ETL process is executed.
 
@@ -147,9 +152,9 @@ pyssas --func cube_formatter
 
 #### Personal Configuration
 - Change properties folder_columns, folder_measures, folder_calculated_columns and summarize
-  - Open the file [config.py](pyssas/config.py) and add in `CUBE_GENERAL_CONFIG`
+  - Open the file [config.py](https://github.com/brunocampos01/pyssas/blob/master/pyssas/config.py) and add in `CUBE_GENERAL_CONFIG`
 - Add list_table_exceptions or list_col_exceptions to not formatt
-  - Open the file [config.py](pyssas/config.py) and add in `EXCEPTIONS_PK_CONFIG`
+  - Open the file [config.py](https://github.com/brunocampos01/pyssas/blob/master/pyssas/config.py) and add in `EXCEPTIONS_PK_CONFIG`
 
 **NOTE:** the next feature this project must need config.py by SSAS project. This do will the module work with dynamic configuration. 
 
@@ -163,7 +168,7 @@ pyssas --func data_lineage_generator
 ```
 
 #### Add DATABASE_CONFIG to validate Lineage
-Open the file [config.py](pyssas/config.py) and add configuration your database in `DATABASE_CONFIG`
+Open the file [config.py](https://github.com/brunocampos01/pyssas/blob/master/pyssas/config.py) and add configuration your database in `DATABASE_CONFIG`
 
 
 ##### NOTES
