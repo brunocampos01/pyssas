@@ -49,7 +49,7 @@ artifacts/
 *_p.c
 *_i.h
 *.ilk
-*.meta
+*.Goal
 *.obj
 *.pch
 *.pdb

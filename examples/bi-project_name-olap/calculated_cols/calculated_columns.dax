@@ -6,72 +6,72 @@ Simulado Base Interna :=
        [Simulado Base Interna - origem])
 
 
-$USUARIO :=
-	dUsuario[Login]
+$User :=
+	dUser[Login]
 
 
 Tipo Tag :=
 	IF(SEARCH("#prioridademaxima";
-           dChamado[Tag],,BLANK()) > 0;
+           dRegistry[Tag],,BLANK()) > 0;
            "#PRIORIDADE MÁXIMA";
-           IF(SEARCH("#NOTIFICACAO",dChamado[Tag],,BLANK())>0, "#NOTIFICAÇÃO";
-           IF(SEARCH("#NOTIFICAÇÃO",dChamado[Tag],,BLANK())>0, "#NOTIFICAÇÃO";
-           IF(AND(dChamado[Flag Performace - origem] = 1,dChamado[Flag Performace Encaminhada - origem]=1), "#PERFORMANCE";
-           IF(SEARCH("#performance",dChamado[Tag],,BLANK())>0, "#PERFORMANCE", "OUTRAS")))))
+           IF(SEARCH("#NOTIFICACAO",dRegistry[Tag],,BLANK())>0, "#NOTIFICAÇÃO";
+           IF(SEARCH("#NOTIFICAÇÃO",dRegistry[Tag],,BLANK())>0, "#NOTIFICAÇÃO";
+           IF(AND(dRegistry[Flag Performace - origem] = 1,dRegistry[Flag Performace Encaminhada - origem]=1), "#PERFORMANCE";
+           IF(SEARCH("#performance",dRegistry[Tag],,BLANK())>0, "#PERFORMANCE", "OUTRAS")))))
 
 
 Versão Pai :=
-	IF(dChamado[Versão Original é: vazio];
+	IF(dRegistry[Versão Original é: vazio];
    "Não Informado";
-   IF(dChamado[Versão Original é: >= 2];
-       "Outros",                       LEFT(dChamado[Versão Origem];
+   IF(dRegistry[Versão Original é: >= 2];
+       "Outros",                       LEFT(dRegistry[Versão Origem];
        5)))
 
 
 Flag Bloqueado :=
-	   IF(dChamado[Binário Flag Bloqueado] = 1, "Sim", "Não")
+	   IF(dRegistry[Bynary Flag Bloqueado] = 1, "Sim", "Não")
 
 
 Versão Original é: vazio :=
-	dChamado[Versão Origem] = BLANK() // ssas processa mais rápido se as funções estão divididas (vide doc ssas)
+	dRegistry[Versão Origem] = BLANK() // ssas processa mais rápido se as funções estão divididas (vide doc ssas)
 
 
 Versão Original é: >= 2 :=
-	LEN(dChamado[Versão Origem]) <= 2
+	LEN(dRegistry[Versão Origem]) <= 2
 
 
-Binário Flag Dia da Semana :=
+Bynary Flag Dia da Semana :=
 	IF(dTempo[Flag Dia de Semana] = "S"	
 , 1 
 , 0 )
 
 
-Binário Flag Fim de Semana :=
+Bynary Flag Fim de Semana :=
 	IF(dTempo[Flag Fim de Semana] = "S"	
 , 1 
 , 0 )
 
 
-Binário Flag Feriado :=
+Bynary Flag Feriado :=
 	IF(dTempo[Flag Feriado] = "S"	
 , 1 
 , 0 )
 
 
-Mês Atual :=
-	IF(dTempo[Código Mês] = MONTH(TODAY())	
+Mês Current :=
+	IF(dTempo[Code Mês] = MONTH(TODAY())	
 , 1 
 , 0)
 
 
-Ano Atual :=
-	IF(dTempo[Código Ano] = YEAR(TODAY())	
+Ano Current :=
+	IF(dTempo[Code Ano] = YEAR(TODAY())	
 , 1 
 , 0)
 
 
-Período Atual :=
-	IF(dTempo[Mês Atual] && dTempo[Ano Atual];
+Período Current :=
+	IF(dTempo[Mês Current] && dTempo[Ano Current];
     "Sim";
     "Não")
 
@@ -97,7 +97,7 @@ Data IDDATA :=
            7, 2)    )
 
 
-Média Horas Apontadas por Registry :=
+Mean Horas Apontadas por Registry :=
 	   IF(AND([Ano IDDATA] == YEAR(TODAY()), [Mês IDDATA] == MONTH(TODAY()));
        factRegistry[Horas Apontadas];
        0)
@@ -108,51 +108,51 @@ Qtde Registry :=
 
 
 Prazo SLA Formatado :=
-	IF(factArtefatoEvolucao[Data IDDTPRAZOSLA] == DATEVALUE("01/01/1900");
-                       BLANK(),                        factArtefatoEvolucao[Data IDDTPRAZOSLA])
+	IF(factSample[Data IDDTPRAZOSLA] == DATEVALUE("01/01/1900");
+                       BLANK(),                        factSample[Data IDDTPRAZOSLA])
 
 
 Data IDDTPRAZOSLA :=
-	DATEVALUE(    MID(factArtefatoEvolucao[IDDTPRAZOSLA];
+	DATEVALUE(    MID(factSample[IDDTPRAZOSLA];
                1, 4)
 	& "/" &
-            MID(factArtefatoEvolucao[IDDTPRAZOSLA];
+            MID(factSample[IDDTPRAZOSLA];
                5, 2) 
 	& "/" &
-           MID(factArtefatoEvolucao[IDDTPRAZOSLA];
+           MID(factSample[IDDTPRAZOSLA];
                7, 2)        )
 
 
 SLA Vencido :=
-	IF(factBacklog[Data e Horário IDDTPRAZOSLA] = DATEVALUE("01/01/1900");
+	IF(factBacklog[DateTime IDDTPRAZOSLA] = DATEVALUE("01/01/1900");
    0,              IF(factBacklog[IDDTAPURACAO é: Ano e Mês Corrente];
-       IF(factBacklog[Data e Horário IDDTPRAZOSLA] >= dTempo[Data e Horário Corrente];
+       IF(factBacklog[DateTime IDDTPRAZOSLA] >= dTempo[DateTime Corrente];
            0;
            1);
-       IF(factBacklog[Data e Horário IDDTPRAZOSLA] >= [Data e Horário IDDTAPURACAO];
+       IF(factBacklog[DateTime IDDTPRAZOSLA] >= [DateTime IDDTAPURACAO];
            0;
            1)    ) )
 
 
 Sem SLA :=
-	IF(factBacklog[Data e Horário IDDTPRAZOSLA] = DATEVALUE("01/01/1900");
+	IF(factBacklog[DateTime IDDTPRAZOSLA] = DATEVALUE("01/01/1900");
    1;
    0)
 
 
 SLA a Vencer :=
-	     IF(factBacklog[Data e Horário IDDTPRAZOSLA] = DATEVALUE("01/01/1900");
+	     IF(factBacklog[DateTime IDDTPRAZOSLA] = DATEVALUE("01/01/1900");
        0;
        IF(factBacklog[IDDTAPURACAO é: Ano e Mês Corrente];
-           IF(factBacklog[Data e Horário IDDTPRAZOSLA] >= dTempo[Data e Horário Corrente];
+           IF(factBacklog[DateTime IDDTPRAZOSLA] >= dTempo[DateTime Corrente];
                1;
                0);
-           IF(factBacklog[Data e Horário IDDTPRAZOSLA] >= [Data e Horário IDDTAPURACAO];
+           IF(factBacklog[DateTime IDDTPRAZOSLA] >= [DateTime IDDTAPURACAO];
                1;
                0)        )    )
 
 
-Data e Horário IDDTAPURACAO :=
+DateTime IDDTAPURACAO :=
 	DATEVALUE(MID(factBacklog[IDDTAPURACAO];
            1, 4)
 	& "/" &
@@ -163,7 +163,7 @@ Data e Horário IDDTAPURACAO :=
            7, 2)    )
 
 
-Data e Horário IDDTPRAZOSLA :=
+DateTime IDDTPRAZOSLA :=
 	   MID(factBacklog[IDDTPRAZOSLA];
        1, 4)
 	& "/" &
@@ -175,24 +175,24 @@ Data e Horário IDDTPRAZOSLA :=
 
 
 Tipo SLA :=
-	IF(factBacklog[Data e Horário IDDTPRAZOSLA] = DATEVALUE("01/01/1900");
+	IF(factBacklog[DateTime IDDTPRAZOSLA] = DATEVALUE("01/01/1900");
    "Sem SLA";
-   IF(AND(MONTH(factBacklog[Data e Horário IDDTAPURACAO]) = MONTH(TODAY());
-           factBacklog[Data e Horário IDDTAPURACAO] >= TODAY());
+   IF(AND(MONTH(factBacklog[DateTime IDDTAPURACAO]) = MONTH(TODAY());
+           factBacklog[DateTime IDDTAPURACAO] >= TODAY());
        "SLA a Vencer";
-       IF(AND(MONTH(factBacklog[Data e Horário IDDTAPURACAO]) <> MONTH(TODAY());
-           factBacklog[Data e Horário IDDTPRAZOSLA] >= factBacklog[Data e Horário IDDTAPURACAO]);
+       IF(AND(MONTH(factBacklog[DateTime IDDTAPURACAO]) <> MONTH(TODAY());
+           factBacklog[DateTime IDDTPRAZOSLA] >= factBacklog[DateTime IDDTAPURACAO]);
        "SLA a Vencer";
        "SLA Vencido")    ))
 
 
 Prazo SLA Formatado :=
-	IF(factBacklog[Data e Horário IDDTPRAZOSLA] == DATEVALUE("01/01/1900");
+	IF(factBacklog[DateTime IDDTPRAZOSLA] == DATEVALUE("01/01/1900");
                        BLANK();
-                       factBacklog[Data e Horário IDDTPRAZOSLA])
+                       factBacklog[DateTime IDDTPRAZOSLA])
 
 
-Data e Horário IDDTPREVISTA :=
+DateTime IDDTPREVISTA :=
 	   MID(factBacklog[IDDTPREVISTA];
            1, 4)
 	& "/" &
@@ -204,10 +204,10 @@ Data e Horário IDDTPREVISTA :=
 
 
 IDDTAPURACAO é: Ano e Mês Corrente :=
-	['IF( AND(MONTH(factBacklog[Data e Horário IDDTAPURACAO]) = dTempo[Mês Corrente],                       YEAR(factBacklog[Data e Horário IDDTAPURACAO]) = dTempo[Ano Corrente]), TRUE(), FALSE())
+	['IF( AND(MONTH(factBacklog[DateTime IDDTAPURACAO]) = dTempo[Mês Corrente],                       YEAR(factBacklog[DateTime IDDTAPURACAO]) = dTempo[Ano Corrente]), TRUE(), FALSE())
 
 
-Data e Horário IDDTCRIACAO :=
+DateTime IDDTCRIACAO :=
 	MID(factBacklog[IDDTCRIACAO];
            1, 4)
 	& "/" &
@@ -218,7 +218,7 @@ Data e Horário IDDTCRIACAO :=
            7, 2) & " "&   factBacklog[IDHRCRIACAO]
 
 
-Data e Horário IDDTCRIACAOSAC :=
+DateTime IDDTCRIACAOSAC :=
 	   MID(factBacklog[IDDTCRIACAOSAC];
            1, 4)
 	& "/" &
@@ -230,7 +230,7 @@ Data e Horário IDDTCRIACAOSAC :=
 
 
 Idade Backlog :=
-	DATEDIFF(factBacklog[Data e Horário IDDTCRIACAOSAC], [Data e Horário Corrente], DAY)
+	DATEDIFF(factBacklog[DateTime IDDTCRIACAOSAC], [DateTime Corrente], DAY)
 
 
 Data IDDTPRAZOSLA :=
@@ -285,7 +285,7 @@ Tempo Suporte Aux :=
 
 
 Data IDDTCRIACAOSAC Tratado Valores Nulos :=
-	IF(OR(OR(factInput[Data IDDTCRIACAOSAC] == DATEVALUE("01/01/1900"), (factInput[Data IDDTCRIACAOSAC] == DATEVALUE("02/01/1900"))), factInput[Data IDDTCRIACAOSAC] > [Data e Horário Corrente]);
+	IF(OR(OR(factInput[Data IDDTCRIACAOSAC] == DATEVALUE("01/01/1900"), (factInput[Data IDDTCRIACAOSAC] == DATEVALUE("02/01/1900"))), factInput[Data IDDTCRIACAOSAC] > [DateTime Corrente]);
                       BLANK();
                        factInput[Data IDDTCRIACAOSAC]) // desta forma sempre retorna um valor negativo. Depois trato em outra medida
 
@@ -312,31 +312,31 @@ Prazo SLA Formatado :=
 
 
 Tipo Negociação :=
-	IF(SEARCH("#negociadospoc", RELATED(dChamado[tag]),BLANK()) > 0;
+	IF(SEARCH("#negociadospoc", RELATED(dRegistry[tag]),BLANK()) > 0;
        "#NEGOCIADOSPOC";
-       IF(SEARCH("#negociadoaustralia", RELATED(dChamado[tag]),BLANK()) > 0;
+       IF(SEARCH("#negociadoaustralia", RELATED(dRegistry[tag]),BLANK()) > 0;
            "#NEGOCIADOAUSTRALIA";
            IF(factNegociado[IDFASECICLO] = 12;
                "#ULTIMAMILHA";
-               IF(SEARCH("#prioridademaxima", RELATED(dChamado[tag]),BLANK()) > 0;
+               IF(SEARCH("#prioridademaxima", RELATED(dRegistry[tag]),BLANK()) > 0;
                    "#PRIORIDADE MÁXIMA";
-                   IF(SEARCH("#NOTIFICACAO", RELATED(dChamado[tag]),BLANK()) > 0;
+                   IF(SEARCH("#NOTIFICACAO", RELATED(dRegistry[tag]),BLANK()) > 0;
                        "#NOTIFICAÇÃO";
-                       IF(SEARCH("#NOTIFICAÇÃO", RELATED(dChamado[tag]),BLANK()) > 0;
+                       IF(SEARCH("#NOTIFICAÇÃO", RELATED(dRegistry[tag]),BLANK()) > 0;
                            "#NOTIFICAÇÃO";
-                           IF(SEARCH("#ULTIMAMILHA", RELATED(dChamado[tag]), ,BLANK()) > 0;
+                           IF(SEARCH("#ULTIMAMILHA", RELATED(dRegistry[tag]), ,BLANK()) > 0;
                                "#ULTIMAMILHA";
                                "OUTRAS"                            )                        )                    )                )            )        )    )
 
 
 Entregue Cliente :=
 	   IF(SEARCH("#prontocliente";
-       RELATED(dChamado[tag]),BLANK()) > 0;
+       RELATED(dRegistry[tag]),BLANK()) > 0;
        "Sim";
        "Não")
 
 
-Data e Horário IDDTRESOLUCAO :=
+DateTime IDDTRESOLUCAO :=
 	       MID(factOutput[IDDTRESOLUCAO];
            1, 4)
 	& "/" &
@@ -356,7 +356,7 @@ No Prazo :=
                1;
                IF(factOutput[IDFASECICLO] = 19;
                    1;
-                   IF(factOutput[Data e Horário IDDTRESOLUCAO] <= factOutput[Data IDDTPRAZOSLA];
+                   IF(factOutput[DateTime IDDTRESOLUCAO] <= factOutput[Data IDDTPRAZOSLA];
                        1;
                        0)                )            )        )     )
 
@@ -385,10 +385,10 @@ Prazo SLA Formatado :=
 
 
 IDDTAPURACAO Manipulado :=
-	IF([Qtde Entregas] > 0, [IDDTAPURACAO], BLANK())
+	IF([Qtde Delivery] > 0, [IDDTAPURACAO], BLANK())
 
 
-Data e Horário IDDTCRIACAOSAC :=
+DateTime IDDTCRIACAOSAC :=
 	   MID(factOutput[IDDTCRIACAOSAC];
            1, 4)
 	& "/" &
@@ -400,7 +400,7 @@ Data e Horário IDDTCRIACAOSAC :=
 
 
 Tempo Solução Aux :=
-	DATEDIFF(factOutput[Data IDDTCRIACAOSAC com Vazio], factOutput[Data e Horário IDDTRESOLUCAO], DAY)
+	DATEDIFF(factOutput[Data IDDTCRIACAOSAC com Vazio], factOutput[DateTime IDDTRESOLUCAO], DAY)
 
 
 Data IDDTCRIACAOSAC :=
@@ -415,7 +415,7 @@ Data IDDTCRIACAOSAC :=
 
 
 Data IDDTCRIACAOSAC com Vazio :=
-	IF(OR(OR(factOutput[Data IDDTCRIACAOSAC] == DATEVALUE("01/01/1900"), (factOutput[Data IDDTCRIACAOSAC] == DATEVALUE("02/01/1900"))), factOutput[Data e Horário IDDTCRIACAOSAC] > [Data e Horário Corrente]);
+	IF(OR(OR(factOutput[Data IDDTCRIACAOSAC] == DATEVALUE("01/01/1900"), (factOutput[Data IDDTCRIACAOSAC] == DATEVALUE("02/01/1900"))), factOutput[DateTime IDDTCRIACAOSAC] > [DateTime Corrente]);
                       TODAY();
                        factOutput[Data IDDTCRIACAOSAC]) // desta forma sempre retorna um valor negativo. Depois trato em outra medida
 
@@ -436,12 +436,12 @@ Tempo Solução :=
 
 
 Tempo Gasto :=
-	IF(CALCULATE(SUM(dTempo[Binário Flag Dia da Semana]);
+	IF(CALCULATE(SUM(dTempo[Bynary Flag Dia da Semana]);
                            DATESBETWEEN(dTempo[Data];
                                        factTempoMedio[Data IDDTINICIOSTATUS];
                                        factTempoMedio[Data IDDTFINALSTATUS])) = 0;
                0;
-               CALCULATE(SUM(dTempo[Binário Flag Dia da Semana]);
+               CALCULATE(SUM(dTempo[Bynary Flag Dia da Semana]);
                            DATESBETWEEN(dTempo[Data];
                                        factTempoMedio[Data IDDTINICIOSTATUS];
                                        factTempoMedio[Data IDDTFINALSTATUS])) - 1)
@@ -570,25 +570,25 @@ Prazo SLA Formatado :=
                        factBacklogZero[Data IDDTPRAZOSLA])
 
 
-Período Atual :=
-	IF(dTempoApuracao[Mês Atual] && dTempoApuracao[Binário Ano Atual];
+Período Current :=
+	IF(dTempoApuracao[Mês Current] && dTempoApuracao[Bynary Ano Current];
     "Sim";
     "Não")
 
 
-Mês Atual :=
-	IF(dTempoApuracao[Código Mês] = dTempo[Mês Corrente]	
+Mês Current :=
+	IF(dTempoApuracao[Code Mês] = dTempo[Mês Corrente]	
 , 1 
 , 0)
 
 
-Binário Ano Atual :=
-	IF(dTempoApuracao[Código Ano] = dTempo[Ano Corrente]	
+Bynary Ano Current :=
+	IF(dTempoApuracao[Code Ano] = dTempo[Ano Corrente]	
 , 1 
 , 0)
 
 
-Binário Flag Dia da Semana :=
+Bynary Flag Dia da Semana :=
 	IF(dTempoApuracao[Flag Dia de Semana] = "S"	
 , 1 
 , 0)
@@ -599,21 +599,21 @@ Semana por Extenso :=
 
 
 Semana que Passou ? :=
-	IF([Número Semana Ano] < [Semana Atual] && [Código Ano] = YEAR(TODAY());
+	IF([Número Semana Ano] < [Semana Current] && [Code Ano] = YEAR(TODAY());
        "Sim";
-       IF([Código Ano] <  YEAR(TODAY());
+       IF([Code Ano] <  YEAR(TODAY());
            "Sim";
            "Não")    )
 
 
-Semana Atual ? :=
-	   IF([Número Semana Ano] = [Semana Atual] && [Código Ano] = YEAR(TODAY());
+Semana Current ? :=
+	   IF([Número Semana Ano] = [Semana Current] && [Code Ano] = YEAR(TODAY());
        "Sim";
        "Não")
 
 
 Próxima Semana ? :=
-	IF([Número Semana Ano] > [Semana Atual] && [Código Ano] = YEAR(TODAY());
+	IF([Número Semana Ano] > [Semana Current] && [Code Ano] = YEAR(TODAY());
        "Sim";
        "Não")
 
@@ -622,7 +622,7 @@ Semana Por Extenso :=
 	[Descrição Semana Mês] //solicitação Carol
 
 
-Binário Flag Dia da Semana :=
+Bynary Flag Dia da Semana :=
 	IF(dTempoRegistry[Flag Dia de Semana] = "S"	
 , 1 
 , 0 )
@@ -632,7 +632,7 @@ Quatidade Registry :=
 	1
 
 
-Média Horas Apontadas por Registry :=
+Mean Horas Apontadas por Registry :=
 	IF(AND(INT(MID(factRegistryPerfilSeguranca[IDDATA]	
 , 1 
 , 4)) == YEAR(TODAY());

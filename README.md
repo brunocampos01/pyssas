@@ -21,7 +21,7 @@ SQL Server Analysis Services with Python
 ```
 
 ## Features
-- MetaData Exporter
+- GoalData Exporter
   - [x] Export queries from data source on  file `.sql`
   - [x] Export measures on file `.dax`
   - [x] Export calculated columns on file `.dax`
@@ -83,25 +83,25 @@ pip install pyssas
 
 ---
 
-### :star: FEATURE: `metadata_exporter`
+### :star: FEATURE: `Goaldata_exporter`
 To create dynamic documentation about the Business Intelligence project I decided to extract the information from:
   - [measures](https://github.com/brunocampos01/pyssas/tree/master/examples/bi-project_name-olap/measures)
   - [calculated columns](https://github.com/brunocampos01/pyssas/tree/master/examples/bi-project_name-olap/calculated_cols)
   - [queries from data source](https://github.com/brunocampos01/pyssas/tree/master/examples/bi-project_name-olap/queries)
 
-With this feature you can enter a job in an ETL system that runs the `pyssas --func metadata_exporter` and thus update the documentation every time the ETL process is executed.
+With this feature you can enter a job in an ETL system that runs the `pyssas --func Goaldata_exporter` and thus update the documentation every time the ETL process is executed.
 
 #### Usage
 ```bash
 cd <project_ssas>
-pyssas --func metadata_exporter
+pyssas --func Goaldata_exporter
 ```
 As output 3 directories (queries, measures and calculated_cols) will be created within the *path_olap*.
 
 #### Test
 ```bash
 cd examples/
-pyssas --func metadata_exporter
+pyssas --func Goaldata_exporter
 ```
 
 ### :star: FEATURE: `cube_formatter`

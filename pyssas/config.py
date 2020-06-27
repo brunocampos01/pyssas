@@ -23,7 +23,7 @@ CUBE_GENERAL_CONFIG = {
 
 EXCEPTIONS_PK_CONFIG = {
     'list_cols_exceptions': {'IDHR,'
-                             'IDUSUARIOHIST,'
+                             'IDUserHIST,'
                              'IDDTAPURACAO Manipulado,'
                              'IDDTAPURACAO'},
     'list_tables_exceptions': {'f',
