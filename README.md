@@ -83,7 +83,7 @@ pip install pyssas
 
 ---
 
-### :star: FEATURE: `Goaldata_exporter`
+### :star: FEATURE: `data_exporter`
 To create dynamic documentation about the Business Intelligence project I decided to extract the information from:
   - [measures](https://github.com/brunocampos01/pyssas/tree/master/examples/bi-project_name-olap/measures)
   - [calculated columns](https://github.com/brunocampos01/pyssas/tree/master/examples/bi-project_name-olap/calculated_cols)
