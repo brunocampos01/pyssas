@@ -257,42 +257,8 @@ def create_queries_file(list_queries: list, list_name_queries: list,
                             .replace("FROM ,'", 'FROM') \
                             .replace("SELECT',", 'SELECT') \
                             .replace("FROM,", 'FROM') \
-                            .replace('"', '')) # tree comma
-
-                # apply regex
-                str_file = re.sub(r"\t  '", "",
-                                  str_file,
-                                  flags=re.MULTILINE)
-                str_file = re.sub(r",\n	 AS", " AS",
-                                  str_file,
-                                  flags=re.MULTILINE)
-                str_file = re.sub(r"\t'", "\n",
-                                  str_file,
-                                  flags=re.MULTILINE)
-                str_file = re.sub(r"\n\n", "\n",
-                                  str_file,
-                                  flags=re.MULTILINE)
-                str_file = re.sub(r"\n'", "\n",
-                                  str_file,
-                                  flags=re.MULTILINE)
-                str_file = re.sub(r"\n ", "\n",
-                                  str_file,
-                                  flags=re.MULTILINE)
-                str_file = re.sub(r",\n", ",\n",
-                                  str_file,
-                                  flags=re.MULTILINE)
-                str_file = re.sub(r"'\nWHERE", "\nWHERE ",
-                                  str_file,
-                                  flags=re.MULTILINE)
-                # str_file = re.sub(r".\',", "",
-                #                   str_file,
-                #                   flags=re.MULTILINE)
-                str_file = re.sub(r"\n,", "",
-                                  str_file,
-                                  flags=re.MULTILINE)
-                str_file = re.sub(r",, ", ", ",
-                                  str_file,
-                                  flags=re.MULTILINE)
+                            .replace('"', '')
+                           )
                 file_w.write('-' * 79)
                 file_w.write(f'\n-- Partition: {name_query}\n')
                 file_w.write(str_file)
