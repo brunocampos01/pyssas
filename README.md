@@ -59,21 +59,21 @@ pip install pyssas
 
 ---
 
-### :star: FEATURE: `data_exporter`
+### :star: FEATURE: `metadata_exporter`
 To create dynamic documentation about the Business Intelligence project.
-With this feature you can enter a job in an ETL system that runs the `pyssas --func data_exporter` and thus update the documentation every time the ETL process is executed.
+With this feature you can enter a job in an ETL system that runs the `pyssas --func metadata_exporter` and thus update the documentation every time the ETL process is executed.
 
 #### Usage
 ```bash
 cd <project_ssas>
-pyssas --func data_exporter
+pyssas --func metadata_exporter
 ```
 As output 3 directories (queries, measures and calculated_cols) will be created within the *path_olap*.
 
 #### Test
 ```bash
 cd examples/
-pyssas --func data_exporter
+pyssas --func metadata_exporter
 ```
 
 ### :star: FEATURE: `cube_formatter`
