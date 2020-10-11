@@ -51,30 +51,6 @@ SQL Server Analysis Services with Python
   - bi
   - olap
   - tabular
-- Python 3.7 or more<br/>
-```sh
-sudo apt-get install Python3
-```
-
-- pip
-```
-sudo apt-get install python3-pip
-```
-
-- Python Virtual Environment
-```sh
-pip3 install --user virtualenv==16.6.0
-```
-
-- Install the libraries
-```sh
-pip3 install -r requirements.txt
-```
-
-- Git
-```sh
-sudo apt-get install git
-```
 
 - pyssas
 ```sh
@@ -84,24 +60,20 @@ pip install pyssas
 ---
 
 ### :star: FEATURE: `data_exporter`
-To create dynamic documentation about the Business Intelligence project I decided to extract the information from:
-  - [measures](https://github.com/brunocampos01/pyssas/tree/master/examples/bi-project_name-olap/measures)
-  - [calculated columns](https://github.com/brunocampos01/pyssas/tree/master/examples/bi-project_name-olap/calculated_cols)
-  - [queries from data source](https://github.com/brunocampos01/pyssas/tree/master/examples/bi-project_name-olap/queries)
-
-With this feature you can enter a job in an ETL system that runs the `pyssas --func Goaldata_exporter` and thus update the documentation every time the ETL process is executed.
+To create dynamic documentation about the Business Intelligence project.
+With this feature you can enter a job in an ETL system that runs the `pyssas --func data_exporter` and thus update the documentation every time the ETL process is executed.
 
 #### Usage
 ```bash
 cd <project_ssas>
-pyssas --func Goaldata_exporter
+pyssas --func data_exporter
 ```
 As output 3 directories (queries, measures and calculated_cols) will be created within the *path_olap*.
 
 #### Test
 ```bash
 cd examples/
-pyssas --func Goaldata_exporter
+pyssas --func data_exporter
 ```
 
 ### :star: FEATURE: `cube_formatter`
@@ -158,14 +130,6 @@ pyssas --func cube_formatter
 
 **NOTE:** the next feature this project must need config.py by SSAS project. This do will the module work with dynamic configuration. 
 
-### :star: FEATURE: Data Lineage Generator
-Em development
-
-#### Test
-```bash
-cd examples/
-pyssas --func data_lineage_generator
-```
 
 #### Add DATABASE_CONFIG to validate Lineage
 Open the file [config.py](https://github.com/brunocampos01/pyssas/blob/master/pyssas/config.py) and add configuration your database in `DATABASE_CONFIG`
