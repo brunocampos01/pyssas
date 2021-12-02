@@ -60,7 +60,7 @@ Project SSAS name must contains one of these words:
   - olap
   - tabular
 
-## Instalation
+## Installation
 ```sh
 pip install pyssas
 ```
