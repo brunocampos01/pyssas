@@ -1,3 +1,5 @@
+> DEPRECATED !
+
 # PySSAS 
 [![Python 3.8](https://img.shields.io/badge/Python-3-green.svg)](https://www.python.org/downloads/release/python-38/)
 ![License](https://img.shields.io/badge/Code%20License-MIT-green.svg)
@@ -19,6 +21,7 @@ SQL Server Analysis Services (SSAS) features extensions.
 SQL Server Analysis Services with Python
 ```
 
+<!--
 ## Features
 - GoalData Exporter
   - [x] Export queries from data source on  file `.sql`
@@ -40,18 +43,24 @@ SQL Server Analysis Services with Python
     - [ ] Create data lineage (data source -> stage)
     - [ ] Create data lineage (data source -> stage -> data warehouse -> analysis services)
 - [ ] dynamic configuration
-
+-->
 
 ## Requirements
+This project is tested with:
 
-- SSAS: compatibility level: tabular 1200
-- Project SSAS name must contains one of these words:
+| Requisite      | Version             |
+|----------------|---------------------|
+| Python         | 3.9.1               |
+| Pip            | 21.2.4              |
+| Microsoft SSAS | tabular 1200        |
+
+Project SSAS name must contains one of these words:
   - ssas
   - bi
   - olap
   - tabular
 
-- pyssas
+## Instalation
 ```sh
 pip install pyssas
 ```
